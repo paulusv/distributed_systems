@@ -1,5 +1,3 @@
 trait DataBase {
-  def dataBase
-  def readDB()
-  def writeDB()
+  def dataBase:Map[Char, Int] = Map()
 }
