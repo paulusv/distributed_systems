@@ -1,3 +1,7 @@
+package tact
+
+import database.DataBase
+
 class  Replica {
 
   /** Each replica has a database, which will be updated by other replicas via the consistency manager **/
