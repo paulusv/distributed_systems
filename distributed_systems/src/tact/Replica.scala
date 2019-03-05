@@ -13,7 +13,7 @@ class  Replica {
   private var writeLog = Nil
 
   /** Will contain all conits, one for each DB entry **/
-  private var conits = Map[Char, Conit] = Map()
+  private var conits = Map[Char, Conit]()
 
   /** The consistency manager will keep track of all error variables in the replica **/
   private var consistencyManager = new ConsistencyManager {}
