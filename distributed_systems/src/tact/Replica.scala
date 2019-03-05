@@ -1,6 +1,8 @@
 package tact
 
 import database.DataBase
+import tact.conit.Conit
+import tact.manager.ConsistencyManager
 
 class  Replica {
 
