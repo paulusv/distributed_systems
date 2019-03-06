@@ -47,9 +47,9 @@ class Conit(it: Char, va: Int) {
     * @param va the value that has to be added to the conit
     * @return an option containing an integer representing the new value of the conit
     */
-  def update(va: Int): Option[Int] = {
+  def update(va: Int): Int = {
     value += va;
-    Some(value)
+    value
   }
 }
 
