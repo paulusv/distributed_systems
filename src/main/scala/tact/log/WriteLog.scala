@@ -15,4 +15,11 @@ class WriteLog {
   def addItem(writeLogItem: WriteLogItem): Unit = {
     writeLogItems = writeLogItem :: writeLogItems
   }
+
+  /**
+    * Flush the write log list.
+    */
+  def flush(): Unit = {
+    writeLogItems = List[WriteLogItem]()
+  }
 }

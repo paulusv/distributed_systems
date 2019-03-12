@@ -20,16 +20,16 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   Naming.rebind("//localhost:8080/retrieveLog", this)
 
   /** Each replica has a database, which will be updated by other replicas via the consistency manager **/
-  private var dataBase = new DataBase {}
+  val dataBase = new DataBase()
 
   /** The writelog contains all writes that are made **/
-  private val writeLog = new WriteLog()
+  val writeLog = new WriteLog()
 
   /** Will contain all conits, one for each DB entry **/
-  private var conits = Map[Char, Conit]()
+  var conits: Map[Char, Conit] = Map[Char, Conit]()
 
   /** The consistency manager will keep track of all error variables in the replica **/
-  private var consistencyManager = new ConsistencyManager()
+  var consistencyManager = new ConsistencyManager()
 
   /**
     * Read a value for the database.
