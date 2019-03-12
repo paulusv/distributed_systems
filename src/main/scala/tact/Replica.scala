@@ -31,7 +31,7 @@ class Replica(replicaId: Char, timeVector: Int) {
   def read(key: Char): Future[Option[Int]] = Future {
     val conit = getOrCreateConit(key)
 
-    conit.read(key)
+    Future { conit.getValue }
   }
 
   /**
@@ -42,7 +42,7 @@ class Replica(replicaId: Char, timeVector: Int) {
     */
   def write(key: Char, value: Int): Future[Done] = {
     val conit = getOrCreateConit(key)
-    conit.write(value)
+    conit.update(value)
     writeLog.addItem(new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '=', value)))
 
     Future { Done }
@@ -74,7 +74,7 @@ class Replica(replicaId: Char, timeVector: Int) {
     * @return
     */
   private def createConit(key: Char): Conit = {
-    val conit = new Conit
+    val conit = new Conit(key, 0)
     conits += (key -> conit)
     conit
   }
