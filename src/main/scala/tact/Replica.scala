@@ -15,7 +15,7 @@ class Replica(replicaId: Char, timeVector: Int) {
   private var dataBase = new DataBase {}
 
   /** The writelog contains all writes that are made **/
-  private var writeLog = new WriteLog()
+  private val writeLog = new WriteLog()
 
   /** Will contain all conits, one for each DB entry **/
   private var conits = Map[Char, Conit]()
@@ -74,7 +74,7 @@ class Replica(replicaId: Char, timeVector: Int) {
     * @return
     */
   private def createConit(key: Char): Conit = {
-    val conit = new Conit(key, 0)
+    val conit = new Conit(key, dataBase.readValue(key))
     conits += (key -> conit)
     conit
   }
