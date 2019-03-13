@@ -18,4 +18,9 @@ trait RoundProtocol {
     * @param writeLog of type WriteLog
     */
   def acceptWriteLog(writeLog: WriteLog): Boolean
+
+  /**
+    * Send the time vector to the given replica
+    */
+  def sendTimeVector(): Int
 }

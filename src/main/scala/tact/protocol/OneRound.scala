@@ -37,4 +37,9 @@ class OneRound(replica: Replica) extends RoundProtocol {
       rep.antiEntropy.acceptWriteLog(writeLog)
     }
   }
+
+  /**
+    * Send the time vector to the given replica
+    */
+  override def sendTimeVector(): Int = 0
 }

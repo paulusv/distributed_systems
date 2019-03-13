@@ -14,7 +14,7 @@ import tact.protocol.OneRound
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class Replica(replicaId: Char, timeVector: Int, serverList: List[String]) extends UnicastRemoteObject with RetrieveLog {
+class Replica(replicaId: Char, timeVector: Int, serverAddress: String, serverList: List[String]) extends UnicastRemoteObject with RetrieveLog {
 
   /** Gives a name to the replica, however I am not sure if this works */
   /* TODO: Check if this works, else change to a 'parent' server containing all adresses. */
@@ -34,6 +34,9 @@ class Replica(replicaId: Char, timeVector: Int, serverList: List[String]) extend
 
   /** */
   var antiEntropy = new OneRound(this)
+
+  /** Address of this replica */
+  var address: String = serverAddress
 
   /** */
   var servers : List[String] = serverList
