@@ -1,16 +1,7 @@
 package tact.conit
 
-<<<<<<< HEAD:src/main/scala/tact/conit/Conit.scala
 class Conit(key: Char, value: Int) {
-=======
-class Conit(it: Char, va: Int) {
-
-  /** The name of the conit is saved in var item */
-  private val item : Char = it
-  /** The value of the conit is saved in var value */
-  private var value : Int = va
->>>>>>> 4b09ae9b0c9b27d60f8fec8977e945360f718e6f:distributed_systems/src/tact/conit/Conit.scala
-
+  
   /**
     * Get the value of the current Conit
     *
