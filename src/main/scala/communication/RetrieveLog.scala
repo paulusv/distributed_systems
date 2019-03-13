@@ -1,12 +1,13 @@
 package communication
 
-import java.rmi.Remote
-import java.rmi.RemoteException
+import java.rmi.{Remote, RemoteException}
+
+import tact.log.WriteLog
 
 /**
   * Trait containing the functions used by the tact replicas
   */
 trait RetrieveLog extends Remote {
   @throws[RemoteException]
-  def retrieveLog(): List[String]
+  def retrieveLog(): WriteLog
 }

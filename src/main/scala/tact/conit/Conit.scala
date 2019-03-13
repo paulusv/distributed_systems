@@ -1,28 +1,23 @@
 package tact.conit
 
-class Conit(it: Char, va: Int) {
-
-  /** The name of the conit is saved in var item */
-  private val item : Char = it
-  /** The value of the conit is saved in var value */
-  private var value : Int = va
-
+class Conit(key: Char, value: Int) {
+  
   /**
     * Get the value of the current Conit
     *
     * @return an integer representing the value of the current Conit
     */
-  def getValue(): Int = {
+  def getValue: Int = {
     value
   }
 
   /**
-    * Get the name of the current conit
+    * Get the key of the current conit
     *
     * @return a String representing the value of the current conit
     */
-  def getName(): Char = {
-    item
+  def getKey: Char = {
+    key
   }
 
   /**
@@ -34,9 +29,9 @@ class Conit(it: Char, va: Int) {
     *         None if it does not equal the name of the conit
     */
   def update(it: Char, va: Int): Option[Int] = {
-    if (item.equals(it)) {
-      value += va;
-      Some(value)
+    if (key.equals(it)) {
+      value += va
+      return Some(value)
     }
     None
   }
@@ -48,7 +43,7 @@ class Conit(it: Char, va: Int) {
     * @return an option containing an integer representing the new value of the conit
     */
   def update(va: Int): Int = {
-    value += va;
+    value += va
     value
   }
 }
