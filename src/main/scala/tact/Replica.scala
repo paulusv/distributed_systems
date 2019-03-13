@@ -20,16 +20,16 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   Naming.rebind("//localhost:8080/retrieveLog", this)
 
   /** Each replica has a database, which will be updated by other replicas via the consistency manager **/
-  private var dataBase = new DataBase {}
+   var dataBase = new DataBase {}
 
   /** The writelog contains all writes that are made **/
-  private val writeLog = new WriteLog()
+   val writeLog = new WriteLog()
 
   /** Will contain all conits, one for each DB entry **/
-  private var conits = Map[Char, Conit]()
+   var conits = Map[Char, Conit]()
 
   /** The consistency manager will keep track of all error variables in the replica **/
-  private var consistencyManager = new ConsistencyManager()
+   var consistencyManager = new ConsistencyManager()
 
   /**
     * Read a value for the database.
@@ -51,7 +51,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   def write(key: Char, value: Int): Future[Done] = {
     val conit = getOrCreateConit(key)
     conit.update(value)
-    writeLog.addItem(new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '=', value)))
+    writeLog.addItem(new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+=', value)))
 
     Future { Done }
   }
@@ -62,7 +62,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     * @param key The key in the database.
     * @return
     */
-  private def getOrCreateConit(key: Char): Conit = {
+  def getOrCreateConit(key: Char): Conit = {
     val optionalConit = conits.get(key)
 
     var conit: Conit = null
