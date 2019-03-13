@@ -10,6 +10,8 @@ import communication.RetrieveLog
 
 class Replica extends UnicastRemoteObject with RetrieveLog {
 
+  /** Gives a name to the replica, however I am not sure if this works **/
+  /* TODO: Check if this works, else change to a 'parent' server containing all adresses. */
   Naming.rebind("//localhost:8080/retrieveLog", this)
 
   /** Each replica has a database, which will be updated by other replicas via the consistency manager **/
