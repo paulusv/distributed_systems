@@ -1,6 +1,10 @@
 package tact
 
+import java.rmi.Naming
+import java.rmi.server.UnicastRemoteObject
+
 import akka.Done
+import communication.RetrieveLog
 import database.DataBase
 import tact.conit.Conit
 import tact.log.{WriteLog, WriteLogItem, WriteOperation}
@@ -9,7 +13,11 @@ import tact.manager.ConsistencyManager
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class Replica(replicaId: Char, timeVector: Int) {
+class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with RetrieveLog {
+
+  /** Gives a name to the replica, however I am not sure if this works **/
+  /* TODO: Check if this works, else change to a 'parent' server containing all adresses. */
+  Naming.rebind("//localhost:8080/retrieveLog", this)
 
   /** Each replica has a database, which will be updated by other replicas via the consistency manager **/
   private var dataBase = new DataBase {}
@@ -77,5 +85,25 @@ class Replica(replicaId: Char, timeVector: Int) {
     val conit = new Conit(key, dataBase.readValue(key))
     conits += (key -> conit)
     conit
+  }
+
+  /**
+    * Retrieves the write log for a remote request
+    *
+    * @return
+    */
+  def retrieveLog(): WriteLog = {
+    writeLog
+  }
+
+  /**
+    * Request the write log of an remote replica
+    *
+    * @param address The address of the remote replica
+    * @return
+    */
+  def retrieveLogFromRemote(address: String): WriteLog = {
+    val rep: Replica = Naming.lookup(address).asInstanceOf[Replica]
+    rep.retrieveLog()
   }
 }
