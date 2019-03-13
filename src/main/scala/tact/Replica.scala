@@ -29,7 +29,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
    var conits = Map[Char, Conit]()
 
   /** The consistency manager will keep track of all error variables in the replica **/
-   var consistencyManager = new ConsistencyManager()
+   var consistencyManager = new ConsistencyManager(this)
 
   /**
     * Read a value for the database.
@@ -39,7 +39,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   def read(key: Char): Future[Option[Int]] = Future {
     val conit = getOrCreateConit(key)
 
-    Future { conit.getValue }
+    Option { conit.getValue }
   }
 
   /**
@@ -51,7 +51,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   def write(key: Char, value: Int): Future[Done] = {
     val conit = getOrCreateConit(key)
     conit.update(value)
-    writeLog.addItem(new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+=', value)))
+    writeLog.addItem(new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+', value)))
 
     Future { Done }
   }
