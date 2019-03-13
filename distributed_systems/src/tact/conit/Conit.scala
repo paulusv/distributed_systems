@@ -3,9 +3,9 @@ package tact.conit
 class Conit(it: Char, va: Int) {
 
   /** The name of the conit is saved in var item */
-  private val item : Char = it;
+  private val item : Char = it
   /** The value of the conit is saved in var value */
-  private var value : Int = va;
+  private var value : Int = va
 
   /**
     * Get the value of the current Conit
