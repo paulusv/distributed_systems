@@ -9,27 +9,34 @@ import database.DataBase
 import tact.conit.Conit
 import tact.log.{WriteLog, WriteLogItem, WriteOperation}
 import tact.manager.ConsistencyManager
+import tact.protocol.OneRound
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with RetrieveLog {
+class Replica(replicaId: Char, timeVector: Int, serverList: List[String]) extends UnicastRemoteObject with RetrieveLog {
 
-  /** Gives a name to the replica, however I am not sure if this works **/
+  /** Gives a name to the replica, however I am not sure if this works */
   /* TODO: Check if this works, else change to a 'parent' server containing all adresses. */
   Naming.rebind("//localhost:8080/retrieveLog", this)
 
-  /** Each replica has a database, which will be updated by other replicas via the consistency manager **/
+  /** Each replica has a database, which will be updated by other replicas via the consistency manager */
   val dataBase = new DataBase()
 
-  /** The writelog contains all writes that are made **/
+  /** The writelog contains all writes that are made */
   val writeLog = new WriteLog()
 
-  /** Will contain all conits, one for each DB entry **/
+  /** Will contain all conits, one for each DB entry */
   var conits: Map[Char, Conit] = Map[Char, Conit]()
 
-  /** The consistency manager will keep track of all error variables in the replica **/
+  /** The consistency manager will keep track of all error variables in the replica */
   var consistencyManager = new ConsistencyManager()
+
+  /** */
+  var antiEntropy = new OneRound(this)
+
+  /** */
+  var servers : List[String] = serverList
 
   /**
     * Read a value for the database.
@@ -62,7 +69,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     * @param key The key in the database.
     * @return
     */
-  private def getOrCreateConit(key: Char): Conit = {
+  def getOrCreateConit(key: Char): Conit = {
     val optionalConit = conits.get(key)
 
     var conit: Conit = null

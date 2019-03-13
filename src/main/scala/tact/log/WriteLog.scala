@@ -17,9 +17,15 @@ class WriteLog {
   }
 
   /**
-    * Flush the write log list.
+    * Get the write log items
+    *
+    * @param currentTimeVector of type Int
+    * @return List[WriteLogItem]
     */
-  def flush(): Unit = {
-    writeLogItems = List[WriteLogItem]()
+  def partition(currentTimeVector: Int): WriteLog = {
+    val writeLog  = new WriteLog
+    writeLog.writeLogItems = writeLogItems.filter(item => item.timeVector >= currentTimeVector)
+
+    writeLog
   }
 }

@@ -1,0 +1,21 @@
+package tact.protocol
+
+import tact.log.WriteLog
+
+/**
+  * RoundProtocol.
+  */
+trait RoundProtocol {
+
+  /**
+    * Start the round protocol.
+    */
+  def start()
+
+  /**
+    * Accept the write log from a different Replica
+    *
+    * @param writeLog of type WriteLog
+    */
+  def acceptWriteLog(writeLog: WriteLog): Boolean
+}
