@@ -16,8 +16,14 @@ import scala.concurrent.Future
 class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with RetrieveLog {
 
   /** Gives a name to the replica, however I am not sure if this works **/
-  /* TODO: Check if this works, else change to a 'parent' server containing all adresses. */
-  Naming.rebind("//localhost:8080/retrieveLog", this)
+  try {
+    val replica = new Replica(replicaId, timeVector)
+    Naming.rebind("replica_" + replicaId, replica)
+  } catch {
+    case e: Exception =>
+      System.out.println("ECGHistoryServer error: " + e.getMessage)
+      e.printStackTrace()
+  }
 
   /** Each replica has a database, which will be updated by other replicas via the consistency manager **/
    var dataBase = new DataBase {}
@@ -44,6 +50,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
 
   /**
     * Write a value for the database.
+    * Also writes to the ECG History
     *
     * @param key   The key in the database.
     * @param value THe value that should be written to the database.
@@ -51,7 +58,17 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   def write(key: Char, value: Int): Future[Done] = {
     val conit = getOrCreateConit(key)
     conit.update(value)
-    writeLog.addItem(new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+', value)))
+    var writeLogItem = new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+', value))
+    writeLog.addItem(writeLogItem)
+
+    try {
+      var ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
+      ecgHistory.writeToLog(writeLogItem)
+    } catch {
+      case e: Exception =>
+        System.out.println("Error finding ECG History server: " + e.getMessage)
+        e.printStackTrace()
+    }
 
     Future { Done }
   }
