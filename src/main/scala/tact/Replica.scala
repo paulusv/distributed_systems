@@ -23,6 +23,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   /** Call that implements voluntary anti-entropy **/
   checkServer()
 
+  /** Variable that keeps track if the server is busy or not **/
   private var busy: Boolean = false
 
   /** Each replica has a database, which will be updated by other replicas via the consistency manager **/
@@ -57,10 +58,11 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     * @param value THe value that should be written to the database.
     */
   def write(key: Char, value: Int): Future[Done] = {
+    busy = true
     val conit = getOrCreateConit(key)
     conit.update(value)
     writeLog.addItem(new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+', value)))
-
+    busy = false
     Future { Done }
   }
 
@@ -71,15 +73,19 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     * @return
     */
   private def getOrCreateConit(key: Char): Conit = {
+    busy = true
+
     val optionalConit = conits.get(key)
 
     var conit: Conit = null
+
     if (optionalConit.isEmpty) {
       conit = createConit(key)
     } else {
       conit = optionalConit.get
     }
- 
+    busy = false
+
     conit
   }
 
@@ -90,8 +96,10 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     * @return
     */
   private def createConit(key: Char): Conit = {
+    busy = true
     val conit = new Conit(key, dataBase.readValue(key))
     conits += (key -> conit)
+    busy = false
     conit
   }
 
