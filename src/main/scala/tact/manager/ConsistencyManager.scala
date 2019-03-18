@@ -12,6 +12,8 @@ class ConsistencyManager(replica: Replica) {
   var orderError: Int = 0
   var logicalTimeVector: Int = 0
 
+
+
   /**
     * Checks all errors for a certain conit to see if they pass the threshold set.
     * I (Paul) think this should be done every time a value is read.
@@ -74,11 +76,6 @@ class ConsistencyManager(replica: Replica) {
     */
   def oweight(W: WriteLogItem, F: Conit): Int = {
     (W.operation.key == F.getKey).asInstanceOf[Int]
-//    if (W.operation.key == F.getKey){
-//      1
-//    } else {
-//      0
-//    }
   }
 
   def nweight(W: WriteLogItem, F: Conit): Int = {
@@ -93,7 +90,7 @@ class ConsistencyManager(replica: Replica) {
     var count = 0
     for (i <- 0 to H1.writeLogItems.size){
       if (H1.writeLogItems(i) != H2.writeLogItems(i)){
-        count
+        return count
       } else {
         count += 1
       }

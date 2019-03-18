@@ -37,6 +37,15 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   /** The consistency manager will keep track of all error variables in the replica **/
    var consistencyManager = new ConsistencyManager(this)
 
+  var ecgHistory = new ECGHistory
+  try {
+    ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
+  } catch {
+    case e: Exception =>
+      System.out.println("Error finding ECG History server: " + e.getMessage)
+      e.printStackTrace()
+  }
+
   /**
     * Read a value for the database.
     *
@@ -62,7 +71,6 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     writeLog.addItem(writeLogItem)
 
     try {
-      var ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
       ecgHistory.writeToLog(writeLogItem)
     } catch {
       case e: Exception =>
