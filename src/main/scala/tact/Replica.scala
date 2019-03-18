@@ -11,7 +11,8 @@ import tact.log.{WriteLog, WriteLogItem, WriteOperation}
 import tact.manager.ConsistencyManager
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import scala.concurrent.duration.Duration
+import scala.concurrent.{Await, Future}
 
 class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with RetrieveLog {
 
@@ -19,8 +20,13 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   /* TODO: Check if this works, else change to a 'parent' server containing all adresses. */
   Naming.rebind("//localhost:8080/retrieveLog", this)
 
+  /** Call that implements voluntary anti-entropy **/
+  checkServer()
+
+  private var busy: Boolean = false
+
   /** Each replica has a database, which will be updated by other replicas via the consistency manager **/
-  private var dataBase = new DataBase {}
+  private val dataBase = new DataBase {}
 
   /** The writelog contains all writes that are made **/
   private val writeLog = new WriteLog()
@@ -37,8 +43,10 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     * @param key The key in the database.
     */
   def read(key: Char): Future[Option[Int]] = Future {
+    busy = true
     val conit = getOrCreateConit(key)
 
+    busy = false
     Future { conit.getValue }
   }
 
@@ -51,7 +59,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   def write(key: Char, value: Int): Future[Done] = {
     val conit = getOrCreateConit(key)
     conit.update(value)
-    writeLog.addItem(new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '=', value)))
+    writeLog.addItem(new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+', value)))
 
     Future { Done }
   }
@@ -85,6 +93,27 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     val conit = new Conit(key, dataBase.readValue(key))
     conits += (key -> conit)
     conit
+  }
+
+  /**
+    * Checks every second if server is busy
+    */
+  def checkServer(){
+    //TODO: Implement server check
+
+    val thread = new Thread {
+      override def run(): Unit = {
+        while (true) {
+          //Check if server is busy
+          if (!busy) {
+             // TODO: do something
+           }
+           Thread.sleep(1000)
+         }
+       }
+    }
+
+    thread.run()
   }
 
   /**
