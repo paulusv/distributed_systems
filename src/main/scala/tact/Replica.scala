@@ -79,7 +79,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     } else {
       conit = optionalConit.get
     }
-
+ 
     conit
   }
 
