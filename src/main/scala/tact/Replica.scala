@@ -65,11 +65,55 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     * @param value THe value that should be written to the database.
     */
   def write(key: Char, value: Int): Future[Done] = {
-    val conit = getOrCreateConit(key)
-    conit.update(value)
-    var writeLogItem = new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+', value))
+    // Creates the WriteLogItem
+    val writeLogItem = createWriteLogItem(key, value)
+
+    // Write to Conit
+    writeToConit(writeLogItem)
+
+    // Write to WriteLog
     writeLog.addItem(writeLogItem)
 
+    // Write to ECG History
+    writeToECG(writeLogItem)
+
+    // Check ConsistencyManager errors
+    if (consistencyManager.isBusy && consistencyManager.inNeedOfAntiEntropy(key)) {
+      // TODO: start anti entropy session
+    }
+
+    Future { Done }
+  }
+
+  /**
+    * Creates an WriteLogItem from a key and value
+    * TODO: Update for multiple operations
+    *
+    * @param key The key (Char) of the Conit / write
+    * @param value The value of the key should get
+    * @return a WriteLogItem
+    */
+  def createWriteLogItem(key: Char, value: Int): WriteLogItem = {
+    // TODO: Current time
+    new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+', value))
+  }
+
+  /**
+    * Writes a WriteLogItem to the local WriteLog
+    *
+    * @param writeLogItem The item to be written to the WriteLog
+    */
+  def writeToConit(writeLogItem: WriteLogItem): Unit = {
+    val conit = getOrCreateConit(writeLogItem.operation.key)
+    conit.update(writeLogItem.operation.value)
+  }
+
+  /**
+    * Writes a WriteLogItem to the ECG history server
+    *
+    * @param writeLogItem The item to be written to the ECG server
+    */
+  def writeToECG(writeLogItem: WriteLogItem): Unit = {
     try {
       ecgHistory.writeToLog(writeLogItem)
     } catch {
@@ -77,8 +121,6 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
         System.out.println("Error finding ECG History server: " + e.getMessage)
         e.printStackTrace()
     }
-
-    Future { Done }
   }
 
   /**

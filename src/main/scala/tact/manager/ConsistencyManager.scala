@@ -8,11 +8,39 @@ import tact.log.{WriteLog, WriteLogItem}
 
 
 class ConsistencyManager(replica: Replica) {
+  var isBusy: Boolean = false
   var numericalError: Int = 0
   var orderError: Int = 0
+  var stalenessErrror: Int = 0
   var logicalTimeVector: Int = 0
 
+  def inNeedOfAntiEntropy(key: Char): Boolean = {
+    isBusy = true
+    numericalError = 0
+    orderError = 0
+    logicalTimeVector = 0
 
+    updateErrors(key)
+
+    isBusy = false
+    errorsOutOfBound(key)
+  }
+
+  def errorsOutOfBound(key: Char): Boolean = {
+    val conit = replica.getOrCreateConit(key)
+
+    if (conit.numericBound < numericalError) {
+      return true
+    }
+    if (conit.orderBound < orderError) {
+      return true
+    }
+    if (conit.stalenessBound < stalenessErrror) {
+      return true
+    }
+
+    false
+  }
 
   /**
     * Checks all errors for a certain conit to see if they pass the threshold set.
