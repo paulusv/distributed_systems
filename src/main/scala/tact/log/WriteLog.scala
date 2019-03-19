@@ -44,12 +44,4 @@ class WriteLog {
     return writeLog
   }
 
-  def contains(writeLogItem: WriteLogItem) : Boolean = {
-    for (this_writeLogItem <- writeLogItems){
-      if (this_writeLogItem == writeLogItem){
-        return true
-      }
-    }
-    false
-  }
 }

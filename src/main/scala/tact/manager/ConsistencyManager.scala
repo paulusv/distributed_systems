@@ -153,7 +153,7 @@ class ConsistencyManager(replica: Replica) {
     var writeLog = new WriteLog
 
     for (writeLogItem <- ecg.writeLogItems){
-      if(!(log.contains(writeLogItem))){
+      if(!(log.writeLogItems.contains(writeLogItem))){
         writeLog.addItem(writeLogItem)
       }
     }
