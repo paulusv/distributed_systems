@@ -7,6 +7,6 @@ package tact.log
   * @param replicaId
   * @param operation
   */
-class WriteLogItem(var timeVector: Int, var replicaId: Char, var operation: WriteOperation) {
+class WriteLogItem(var timeVector: Long, var replicaId: Char, var operation: WriteOperation) {
 
 }

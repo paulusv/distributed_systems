@@ -20,7 +20,7 @@ class ConsistencyManager(replica: Replica) {
     orderError = 0
     logicalTimeVector = 0
 
-    updateErrors(key)
+    updateErrors(key, System.currentTimeMillis())
 
     isBusy = false
     errorsOutOfBound(key)
@@ -50,7 +50,7 @@ class ConsistencyManager(replica: Replica) {
     *
     * @param key The key(which can be used to get the conit) which you try to check errors for
     */
-  def updateErrors(key: Char): Unit = {
+  def updateErrors(key: Char, stime: Long): Unit = {
     // TODO: Zorg dat alle errors in 1x worden geupdate/gechecked.
     var writeLog: WriteLog = new WriteLog
     try {
@@ -63,6 +63,8 @@ class ConsistencyManager(replica: Replica) {
     }
 
     numericalError = calculateNumericalRelativeError(writeLog, key)
+    orderError = calculateOrderError(writeLog, key)
+    stalenessErrror = calculateStaleness(writeLog, key, stime)
     // TODO: Uncomment if we want to switch to absolute errors
     // numericalErrorAbsolute = calculateNumericalAbsoluteError(writeLog, key)
   }
@@ -100,7 +102,7 @@ class ConsistencyManager(replica: Replica) {
     * @param writeLog the write log of the current replica
     * @return the order error for the current replica compared to the ECG
     */
-  def calculateOrderError(writeLog: WriteLog, key: Char): Double = {
+  def calculateOrderError(writeLog: WriteLog, key: Char): Int = {
     // Find longest prefix, count oweight of all reads after that
     var ecgHistory = new ECGHistory
     try {
@@ -110,8 +112,8 @@ class ConsistencyManager(replica: Replica) {
         System.out.println("Error finding ECG History server: " + e.getMessage)
         e.printStackTrace()
     }
-    var prefix = getPrefix(writeLog, ecgHistory.writeLog)
-    var order_error = 0.0
+    var prefix = getPrefix(writeLog, ecgHistory.writeLog, key)
+    var order_error = 0
     for (i <- prefix to writeLog.writeLogItems.size){
       order_error += oweight(writeLog.writeLogItems(i), key)
     }
@@ -121,10 +123,41 @@ class ConsistencyManager(replica: Replica) {
   }
 
 
-  def calculateStaleness(writeLog: WriteLog, key: Char) ={
+  def calculateStaleness(writeLog: WriteLog, key: Char, stime: Long): Int ={
 
-    var stime = writeLog.getWriteLogItembyKey(key).timeVector
+    var ecgHistory = new ECGHistory
+    try {
+      ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
+    } catch {
+      case e: Exception =>
+        System.out.println("Error finding ECG History server: " + e.getMessage)
+        e.printStackTrace()
+    }
 
+    var current = writeLog.getWriteLogItembyKey(key) // Only look at key conit
+    var current_ecg = ecgHistory.writeLog.getWriteLogItembyKey(key)
+    var ideal_not_observed = idealMinusObserved(current, current_ecg)
+
+    var min = new Long
+    for (i <- 0 to ideal_not_observed.writeLogItems.size) {
+      if ((nweight(ideal_not_observed.writeLogItems(i), key) != 0) && (ideal_not_observed.writeLogItems(i).timeVector < stime))
+        if (ideal_not_observed.writeLogItems(i).timeVector < min){ //find smallest rtime
+          min = ideal_not_observed.writeLogItems(i).timeVector
+        }
+    }
+
+    return (stime - min).toInt
+  }
+
+  def idealMinusObserved(log: WriteLog, ecg: WriteLog): WriteLog ={
+    var writeLog = new WriteLog
+
+    for (writeLogItem <- ecg.writeLogItems){
+      if(!(log.contains(writeLogItem))){
+        writeLog.addItem(writeLogItem)
+      }
+    }
+    writeLog
   }
 
   /**
@@ -140,7 +173,7 @@ class ConsistencyManager(replica: Replica) {
     (W.operation.key == F).asInstanceOf[Int]
   }
 
-  def nweight(W: WriteLogItem, F: Conit): Int = {
+  def nweight(W: WriteLogItem, F: Char): Int = {
     //    var D_current = replica.getOrCreateConit(W.operation.key).getValue
     //    var D_ideal = D_current + W.operation.value
     //    D_ideal - D_current
@@ -148,16 +181,19 @@ class ConsistencyManager(replica: Replica) {
   }
 
   // Finds the longest common prefix of history 1 and history 2
-  def getPrefix(H1: WriteLog, H2: WriteLog): Int = {
+  def getPrefix(H1: WriteLog, H2: WriteLog, key: Char ): Int = {
     var count = 0
-    for (i <- 0 to H1.writeLogItems.size){
-      if (H1.writeLogItems(i) != H2.writeLogItems(i)){
+    var hist1 = H1.getWriteLogItembyKey(key)
+    var hist2 = H2.getWriteLogItembyKey(key)
+
+    for (i <- 0 to hist1.writeLogItems.size) {
+      if (hist1.writeLogItems(i) != hist2.writeLogItems(i)) {
         return count
       } else {
         count += 1
       }
     }
-    count
+  count
   }
 
   // TODO: Volgens mij is dit niet meer nodig omdat het nu calculateNumericalError{Absolute, Relative} is
@@ -172,11 +208,5 @@ class ConsistencyManager(replica: Replica) {
 //    var con = new Conit(0,0)
 //    //1 - (replica.conits.getOrElse(F.getKey, con).getValue)/(ECG.getOrCreateConit(F.getKey).getValue)
 //  }
-
-  // Alvast de commands voor de tijd opgezocht
-  def staleness(): Unit = {
-    var stime = System.nanoTime()
-    var rtime = System.nanoTime()
-  }
 
 }

@@ -94,8 +94,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     * @return a WriteLogItem
     */
   def createWriteLogItem(key: Char, value: Int): WriteLogItem = {
-    // TODO: Current time
-    new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+', value))
+    new WriteLogItem(System.currentTimeMillis(), replicaId, new WriteOperation(key, '+', value))
   }
 
   /**

@@ -33,13 +33,23 @@ class WriteLog {
     sum
   }
 
-  def getWriteLogItembyKey(key: Char) : WriteLogItem = {
+  def getWriteLogItembyKey(key: Char) : WriteLog = {
 
-    for (i <- 0 to writeLogItems.size){
-      if (writeLogItems(i).replicaId == key){
-        return writeLogItems(i)
+    var writeLog = new WriteLog
+    for (writeLogItem <- writeLogItems){
+      if (writeLogItem.replicaId == key){
+        writeLog.addItem(writeLogItem)
       }
     }
-    throw MissingKey(key)
+    return writeLog
+  }
+
+  def contains(writeLogItem: WriteLogItem) : Boolean = {
+    for (this_writeLogItem <- writeLogItems){
+      if (this_writeLogItem == writeLogItem){
+        return true
+      }
+    }
+    false
   }
 }
