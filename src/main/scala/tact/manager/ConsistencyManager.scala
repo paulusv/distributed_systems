@@ -65,6 +65,40 @@ class ConsistencyManager(replica: Replica) {
     1.0 - (writeLog.getSummedWeightsForKey(key) / replica.getOrCreateConit(key).getValue)
   }
 
+
+  /**
+    * Calculates the Order Error of the current replica compared to the ECG
+    *
+    * @param writeLog the write log of the current replica
+    * @return the order error for the current replica compared to the ECG
+    */
+  def calculateOrderError(writeLog: WriteLog, key: Char): Double = {
+    // Find longest prefix, count oweight of all reads after that
+    var ecgHistory = new ECGHistory
+    try {
+      ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
+    } catch {
+      case e: Exception =>
+        System.out.println("Error finding ECG History server: " + e.getMessage)
+        e.printStackTrace()
+    }
+    var prefix = getPrefix(writeLog, ecgHistory.writeLog)
+    var order_error = 0.0
+    for (i <- prefix to writeLog.writeLogItems.size){
+      order_error += oweight(writeLog.writeLogItems(i), key)
+    }
+
+    return order_error
+
+  }
+
+
+  def calculateStaleness(writeLog: WriteLog, key: Char) ={
+
+    var stime = writeLog.getWriteLogItembyKey(key).timeVector
+
+  }
+
   /**
     * Determines the OWeight of the function. According to the paper:
     * Order weight: defined to be a mapping from the tuple (W, F, D) to a nonnegative real value.
@@ -74,8 +108,8 @@ class ConsistencyManager(replica: Replica) {
     * @param F The conit to which the write is done
     * @return The OWeight of the write operation
     */
-  def oweight(W: WriteLogItem, F: Conit): Int = {
-    (W.operation.key == F.getKey).asInstanceOf[Int]
+  def oweight(W: WriteLogItem, F: Char): Int = {
+    (W.operation.key == F).asInstanceOf[Int]
   }
 
   def nweight(W: WriteLogItem, F: Conit): Int = {

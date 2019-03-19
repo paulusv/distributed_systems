@@ -1,5 +1,5 @@
 package tact.log
-
+import exceptions.MissingKey
 /**
   * WriteLog
   * When written to the log, also writes to the ECG History
@@ -31,5 +31,15 @@ class WriteLog {
       }
     }
     sum
+  }
+
+  def getWriteLogItembyKey(key: Char) : WriteLogItem = {
+
+    for (i <- 0 to writeLogItems.size){
+      if (writeLogItems(i).replicaId == key){
+        return writeLogItems(i)
+      }
+    }
+    throw MissingKey(key)
   }
 }
