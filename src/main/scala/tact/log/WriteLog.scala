@@ -28,4 +28,11 @@ class WriteLog {
 
     writeLog
   }
+
+  /**
+    * Flush the current writeLog.
+    */
+  def flush(): Unit = {
+    writeLogItems = List[WriteLogItem]()
+  }
 }

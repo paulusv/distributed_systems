@@ -43,6 +43,9 @@ class OneRound(replica: Replica) extends RoundProtocol {
       val rep: Replica = Naming.lookup(server).asInstanceOf[Replica]
       rep.antiEntropy.acceptWriteLog(writeLog)
     }
+
+    // TODO: write values to db
+    replica.writeLog.flush()
   }
 
   /**

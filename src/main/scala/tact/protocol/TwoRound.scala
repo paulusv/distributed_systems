@@ -45,6 +45,9 @@ class TwoRound(replica: Replica) extends RoundProtocol {
 
       other.antiEntropy.acceptWriteLog(writeLog)
     }
+
+    // TODO: write values to db
+    replica.writeLog.flush()
   }
 
   /**
