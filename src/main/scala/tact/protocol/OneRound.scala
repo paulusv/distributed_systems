@@ -23,7 +23,7 @@ class OneRound(replica: Replica) extends RoundProtocol {
       val conit = replica.getOrCreateConit(item.operation.key)
 
       // Skip writes that were written to this replica.
-      if (item.replicaId.eq(replica.replicaId)) {
+      if (item.replicaId.equals(replica.replicaId)) {
         break
       }
 
