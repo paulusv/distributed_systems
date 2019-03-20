@@ -9,22 +9,22 @@ import database.DataBase
 import tact.conit.Conit
 import tact.log.{WriteLog, WriteLogItem, WriteOperation}
 import tact.manager.ConsistencyManager
+import tact.protocol.OneRound
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with RetrieveLog {
+class Replica(val replicaId: Char, val serverAddress: String, val serverList: List[String]) extends UnicastRemoteObject with RetrieveLog {
 
-  /** The ecgHistory address **/
+  /** The ecgHistory address */
   val ecgHistoryAddress: String = "rmi://localhost:8080/ECGHistoryServer"
 
-  /** Gives a name to the replica, however I am not sure if this works **/
+  /** Gives a name to the replica, however I am not sure if this works */
   try {
-    val replica = new Replica(replicaId, timeVector)
-    Naming.rebind("replica_" + replicaId, replica)
+    Naming.rebind("replica_" + replicaId, this)
   } catch {
     case e: Exception =>
-      System.out.println("ECGHistoryServer error: " + e.getMessage)
+      System.out.println("TACT replica error: " + e.getMessage)
       e.printStackTrace()
   }
 
@@ -43,9 +43,13 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   /** Will contain all conits, one for each DB entry **/
    var conits: Map[Char, Conit] = Map[Char, Conit]()
 
-  /** The consistency manager will keep track of all error variables in the replica **/
-   var consistencyManager = new ConsistencyManager(this)
+  /** The consistency manager will keep track of all error variables in the replica */
+  var consistencyManager: ConsistencyManager = new ConsistencyManager(this)
 
+  /** AntiEntropy protocol that will be used. */
+  var antiEntropy: OneRound = new OneRound(this)
+
+  /** Connects to the ECG History server */
   var ecgHistory = new ECGHistory
   try {
     ecgHistory = Naming.lookup(ecgHistoryAddress).asInstanceOf[ECGHistory]
@@ -206,7 +210,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   /**
     * Request the write log of an remote replica
     *
-    * @param address The address of the remote replica
+    * @param address The address of the remote rep  lica
     * @return
     */
   def retrieveLogFromRemote(address: String): WriteLog = {

@@ -6,6 +6,7 @@ import tact.log.{WriteLog, WriteLogItem}
 
 class ConsistencyManager(replica: Replica) {
   var isBusy: Boolean = false
+
   var numericalError: Int = 0
   var orderError: Int = 0
   var stalenessError: Int = 0
@@ -20,9 +21,10 @@ class ConsistencyManager(replica: Replica) {
     */
   def inNeedOfAntiEntropy(key: Char): Boolean = {
     isBusy = true
+
     numericalError = 0
     orderError = 0
-    logicalTimeVector = 0
+    stalenessError = 0
 
     updateErrors(key, System.currentTimeMillis())
 

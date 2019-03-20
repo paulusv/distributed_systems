@@ -78,4 +78,3 @@ class Conit(val key: Char, var value: Int, var numericBound: Int, var orderBound
     stalenessBound = random.nextInt(1000)
   }
 }
-
