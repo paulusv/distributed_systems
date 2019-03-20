@@ -3,9 +3,9 @@ package tact.log
 /**
   * WriteLogItem class.
   *
-  * @param timeVector
-  * @param replicaId
-  * @param operation
+  * @param timeVector of type Long
+  * @param replicaId  of type Char
+  * @param operation  of type WriteOperation
   */
 case class WriteLogItem(timeVector: Long, replicaId: Char, operation: WriteOperation) {
 

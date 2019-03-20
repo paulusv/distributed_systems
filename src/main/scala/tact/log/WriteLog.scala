@@ -18,6 +18,26 @@ class WriteLog {
   }
 
   /**
+    * Get the write log items
+    *
+    * @param currentTimeVector of type Int
+    * @return List[WriteLogItem]
+    */
+  def partition(currentTimeVector: Int): WriteLog = {
+    val writeLog  = new WriteLog
+    writeLog.writeLogItems = writeLogItems.filter(item => item.timeVector >= currentTimeVector)
+
+    writeLog
+  }
+
+  /**
+    * Flush the current writeLog.
+    */
+  def flush(): Unit = {
+    writeLogItems = List[WriteLogItem]()
+  }
+
+  /**
     * Retrieves the summed weights of all items in the list of a certain key
     *
     * @param key The key preferred
