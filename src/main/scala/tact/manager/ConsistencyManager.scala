@@ -73,11 +73,11 @@ class ConsistencyManager(replica: Replica) {
     * @param key The key(which can be used to get the conit) which you try to check errors for
     */
   def updateErrors(key: Char, stime: Long): Unit = {
-    val writeLog: WriteLog = ecgHistory.retrieveLog()
+    val ecgWriteLog: WriteLog = ecgHistory.retrieveLog()
 
-    numericalError = calculateNumericalRelativeError(writeLog, key)
-    orderError = calculateOrderError(writeLog, key)
-    stalenessErrror = calculateStaleness(writeLog, key, stime)
+    numericalError = calculateNumericalRelativeError(ecgWriteLog, key)
+    orderError = calculateOrderError(ecgWriteLog, key)
+    stalenessErrror = calculateStaleness(replica.writeLog, ecgWriteLog, key, stime)
     // TODO: Uncomment if we want to switch to absolute errors
     // numericalErrorAbsolute = calculateNumericalAbsoluteError(writeLog, key)
   }
@@ -132,11 +132,20 @@ class ConsistencyManager(replica: Replica) {
   }
 
 
-  def calculateStaleness(writeLog: WriteLog, key: Char, stime: Long): Int ={
+  /**
+    * Calculates the staleness error for the given key
+    *
+    * @param replicaWriteLog The WriteLog of the replica
+    * @param ecgWriteLog The WriteLog of the ECG History
+    * @param key The key of the item
+    * @param stime The time of the submission of the writeLogItem to the TRACK replica
+    * @return The staleness error
+    */
+  def calculateStaleness(replicaWriteLog: WriteLog, ecgWriteLog: WriteLog, key: Char, stime: Long): Int ={
 
     /** ecgHistory.writeLog retrieves the ecg history for a key. writeLog is for the conit history**/
-    val idealNotObserved = idealMinusObserved(ecgHistory.writeLog.getWriteLogForKey(key),
-      writeLog.getWriteLogForKey(key))
+    val idealNotObserved = idealMinusObserved(ecgWriteLog.getWriteLogForKey(key),
+      replicaWriteLog.getWriteLogForKey(key))
 
     var min: Long = 0
     for (writeLogItem: WriteLogItem <- idealNotObserved.writeLogItems) {
@@ -149,6 +158,13 @@ class ConsistencyManager(replica: Replica) {
     (stime - min).toInt
   }
 
+  /**
+    * Given two logs, retrieves the writeLog only found in the ideal log
+    *
+    * @param ideal The ideal log. Any items found here not found in observed will be returned
+    * @param observed The observed log.
+    * @return The distinct items in the ideal log
+    */
   def idealMinusObserved(ideal: WriteLog, observed: WriteLog): WriteLog ={
     val writeLog = new WriteLog
 
@@ -173,26 +189,40 @@ class ConsistencyManager(replica: Replica) {
     (writeLogItem.operation.key == key).asInstanceOf[Int]
   }
 
-  def nweight(W: WriteLogItem, key: Char): Int = {
+  /**
+    * Retrieves the nweight of an key.
+    *
+    * @param writeLogItem The item to check the nweight for
+    * @param key Not needed right now
+    * @return The nweight of an item
+    */
+  def nweight(writeLogItem: WriteLogItem, key: Char): Int = {
     //    var D_current = replica.getOrCreateConit(W.operation.key).getValue
     //    var D_ideal = D_current + W.operation.value
     //    D_ideal - D_current
-    W.operation.value
+    writeLogItem.operation.value
   }
 
-  // Finds the longest common prefix of history 1 and history 2
-  def getPrefix(H1: WriteLog, H2: WriteLog, key: Char ): Int = {
+  /**
+    * Finds the size of the shared prefix for a given key of two writeLogs
+    *
+    * @param writeLog1 The first writeLog
+    * @param writeLog2 The second writeLog
+    * @param key The key for which the longest prefix must be determined
+    * @return The size of the shared prefix of the two writeLogs for a certain key
+    */
+  def getPrefix(writeLog1: WriteLog, writeLog2: WriteLog, key: Char ): Int = {
     var count = 0
-    val hist1 = H1.getWriteLogForKey(key)
-    val hist2 = H2.getWriteLogForKey(key)
+    val hist1 = writeLog1.getWriteLogForKey(key)
+    val hist2 = writeLog2.getWriteLogForKey(key)
 
-    for (i <- 0 to hist1.writeLogItems.size) {
+    for (i <- hist1.writeLogItems.indices) {
       if (hist1.writeLogItems(i) != hist2.writeLogItems(i)) {
         return count
       } else {
         count += 1
       }
     }
-  count
+    count
   }
 }
