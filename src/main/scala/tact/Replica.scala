@@ -15,6 +15,9 @@ import scala.concurrent.Future
 
 class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with RetrieveLog {
 
+  /** The ecgHistory address **/
+  val ecgHistoryAddress: String = "rmi://localhost:8080/ECGHistoryServer"
+
   /** Gives a name to the replica, however I am not sure if this works **/
   try {
     val replica = new Replica(replicaId, timeVector)
@@ -39,7 +42,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
 
   var ecgHistory = new ECGHistory
   try {
-    ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
+    ecgHistory = Naming.lookup(ecgHistoryAddress).asInstanceOf[ECGHistory]
   } catch {
     case e: Exception =>
       System.out.println("Error finding ECG History server: " + e.getMessage)
@@ -54,7 +57,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
   def read(key: Char): Future[Option[Int]] = Future {
     val conit = getOrCreateConit(key)
 
-    Option { conit.getValue }
+    Some(conit.getValue)
   }
 
   /**

@@ -33,8 +33,13 @@ class WriteLog {
     sum
   }
 
+  /**
+    * Retrieves all writeLogItems from a certain key
+    *
+    * @param key The key
+    * @return All writeLogItems for the given key
+    */
   def getWriteLogForKey(key: Char) : WriteLog = {
-
     val writeLog = new WriteLog
     for (writeLogItem <- writeLogItems){
       if (writeLogItem.replicaId == key){
@@ -43,5 +48,4 @@ class WriteLog {
     }
     writeLog
   }
-
 }
