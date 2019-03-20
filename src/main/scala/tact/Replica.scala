@@ -65,6 +65,11 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     * @param value THe value that should be written to the database.
     */
   def write(key: Char, value: Int): Future[Done] = {
+    // Check ConsistencyManager errors
+    if (consistencyManager.isBusy && consistencyManager.inNeedOfAntiEntropy(key)) {
+      // TODO: start anti entropy session
+    }
+
     // Creates the WriteLogItem
     val writeLogItem = createWriteLogItem(key, value)
 
@@ -76,11 +81,6 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
 
     // Write to ECG History
     writeToECG(writeLogItem)
-
-    // Check ConsistencyManager errors
-    if (consistencyManager.isBusy && consistencyManager.inNeedOfAntiEntropy(key)) {
-      // TODO: start anti entropy session
-    }
 
     Future { Done }
   }
@@ -94,8 +94,7 @@ class Replica(replicaId: Char, timeVector: Int) extends UnicastRemoteObject with
     * @return a WriteLogItem
     */
   def createWriteLogItem(key: Char, value: Int): WriteLogItem = {
-    // TODO: Current time
-    new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '+', value))
+    new WriteLogItem(System.currentTimeMillis(), replicaId, new WriteOperation(key, '+', value))
   }
 
   /**

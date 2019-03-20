@@ -32,4 +32,16 @@ class WriteLog {
     }
     sum
   }
+
+  def getWriteLogForKey(key: Char) : WriteLog = {
+
+    val writeLog = new WriteLog
+    for (writeLogItem <- writeLogItems){
+      if (writeLogItem.replicaId == key){
+        writeLog.addItem(writeLogItem)
+      }
+    }
+    writeLog
+  }
+
 }

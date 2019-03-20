@@ -3,7 +3,6 @@ package tact.manager
 import java.rmi.Naming
 
 import tact.{ECGHistory, Replica}
-import tact.conit.Conit
 import tact.log.{WriteLog, WriteLogItem}
 
 
@@ -14,18 +13,41 @@ class ConsistencyManager(replica: Replica) {
   var stalenessErrror: Int = 0
   var logicalTimeVector: Int = 0
 
+  var ecgHistory: ECGHistory = new ECGHistory
+  try {
+    ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
+  } catch {
+    case e: Exception =>
+      System.out.println("Error finding ECG History server: " + e.getMessage)
+      e.printStackTrace()
+  }
+
+
+  /**
+    * Checks if the given key (conit) is in need of an anti entropy session.
+    * This is checked by first updating the errors, then comparing them with the bounds in the conit
+    *
+    * @param key The key for which the check is done
+    * @return True if an anti entropy session is needed, otherwise false
+    */
   def inNeedOfAntiEntropy(key: Char): Boolean = {
     isBusy = true
     numericalError = 0
     orderError = 0
     logicalTimeVector = 0
 
-    updateErrors(key)
+    updateErrors(key, System.currentTimeMillis())
 
     isBusy = false
     errorsOutOfBound(key)
   }
 
+  /**
+    * Checks if the errors found for a key are out of bound with the errorsBounds specified in the conit.
+    *
+    * @param key The key for which the errors need to be checked
+    * @return True if an error exceeds the bound, false if this is not the case
+    */
   def errorsOutOfBound(key: Char): Boolean = {
     val conit = replica.getOrCreateConit(key)
 
@@ -50,19 +72,12 @@ class ConsistencyManager(replica: Replica) {
     *
     * @param key The key(which can be used to get the conit) which you try to check errors for
     */
-  def updateErrors(key: Char): Unit = {
-    // TODO: Zorg dat alle errors in 1x worden geupdate/gechecked.
-    var writeLog: WriteLog = new WriteLog
-    try {
-      val ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
-      writeLog = ecgHistory.retrieveLog()
-    } catch {
-      case e: Exception =>
-        System.out.println("Error finding ECG History server: " + e.getMessage)
-        e.printStackTrace()
-    }
+  def updateErrors(key: Char, stime: Long): Unit = {
+    val ecgWriteLog: WriteLog = ecgHistory.retrieveLog()
 
-    numericalError = calculateNumericalRelativeError(writeLog, key)
+    numericalError = calculateNumericalRelativeError(ecgWriteLog, key)
+    orderError = calculateOrderError(ecgWriteLog, key)
+    stalenessErrror = calculateStaleness(replica.writeLog, ecgWriteLog, key, stime)
     // TODO: Uncomment if we want to switch to absolute errors
     // numericalErrorAbsolute = calculateNumericalAbsoluteError(writeLog, key)
   }
@@ -93,31 +108,116 @@ class ConsistencyManager(replica: Replica) {
     1.0 - (writeLog.getSummedWeightsForKey(key) / replica.getOrCreateConit(key).getValue)
   }
 
+
+  /**
+    * Calculates the Order Error of the current replica compared to the ECG
+    *
+    * @param writeLog the write log of the current replica
+    * @return the order error for the current replica compared to the ECG
+    */
+  def calculateOrderError(writeLog: WriteLog, key: Char): Int = {
+    // Find longest prefix, count oweight of all reads after that
+    val prefix = getPrefix(writeLog, ecgHistory.writeLog, key)
+    var orderError = 0
+    var i = 0
+
+    for (writeLogItem: WriteLogItem <- writeLog.writeLogItems){
+      if (i >= prefix) {
+        orderError += oweight(writeLogItem, key)
+      }
+      i = i + 1
+    }
+
+    orderError
+  }
+
+
+  /**
+    * Calculates the staleness error for the given key
+    *
+    * @param replicaWriteLog The WriteLog of the replica
+    * @param ecgWriteLog The WriteLog of the ECG History
+    * @param key The key of the item
+    * @param stime The time of the submission of the writeLogItem to the TRACK replica
+    * @return The staleness error
+    */
+  def calculateStaleness(replicaWriteLog: WriteLog, ecgWriteLog: WriteLog, key: Char, stime: Long): Int ={
+
+    /** ecgHistory.writeLog retrieves the ecg history for a key. writeLog is for the conit history**/
+    val idealNotObserved = idealMinusObserved(ecgWriteLog.getWriteLogForKey(key),
+      replicaWriteLog.getWriteLogForKey(key))
+
+    var min: Long = 0
+    for (writeLogItem: WriteLogItem <- idealNotObserved.writeLogItems) {
+      if ((nweight(writeLogItem, key) != 0) && (writeLogItem.timeVector < stime))
+        if (writeLogItem.timeVector < min){ //find smallest rtime
+          min = writeLogItem.timeVector
+        }
+    }
+
+    (stime - min).toInt
+  }
+
+  /**
+    * Given two logs, retrieves the writeLog only found in the ideal log
+    *
+    * @param ideal The ideal log. Any items found here not found in observed will be returned
+    * @param observed The observed log.
+    * @return The distinct items in the ideal log
+    */
+  def idealMinusObserved(ideal: WriteLog, observed: WriteLog): WriteLog ={
+    val writeLog = new WriteLog
+
+    for (writeLogItem <- ideal.writeLogItems){
+      if(!observed.writeLogItems.contains(writeLogItem)){
+        writeLog.addItem(writeLogItem)
+      }
+    }
+    writeLog
+  }
+
   /**
     * Determines the OWeight of the function. According to the paper:
     * Order weight: defined to be a mapping from the tuple (W, F, D) to a nonnegative real value.
     * We assume it is either 1 or 0 if the write log item corresponds to the conit key or not.
     *
-    * @param W The write operation
-    * @param F The conit to which the write is done
+    * @param writeLogItem The write operation
+    * @param key The conit to which the write is done
     * @return The OWeight of the write operation
     */
-  def oweight(W: WriteLogItem, F: Conit): Int = {
-    (W.operation.key == F.getKey).asInstanceOf[Int]
+  def oweight(writeLogItem: WriteLogItem, key: Char): Int = {
+    (writeLogItem.operation.key == key).asInstanceOf[Int]
   }
 
-  def nweight(W: WriteLogItem, F: Conit): Int = {
+  /**
+    * Retrieves the nweight of an key.
+    *
+    * @param writeLogItem The item to check the nweight for
+    * @param key Not needed right now
+    * @return The nweight of an item
+    */
+  def nweight(writeLogItem: WriteLogItem, key: Char): Int = {
     //    var D_current = replica.getOrCreateConit(W.operation.key).getValue
     //    var D_ideal = D_current + W.operation.value
     //    D_ideal - D_current
-    W.operation.value
+    writeLogItem.operation.value
   }
 
-  // Finds the longest common prefix of history 1 and history 2
-  def getPrefix(H1: WriteLog, H2: WriteLog): Int = {
+  /**
+    * Finds the size of the shared prefix for a given key of two writeLogs
+    *
+    * @param writeLog1 The first writeLog
+    * @param writeLog2 The second writeLog
+    * @param key The key for which the longest prefix must be determined
+    * @return The size of the shared prefix of the two writeLogs for a certain key
+    */
+  def getPrefix(writeLog1: WriteLog, writeLog2: WriteLog, key: Char ): Int = {
     var count = 0
-    for (i <- 0 to H1.writeLogItems.size){
-      if (H1.writeLogItems(i) != H2.writeLogItems(i)){
+    val hist1 = writeLog1.getWriteLogForKey(key)
+    val hist2 = writeLog2.getWriteLogForKey(key)
+
+    for (i <- hist1.writeLogItems.indices) {
+      if (hist1.writeLogItems(i) != hist2.writeLogItems(i)) {
         return count
       } else {
         count += 1
@@ -125,24 +225,4 @@ class ConsistencyManager(replica: Replica) {
     }
     count
   }
-
-  // TODO: Volgens mij is dit niet meer nodig omdat het nu calculateNumericalError{Absolute, Relative} is
-//  // Numerical Error (absolute) = F(D_ideal) - F(D_observed)
-//  def calculateNumerical_absolute(F: Conit): Unit ={
-//    var con = new Conit(0,0)
-//    //ECG.getOrCreateConit(F.getKey).getValue - replica.conits.getOrElse(F.getKey, con).getValue
-//  }
-//
-//  // Numerical Error (relative) = 1 - F(D_observed)/F(D_ideal)
-//  def calculateNumerical_relative(F: Conit): Unit ={
-//    var con = new Conit(0,0)
-//    //1 - (replica.conits.getOrElse(F.getKey, con).getValue)/(ECG.getOrCreateConit(F.getKey).getValue)
-//  }
-
-  // Alvast de commands voor de tijd opgezocht
-  def staleness(): Unit = {
-    var stime = System.nanoTime()
-    var rtime = System.nanoTime()
-  }
-
 }
