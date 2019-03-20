@@ -1,7 +1,33 @@
 package tact.conit
 
-class Conit(key: Char, value: Int) {
-  
+/**
+  * Conit class constructor
+  *
+  * @param key The key the conit keeps track of
+  * @param value The value currently known in the track
+  * @param numericBound The maximum numeric error. Will be randomly generated if not given
+  * @param orderBound The maximum order error. Will be randomly generated if not given
+  * @param stalenessBound The maximum staleness error. Will be randomly generated if not given
+  */
+class Conit(val key: Char, var value: Int, var numericBound: Int, var orderBound: Int, var stalenessBound: Int) {
+
+  /**
+    * Secondary Conit class constructor
+    * Will randomly generate numericBound, orderBound, stalenessBound between 1 and 10
+    *
+    * @param key The key the conit keeps track of
+    * @param value The value currently known in the track
+    */
+  def this(key: Char, value: Int) {
+    this(key, value, 0,0,0)
+
+    val random = new scala.util.Random
+    numericBound = random.nextInt(10)
+    orderBound = random.nextInt(10)
+    stalenessBound = random.nextInt(10)
+  }
+
+
   /**
     * Get the value of the current Conit
     *
