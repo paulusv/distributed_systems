@@ -20,13 +20,8 @@ class Conit(val key: Char, var value: Int, var numericBound: Int, var orderBound
     */
   def this(key: Char, value: Int) {
     this(key, value, 0,0,0)
-
-    val random = new scala.util.Random
-    numericBound = random.nextInt(10)
-    orderBound = random.nextInt(10)
-    stalenessBound = random.nextInt(10)
+    randomizeBounds()
   }
-
 
   /**
     * Get the value of the current Conit
@@ -71,6 +66,16 @@ class Conit(val key: Char, var value: Int, var numericBound: Int, var orderBound
   def update(va: Int): Int = {
     value += va
     value
+  }
+
+  /**
+    * Randomizes error bounds in the conit
+    */
+  def randomizeBounds(): Unit = {
+    val random = new scala.util.Random
+    numericBound = random.nextInt(100)
+    orderBound = random.nextInt(10)
+    stalenessBound = random.nextInt(1000)
   }
 }
 

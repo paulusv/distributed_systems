@@ -1,8 +1,6 @@
 package tact.manager
 
-import java.rmi.Naming
-
-import tact.{ECGHistory, Replica}
+import tact.Replica
 import tact.log.{WriteLog, WriteLogItem}
 
 
@@ -10,18 +8,8 @@ class ConsistencyManager(replica: Replica) {
   var isBusy: Boolean = false
   var numericalError: Int = 0
   var orderError: Int = 0
-  var stalenessErrror: Int = 0
+  var stalenessError: Int = 0
   var logicalTimeVector: Int = 0
-
-  var ecgHistory: ECGHistory = new ECGHistory
-  try {
-    ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
-  } catch {
-    case e: Exception =>
-      System.out.println("Error finding ECG History server: " + e.getMessage)
-      e.printStackTrace()
-  }
-
 
   /**
     * Checks if the given key (conit) is in need of an anti entropy session.
@@ -57,7 +45,7 @@ class ConsistencyManager(replica: Replica) {
     if (conit.orderBound < orderError) {
       return true
     }
-    if (conit.stalenessBound < stalenessErrror) {
+    if (conit.stalenessBound < stalenessError) {
       return true
     }
 
@@ -73,11 +61,11 @@ class ConsistencyManager(replica: Replica) {
     * @param key The key(which can be used to get the conit) which you try to check errors for
     */
   def updateErrors(key: Char, stime: Long): Unit = {
-    val ecgWriteLog: WriteLog = ecgHistory.retrieveLog()
+    val ecgWriteLog: WriteLog = replica.ecgHistory.retrieveLog()
 
     numericalError = calculateNumericalRelativeError(ecgWriteLog, key)
-    orderError = calculateOrderError(ecgWriteLog, key)
-    stalenessErrror = calculateStaleness(replica.writeLog, ecgWriteLog, key, stime)
+    orderError = calculateOrderError(replica.writeLog, ecgWriteLog, key)
+    stalenessError = calculateStaleness(replica.writeLog, ecgWriteLog, key, stime)
     // TODO: Uncomment if we want to switch to absolute errors
     // numericalErrorAbsolute = calculateNumericalAbsoluteError(writeLog, key)
   }
@@ -115,9 +103,9 @@ class ConsistencyManager(replica: Replica) {
     * @param writeLog the write log of the current replica
     * @return the order error for the current replica compared to the ECG
     */
-  def calculateOrderError(writeLog: WriteLog, key: Char): Int = {
+  def calculateOrderError(writeLog: WriteLog, ecgWriteLog: WriteLog, key: Char): Int = {
     // Find longest prefix, count oweight of all reads after that
-    val prefix = getPrefix(writeLog, ecgHistory.writeLog, key)
+    val prefix = getPrefix(writeLog, ecgWriteLog, key)
     var orderError = 0
     var i = 0
 
@@ -142,15 +130,15 @@ class ConsistencyManager(replica: Replica) {
     * @return The staleness error
     */
   def calculateStaleness(replicaWriteLog: WriteLog, ecgWriteLog: WriteLog, key: Char, stime: Long): Int ={
-
-    /** ecgHistory.writeLog retrieves the ecg history for a key. writeLog is for the conit history**/
+    /* ecgHistory.writeLog retrieves the ecg history for a key. writeLog is for the conit history */
     val idealNotObserved = idealMinusObserved(ecgWriteLog.getWriteLogForKey(key),
       replicaWriteLog.getWriteLogForKey(key))
 
     var min: Long = 0
     for (writeLogItem: WriteLogItem <- idealNotObserved.writeLogItems) {
       if ((nweight(writeLogItem, key) != 0) && (writeLogItem.timeVector < stime))
-        if (writeLogItem.timeVector < min){ //find smallest rtime
+        if (writeLogItem.timeVector < min){
+          //find smallest rtime
           min = writeLogItem.timeVector
         }
     }
