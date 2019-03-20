@@ -2,6 +2,7 @@ package tact.log
 
 /**
   * WriteLog
+  * When written to the log, also writes to the ECG History
   */
 class WriteLog {
 
@@ -14,5 +15,37 @@ class WriteLog {
     */
   def addItem(writeLogItem: WriteLogItem): Unit = {
     writeLogItems = writeLogItem :: writeLogItems
+  }
+
+  /**
+    * Retrieves the summed weights of all items in the list of a certain key
+    *
+    * @param key The key preferred
+    * @return The summed weight of all items with the given key
+    */
+  def getSummedWeightsForKey(key: Char): Int = {
+    var sum: Int = 0
+    for (writeLogItem <- writeLogItems) {
+      if (writeLogItem.operation.key == key) {
+        sum += writeLogItem.operation.value
+      }
+    }
+    sum
+  }
+
+  /**
+    * Retrieves all writeLogItems from a certain key
+    *
+    * @param key The key
+    * @return All writeLogItems for the given key
+    */
+  def getWriteLogForKey(key: Char) : WriteLog = {
+    val writeLog = new WriteLog
+    for (writeLogItem <- writeLogItems){
+      if (writeLogItem.replicaId == key){
+        writeLog.addItem(writeLogItem)
+      }
+    }
+    writeLog
   }
 }
