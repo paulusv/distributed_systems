@@ -17,10 +17,11 @@ object ReplicaServer {
 
   def main(args: Array[String]): Unit = {
 
+
     implicit val system: ActorSystem = ActorSystem("tact-sever")
     implicit val materializer: ActorMaterializer = ActorMaterializer()
     implicit val executionContext: ExecutionContextExecutor = system.dispatcher
-    implicit val replica: Replica = new Replica(0, 'A')
+    implicit val replica: Replica = new Replica(0, 'A', "", "" :: Nil)
 
     val route =
       get {
@@ -35,7 +36,7 @@ object ReplicaServer {
             val maybeItem: Future[Option[Int]] = replica.read(key)
 
             onSuccess(maybeItem) {
-              case Some(item) => complete(HttpEntity(ContentTypes.`application/json`, "{ \"key\": \"" + key + "\", \"value\": " + item + " }"))
+              case Some(item) => complete(HttpEntity(ContentTypes.`application/json`, "{ \"key\": \"" + key + "\", \"value\": " + item + ", \"replica:\"" + replica.hashCode() + "}"))
               case None => complete(StatusCodes.NotFound)
             }
           }
@@ -47,8 +48,9 @@ object ReplicaServer {
             complete(StatusCodes.BadRequest)
           } else {
             val key: Char = keyString.toList.head
-            entity(as[Int]) { value =>
-              val saved: Future[Done] = replica.write(key, value)
+
+            entity(as[String]) { item =>
+              val saved: Future[Done] = replica.write(key, item.toInt)
               onSuccess(saved) { _ =>
                 complete(HttpEntity(ContentTypes.`application/json`, "{ \"key\": \"" + key + "\", \"message\": \"Value has been saved!\" }"))
               }

@@ -17,7 +17,7 @@ import scala.concurrent.Future
 class Replica(replicaId: Char, timeVector: Int, serverAddress: String, serverList: List[String]) extends UnicastRemoteObject with RetrieveLog {
 
   /** Gives a name to the replica, however I am not sure if this works */
-  /* TODO: Check if this works, else change to a 'parent' server containing all adresses. */
+  /* TODO: Check if this works, else change to a 'parent' server containing all addresses. */
   Naming.rebind("//localhost:8080/retrieveLog", this)
 
   /** Each replica has a database, which will be updated by other replicas via the consistency manager */
@@ -46,10 +46,10 @@ class Replica(replicaId: Char, timeVector: Int, serverAddress: String, serverLis
     *
     * @param key The key in the database.
     */
-  def read(key: Char): Future[Option[Int]] = Future {
+  def read(key: Char): Future[Option[Int]] = {
     val conit = getOrCreateConit(key)
 
-    Future { conit.getValue }
+    Future { Some(conit.getValue) }
   }
 
   /**
@@ -109,7 +109,7 @@ class Replica(replicaId: Char, timeVector: Int, serverAddress: String, serverLis
   /**
     * Request the write log of an remote replica
     *
-    * @param address The address of the remote replica
+    * @param address The address of the remote rep  lica
     * @return
     */
   def retrieveLogFromRemote(address: String): WriteLog = {

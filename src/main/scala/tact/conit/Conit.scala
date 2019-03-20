@@ -1,6 +1,6 @@
 package tact.conit
 
-class Conit(key: Char, value: Int) {
+class Conit(key: Char, var value: Int) {
   
   /**
     * Get the value of the current Conit
