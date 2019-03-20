@@ -3,7 +3,6 @@ package tact.manager
 import java.rmi.Naming
 
 import tact.{ECGHistory, Replica}
-import tact.conit.Conit
 import tact.log.{WriteLog, WriteLogItem}
 
 
@@ -14,6 +13,23 @@ class ConsistencyManager(replica: Replica) {
   var stalenessErrror: Int = 0
   var logicalTimeVector: Int = 0
 
+  var ecgHistory: ECGHistory = new ECGHistory
+  try {
+    ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
+  } catch {
+    case e: Exception =>
+      System.out.println("Error finding ECG History server: " + e.getMessage)
+      e.printStackTrace()
+  }
+
+
+  /**
+    * Checks if the given key (conit) is in need of an anti entropy session.
+    * This is checked by first updating the errors, then comparing them with the bounds in the conit
+    *
+    * @param key The key for which the check is done
+    * @return True if an anti entropy session is needed, otherwise false
+    */
   def inNeedOfAntiEntropy(key: Char): Boolean = {
     isBusy = true
     numericalError = 0
@@ -26,6 +42,12 @@ class ConsistencyManager(replica: Replica) {
     errorsOutOfBound(key)
   }
 
+  /**
+    * Checks if the errors found for a key are out of bound with the errorsBounds specified in the conit.
+    *
+    * @param key The key for which the errors need to be checked
+    * @return True if an error exceeds the bound, false if this is not the case
+    */
   def errorsOutOfBound(key: Char): Boolean = {
     val conit = replica.getOrCreateConit(key)
 
@@ -51,16 +73,7 @@ class ConsistencyManager(replica: Replica) {
     * @param key The key(which can be used to get the conit) which you try to check errors for
     */
   def updateErrors(key: Char, stime: Long): Unit = {
-    // TODO: Zorg dat alle errors in 1x worden geupdate/gechecked.
-    var writeLog: WriteLog = new WriteLog
-    try {
-      val ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
-      writeLog = ecgHistory.retrieveLog()
-    } catch {
-      case e: Exception =>
-        System.out.println("Error finding ECG History server: " + e.getMessage)
-        e.printStackTrace()
-    }
+    val writeLog: WriteLog = ecgHistory.retrieveLog()
 
     numericalError = calculateNumericalRelativeError(writeLog, key)
     orderError = calculateOrderError(writeLog, key)
@@ -104,56 +117,43 @@ class ConsistencyManager(replica: Replica) {
     */
   def calculateOrderError(writeLog: WriteLog, key: Char): Int = {
     // Find longest prefix, count oweight of all reads after that
-    var ecgHistory = new ECGHistory
-    try {
-      ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
-    } catch {
-      case e: Exception =>
-        System.out.println("Error finding ECG History server: " + e.getMessage)
-        e.printStackTrace()
-    }
-    var prefix = getPrefix(writeLog, ecgHistory.writeLog, key)
-    var order_error = 0
-    for (i <- prefix to writeLog.writeLogItems.size){
-      order_error += oweight(writeLog.writeLogItems(i), key)
+    val prefix = getPrefix(writeLog, ecgHistory.writeLog, key)
+    var orderError = 0
+    var i = 0
+
+    for (writeLogItem: WriteLogItem <- writeLog.writeLogItems){
+      if (i >= prefix) {
+        orderError += oweight(writeLogItem, key)
+      }
+      i = i + 1
     }
 
-    return order_error
-
+    orderError
   }
 
 
   def calculateStaleness(writeLog: WriteLog, key: Char, stime: Long): Int ={
 
-    var ecgHistory = new ECGHistory
-    try {
-      ecgHistory = Naming.lookup("rmi://localhost::8080/ECGHistoryServer").asInstanceOf[ECGHistory]
-    } catch {
-      case e: Exception =>
-        System.out.println("Error finding ECG History server: " + e.getMessage)
-        e.printStackTrace()
-    }
+    /** ecgHistory.writeLog retrieves the ecg history for a key. writeLog is for the conit history**/
+    val idealNotObserved = idealMinusObserved(ecgHistory.writeLog.getWriteLogForKey(key),
+      writeLog.getWriteLogForKey(key))
 
-    var current = writeLog.getWriteLogItembyKey(key) // Only look at key conit
-    var current_ecg = ecgHistory.writeLog.getWriteLogItembyKey(key)
-    var ideal_not_observed = idealMinusObserved(current, current_ecg)
-
-    var min = new Long
-    for (i <- 0 to ideal_not_observed.writeLogItems.size) {
-      if ((nweight(ideal_not_observed.writeLogItems(i), key) != 0) && (ideal_not_observed.writeLogItems(i).timeVector < stime))
-        if (ideal_not_observed.writeLogItems(i).timeVector < min){ //find smallest rtime
-          min = ideal_not_observed.writeLogItems(i).timeVector
+    var min: Long = 0
+    for (writeLogItem: WriteLogItem <- idealNotObserved.writeLogItems) {
+      if ((nweight(writeLogItem, key) != 0) && (writeLogItem.timeVector < stime))
+        if (writeLogItem.timeVector < min){ //find smallest rtime
+          min = writeLogItem.timeVector
         }
     }
 
-    return (stime - min).toInt
+    (stime - min).toInt
   }
 
-  def idealMinusObserved(log: WriteLog, ecg: WriteLog): WriteLog ={
-    var writeLog = new WriteLog
+  def idealMinusObserved(ideal: WriteLog, observed: WriteLog): WriteLog ={
+    val writeLog = new WriteLog
 
-    for (writeLogItem <- ecg.writeLogItems){
-      if(!(log.writeLogItems.contains(writeLogItem))){
+    for (writeLogItem <- ideal.writeLogItems){
+      if(!observed.writeLogItems.contains(writeLogItem)){
         writeLog.addItem(writeLogItem)
       }
     }
@@ -165,15 +165,15 @@ class ConsistencyManager(replica: Replica) {
     * Order weight: defined to be a mapping from the tuple (W, F, D) to a nonnegative real value.
     * We assume it is either 1 or 0 if the write log item corresponds to the conit key or not.
     *
-    * @param W The write operation
-    * @param F The conit to which the write is done
+    * @param writeLogItem The write operation
+    * @param key The conit to which the write is done
     * @return The OWeight of the write operation
     */
-  def oweight(W: WriteLogItem, F: Char): Int = {
-    (W.operation.key == F).asInstanceOf[Int]
+  def oweight(writeLogItem: WriteLogItem, key: Char): Int = {
+    (writeLogItem.operation.key == key).asInstanceOf[Int]
   }
 
-  def nweight(W: WriteLogItem, F: Char): Int = {
+  def nweight(W: WriteLogItem, key: Char): Int = {
     //    var D_current = replica.getOrCreateConit(W.operation.key).getValue
     //    var D_ideal = D_current + W.operation.value
     //    D_ideal - D_current
@@ -183,8 +183,8 @@ class ConsistencyManager(replica: Replica) {
   // Finds the longest common prefix of history 1 and history 2
   def getPrefix(H1: WriteLog, H2: WriteLog, key: Char ): Int = {
     var count = 0
-    var hist1 = H1.getWriteLogItembyKey(key)
-    var hist2 = H2.getWriteLogItembyKey(key)
+    val hist1 = H1.getWriteLogForKey(key)
+    val hist2 = H2.getWriteLogForKey(key)
 
     for (i <- 0 to hist1.writeLogItems.size) {
       if (hist1.writeLogItems(i) != hist2.writeLogItems(i)) {
@@ -195,18 +195,4 @@ class ConsistencyManager(replica: Replica) {
     }
   count
   }
-
-  // TODO: Volgens mij is dit niet meer nodig omdat het nu calculateNumericalError{Absolute, Relative} is
-//  // Numerical Error (absolute) = F(D_ideal) - F(D_observed)
-//  def calculateNumerical_absolute(F: Conit): Unit ={
-//    var con = new Conit(0,0)
-//    //ECG.getOrCreateConit(F.getKey).getValue - replica.conits.getOrElse(F.getKey, con).getValue
-//  }
-//
-//  // Numerical Error (relative) = 1 - F(D_observed)/F(D_ideal)
-//  def calculateNumerical_relative(F: Conit): Unit ={
-//    var con = new Conit(0,0)
-//    //1 - (replica.conits.getOrElse(F.getKey, con).getValue)/(ECG.getOrCreateConit(F.getKey).getValue)
-//  }
-
 }
