@@ -14,7 +14,7 @@ import tact.protocol.OneRound
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class Replica(replicaId: Char, timeVector: Int, serverAddress: String, serverList: List[String]) extends UnicastRemoteObject with RetrieveLog {
+class Replica(val replicaId: Char, val serverAddress: String, val serverList: List[String]) extends UnicastRemoteObject with RetrieveLog {
 
   /** Gives a name to the replica, however I am not sure if this works */
   /* TODO: Check if this works, else change to a 'parent' server containing all addresses. */
@@ -32,14 +32,8 @@ class Replica(replicaId: Char, timeVector: Int, serverAddress: String, serverLis
   /** The consistency manager will keep track of all error variables in the replica */
   var consistencyManager = new ConsistencyManager()
 
-  /** */
+  /** AntiEntropy protocol that will be used. */
   var antiEntropy = new OneRound(this)
-
-  /** Address of this replica */
-  var address: String = serverAddress
-
-  /** */
-  var servers : List[String] = serverList
 
   /**
     * Read a value for the database.
@@ -61,7 +55,7 @@ class Replica(replicaId: Char, timeVector: Int, serverAddress: String, serverLis
   def write(key: Char, value: Int): Future[Done] = {
     val conit = getOrCreateConit(key)
     conit.update(value)
-    writeLog.addItem(new WriteLogItem(timeVector, replicaId, new WriteOperation(key, '=', value)))
+    writeLog.addItem(new WriteLogItem(System.currentTimeMillis, replicaId, new WriteOperation(key, '=', value)))
 
     Future { Done }
   }

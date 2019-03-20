@@ -21,7 +21,7 @@ object ReplicaServer {
     implicit val system: ActorSystem = ActorSystem("tact-sever")
     implicit val materializer: ActorMaterializer = ActorMaterializer()
     implicit val executionContext: ExecutionContextExecutor = system.dispatcher
-    implicit val replica: Replica = new Replica(0, 'A', "", "" :: Nil)
+    implicit val replica: Replica = new Replica('A', "", "" :: Nil)
 
     val route =
       get {

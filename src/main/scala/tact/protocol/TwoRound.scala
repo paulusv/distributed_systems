@@ -4,6 +4,7 @@ import java.rmi.Naming
 
 import tact.Replica
 import tact.log.WriteLog
+import util.control.Breaks._
 
 /**
   * Two-Round protocol.
@@ -19,8 +20,16 @@ class TwoRound(replica: Replica) extends RoundProtocol {
     val log = writeLog.partition(replica.consistencyManager.logicalTimeVector)
 
     for (item <- log.writeLogItems) {
-      val conit = replica.getOrCreateConit(item.operation.key)
-      conit.update(item.operation.value)
+      breakable {
+        val conit = replica.getOrCreateConit(item.operation.key)
+
+        // Skip writes that were written to this replica.
+        if (item.replicaId.eq(replica.replicaId)) {
+          break
+        }
+
+        conit.update(item.operation.value)
+      }
     }
 
     true
@@ -30,7 +39,7 @@ class TwoRound(replica: Replica) extends RoundProtocol {
     * Start the round protocol.
     */
   override def start(): Unit = {
-    for (server <- replica.servers) {
+    for (server <- replica.serverList) {
       val other: Replica = Naming.lookup(server).asInstanceOf[Replica]
       val writeLog = replica.writeLog.partition(other.antiEntropy.sendTimeVector())
 

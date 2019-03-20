@@ -3,10 +3,10 @@ package tact.log
 /**
   * WriteLogItem class.
   *
-  * @param timeVector
-  * @param replicaId
-  * @param operation
+  * @param timeVector of type Long
+  * @param replicaId  of type Char
+  * @param operation  of type WriteOperation
   */
-class WriteLogItem(var timeVector: Int, var replicaId: Char, var operation: WriteOperation) {
+class WriteLogItem(var timeVector: Long, var replicaId: Char, var operation: WriteOperation) {
 
 }
