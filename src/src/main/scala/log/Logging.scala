@@ -5,9 +5,9 @@ import java.rmi.{Remote, RemoteException}
 trait Logging extends Remote {
 
   @throws(classOf[RemoteException])
-  def write(message: String): Unit
+  def write(item: WriteLogItem): Unit
 
   @throws(classOf[RemoteException])
-  def read(): Unit
+  def read(): WriteLog
 
 }

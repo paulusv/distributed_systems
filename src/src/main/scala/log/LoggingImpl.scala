@@ -4,15 +4,16 @@ import java.rmi.server.UnicastRemoteObject
 
 class LoggingImpl extends UnicastRemoteObject with Logging {
 
-  var items: List[String] = List[String]()
+  var writeLog: WriteLog = new WriteLog()
 
-  override def write(message: String): Unit = {
-    println(message)
-    items = message :: items
+  override def write(item: WriteLogItem): Unit = {
+    println("Write ECG writelog: " + item)
+    writeLog.addItem(item)
+
   }
 
-  override def read(): Unit = {
-    println(items)
+  override def read(): WriteLog = {
+    println("Read ECG writelog")
+    writeLog
   }
-
 }

@@ -4,7 +4,7 @@ package main.scala.log
   * WriteLog
   * When written to the paul.log, also writes to the ECG History
   */
-class WriteLog {
+class WriteLog extends Serializable {
 
   var writeLogItems: List[WriteLogItem] = List[WriteLogItem]()
 

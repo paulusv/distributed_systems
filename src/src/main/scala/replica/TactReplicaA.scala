@@ -1,10 +1,11 @@
-package main.scala.tact
+package main.scala.replica
 
 import java.rmi.Naming
 
 import main.scala.log.Logging
+import main.scala.tact.TactImpl
 
-object TactReplica {
+object TactReplicaA {
 
   def main(args: Array[String]): Unit = {
     val server = Naming.lookup("rmi://localhost/EcgHistory") match {
@@ -12,6 +13,11 @@ object TactReplica {
       case _ => throw new RuntimeException("Wrong object")
     }
 
-    server.write("test")
+    val replica = new TactImpl('A', server)
+    Naming.rebind("ReplicaA", replica)
+
+    replica.read('x')
+    replica.write('x', 1)
+    replica.antiEntropy.start()
   }
 }
