@@ -22,7 +22,7 @@ object TactReplica {
 
     val server = Naming.lookup("rmi://localhost/EcgHistory") match {
       case s: EcgLog => s
-      case _ => throw new RuntimeException("Wrong object")
+      case other => throw new RuntimeException("Wrong object: " + other)
     }
 
     val replica = new TactImpl(replicaId, server)
