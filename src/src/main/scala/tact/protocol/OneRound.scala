@@ -45,10 +45,10 @@ class OneRound(replica: TactImpl) extends RoundProtocol {
       if (server.contains("Replica") && !server.endsWith(replica.replicaId.toString)) {
         println("Start anti-entropy session with " + server)
 
-        println( Naming.lookup("rmi://localhost/" + server).asInstanceOf)
+        println(Naming.lookup("rmi://localhost/" + server).asInstanceOf)
 
         val rep = Naming.lookup("rmi://localhost/" + server) match {
-          case s:Tact => s
+          case s: Tact => s
           case other => throw new RuntimeException("Error: " + other)
         }
 

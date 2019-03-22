@@ -1,7 +1,7 @@
 package main.scala.database
 
 /**
-  * Simple database class containing a map with chars as keys and integers as values.
+  * Database class containing a map with chars as keys and integers as values.
   */
 class Database {
 
@@ -25,7 +25,8 @@ class Database {
 
   /**
     * Creates a new value in the database. This will overwrite an existing value with the same key
-    * @param key The key in the map. This can be any character
+    *
+    * @param key   The key in the map. This can be any character
     * @param value The value the new key should have. This must be an integer
     */
   def createValue(key: Char, value: Int): Unit = {
@@ -34,7 +35,8 @@ class Database {
 
   /**
     * Updates a value in the database. This will add the new value to the existing value for a given key
-    * @param key The key in the map. This can be any character
+    *
+    * @param key   The key in the map. This can be any character
     * @param value The value the new key should have. This must be an integer
     */
   def updateValue(key: Char, value: Int): Unit = {
@@ -44,6 +46,7 @@ class Database {
 
   /**
     * Deletes a key value pair from the database. Returns the value of the deleted pair
+    *
     * @param key The key in the map. This can be any character
     * @return The value of the removed key value pair
     */

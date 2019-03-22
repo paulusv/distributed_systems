@@ -3,10 +3,10 @@ package main.scala.tact.conit
 /**
   * Conit class constructor
   *
-  * @param key The key the conit keeps track of
-  * @param value The value currently known in the track
-  * @param numericBound The maximum numeric error. Will be randomly generated if not given
-  * @param orderBound The maximum order error. Will be randomly generated if not given
+  * @param key            The key the conit keeps track of
+  * @param value          The value currently known in the track
+  * @param numericBound   The maximum numeric error. Will be randomly generated if not given
+  * @param orderBound     The maximum order error. Will be randomly generated if not given
   * @param stalenessBound The maximum staleness error. Will be randomly generated if not given
   */
 class Conit(val key: Char, var value: Int, var numericBound: Int, var orderBound: Int, var stalenessBound: Int) {
@@ -16,23 +16,23 @@ class Conit(val key: Char, var value: Int, var numericBound: Int, var orderBound
     * Will randomly generate numericBound, orderBound, stalenessBound between 1 and 10
     *
     * @param key The key the conit keeps track of
-    * @param value The value currently known in the track
+    * @param va  The value currently known in the track
     */
-  def this(key: Char, value: Int) {
-    this(key, value, 0,0,0)
+  def this(key: Char, va: Int) {
+    this(key, va, 0, 0, 0)
     randomizeBounds()
   }
 
   /**
-    * Updates the value of conit "it" by adding "va"
+    * Updates the value of conit "key" by adding "va"
     *
-    * @param it the name of the conit that has te be updated
-    * @param va the value that has to be added to the conit
+    * @param key the name of the conit that has te be updated
+    * @param va  the value that has to be added to the conit
     * @return an option containing an integer representing the new value of the conit if it equals the name of the conit
     *         None if it does not equal the name of the conit
     */
-  def update(it: Char, va: Int): Option[Int] = {
-    if (key.equals(it)) {
+  def update(key: Char, va: Int): Option[Int] = {
+    if (key.equals(key)) {
       value += va
       return Some(value)
     }

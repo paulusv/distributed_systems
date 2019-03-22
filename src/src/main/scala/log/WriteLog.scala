@@ -1,8 +1,7 @@
 package main.scala.log
 
 /**
-  * WriteLog
-  * When written to the paul.log, also writes to the ECG History
+  * WriteLog class
   */
 class WriteLog extends Serializable {
 
@@ -24,7 +23,7 @@ class WriteLog extends Serializable {
     * @return List[WriteLogItem]
     */
   def partition(currentTimeVector: Int): WriteLog = {
-    val writeLog  = new WriteLog
+    val writeLog = new WriteLog
     writeLog.writeLogItems = writeLogItems.filter(item => item.timeVector >= currentTimeVector)
 
     writeLog
@@ -59,10 +58,10 @@ class WriteLog extends Serializable {
     * @param key The key
     * @return All writeLogItems for the given key
     */
-  def getWriteLogForKey(key: Char) : WriteLog = {
+  def getWriteLogForKey(key: Char): WriteLog = {
     val writeLog = new WriteLog
-    for (writeLogItem <- writeLogItems){
-      if (writeLogItem.replicaId == key){
+    for (writeLogItem <- writeLogItems) {
+      if (writeLogItem.replicaId == key) {
         writeLog.addItem(writeLogItem)
       }
     }

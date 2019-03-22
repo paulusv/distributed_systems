@@ -2,7 +2,11 @@ package main.scala.log
 
 import java.rmi.{Remote, RemoteException}
 
-trait Logging extends Remote {
+/**
+  * Trait for the Ecg History
+  * For documentation, see EcgLogImpl
+  */
+trait EcgLog extends Remote {
 
   @throws(classOf[RemoteException])
   def write(item: WriteLogItem): Unit
