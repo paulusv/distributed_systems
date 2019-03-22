@@ -46,7 +46,7 @@
 //      other.antiEntropy.acceptWriteLog(writeLog)
 //    }
 //
-//    // TODO: write values to db
+//    replica.writeToDB(writeLog)
 //    replica.writeLog.flush()
 //  }
 //

@@ -63,7 +63,7 @@ class ConsistencyManager(replica: TactImpl) {
     numericalError = calculateNumericalRelativeError(ecgWriteLog, key)
     orderError = calculateOrderError(replica.writeLog, ecgWriteLog, key)
     stalenessError = calculateStaleness(replica.writeLog, ecgWriteLog, key, stime)
-    // TODO: Uncomment if we want to switch to absolute errors
+    // Uncomment if switch to absolute errors is needed
     // numericalErrorAbsolute = calculateNumericalAbsoluteError(writeLog, key)
   }
 

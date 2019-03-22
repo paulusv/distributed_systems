@@ -3,7 +3,7 @@ package main.scala.tact.protocol
 import java.rmi.Naming
 import java.rmi.registry.LocateRegistry
 
-import main.scala.log.WriteLog
+import main.scala.log.{WriteLog, WriteLogItem}
 import main.scala.tact.{Tact, TactImpl}
 
 import util.control.Breaks._
@@ -58,7 +58,7 @@ class OneRound(replica: TactImpl) extends RoundProtocol {
       }
     }
 
-    // TODO: write values to db
+    replica.writeToDB(writeLog)
     replica.writeLog.flush()
   }
 

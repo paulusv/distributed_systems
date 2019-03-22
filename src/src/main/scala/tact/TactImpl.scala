@@ -50,7 +50,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: EcgLog) extends UnicastRemot
     */
   override def write(key: Char, value: Int): Unit = {
     if (manager.inNeedOfAntiEntropy(key)) {
-      // TODO: anti-entropy
+      antiEntropy.start()
     }
 
     val conit = getOrCreateConit(key)
@@ -110,4 +110,15 @@ class TactImpl(val replicaId: Char, val ecgHistory: EcgLog) extends UnicastRemot
     * @return of type RoundProtocol
     */
   override def getAntiEntropy: RoundProtocol = antiEntropy
+
+  /**
+    * Writes a writeLog to the database
+    *
+    * @param writeLog
+    */
+  def writeToDB(writeLog: WriteLog): Unit = {
+    for (item: WriteLogItem <- writeLog.writeLogItems) {
+      database.updateValue(item.operation.key, item.operation.value)
+    }
+  }
 }
