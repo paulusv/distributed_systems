@@ -22,7 +22,7 @@ class WriteLog extends Serializable {
     * @param currentTimeVector of type Int
     * @return List[WriteLogItem]
     */
-  def partition(currentTimeVector: Int): WriteLog = {
+  def partition(currentTimeVector: Long): WriteLog = {
     val writeLog = new WriteLog
     writeLog.writeLogItems = writeLogItems.filter(item => item.timeVector >= currentTimeVector)
 

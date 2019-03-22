@@ -1,26 +1,15 @@
 package main.scala.tact.protocol
 
-import main.scala.log.WriteLog
+import java.rmi.Remote
 
 /**
   * RoundProtocol.
   */
-trait RoundProtocol {
+trait RoundProtocol extends Remote {
 
   /**
     * Start the round protocol.
     */
   def start()
 
-  /**
-    * Accept the write log from a different Replica
-    *
-    * @param writeLog of type WriteLog
-    */
-  def acceptWriteLog(writeLog: WriteLog): Boolean
-
-  /**
-    * Send the time vector to the given replica
-    */
-  def sendTimeVector(): Int
 }

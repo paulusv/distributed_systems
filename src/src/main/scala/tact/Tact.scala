@@ -2,7 +2,7 @@ package main.scala.tact
 
 import java.rmi.{Remote, RemoteException}
 
-import main.scala.tact.protocol.RoundProtocol
+import main.scala.log.WriteLog
 
 /**
   * Trait for the Tact Replicas
@@ -17,6 +17,9 @@ trait Tact extends Remote {
   def read(key: Char): Int
 
   @throws(classOf[RemoteException])
-  def getAntiEntropy: RoundProtocol
+  def acceptWriteLog(writeLog: WriteLog): Boolean
+
+  @throws(classOf[RemoteException])
+  def currentTimeFactor(): Long
 
 }

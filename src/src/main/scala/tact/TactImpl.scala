@@ -6,7 +6,9 @@ import main.scala.database.Database
 import main.scala.log.{EcgLog, WriteLog, WriteLogItem, WriteOperation}
 import main.scala.tact.conit.Conit
 import main.scala.tact.manager.ConsistencyManager
-import main.scala.tact.protocol.{OneRound, RoundProtocol}
+import main.scala.tact.protocol.OneRound
+
+import scala.util.control.Breaks.break
 
 /**
   * TactImpl class.
@@ -105,20 +107,38 @@ class TactImpl(val replicaId: Char, val ecgHistory: EcgLog) extends UnicastRemot
   }
 
   /**
-    * Returns the RoundProtocol in the replica
-    *
-    * @return of type RoundProtocol
-    */
-  override def getAntiEntropy: RoundProtocol = antiEntropy
-
-  /**
     * Writes a writeLog to the database
     *
-    * @param writeLog
+    * @param writeLog of type WriteLog
     */
   def writeToDB(writeLog: WriteLog): Unit = {
     for (item: WriteLogItem <- writeLog.writeLogItems) {
       database.updateValue(item.operation.key, item.operation.value)
     }
   }
+
+  /**
+    * Accept the writeLog of another Replica.
+    *
+    * @param writeLog of type WriteLog
+    * @return Boolean
+    */
+  override def acceptWriteLog(writeLog: WriteLog): Boolean = {
+    val log = writeLog.partition(manager.logicalTimeVector)
+
+    for (item <- log.writeLogItems) {
+      val conit = getOrCreateConit(item.operation.key)
+
+      // Skip writes that were written to this replica.
+      if (item.replicaId.equals(replicaId)) {
+        break
+      }
+
+      conit.update(item.operation.value)
+    }
+
+    true
+  }
+
+  override def currentTimeFactor(): Long = System.currentTimeMillis()
 }
