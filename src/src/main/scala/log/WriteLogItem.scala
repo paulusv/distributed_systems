@@ -1,4 +1,4 @@
-package log
+package main.scala.log
 
 /**
   * WriteLogItem class.

@@ -1,8 +1,8 @@
-package log
+package main.scala.log
 
 /**
   * WriteLog
-  * When written to the log, also writes to the ECG History
+  * When written to the paul.log, also writes to the ECG History
   */
 class WriteLog {
 
@@ -11,14 +11,14 @@ class WriteLog {
   /**
     * Add an item to the WriteLog
     *
-    * @param writeLogItem a write log item
+    * @param writeLogItem a write paul.log item
     */
   def addItem(writeLogItem: WriteLogItem): Unit = {
     writeLogItems = writeLogItem :: writeLogItems
   }
 
   /**
-    * Get the write log items
+    * Get the write paul.log items
     *
     * @param currentTimeVector of type Int
     * @return List[WriteLogItem]
