@@ -1,8 +1,8 @@
 package main.scala.replica
 
-import java.rmi.registry.LocateRegistry
+import java.rmi.Naming
 
-import main.scala.log.EcgLog
+import main.scala.log.Master
 import main.scala.tact.TactImpl
 
 /**
@@ -20,17 +20,20 @@ object TactReplica {
   def main(args: Array[String]): Unit = {
     val rmiServer = args(0)
     val replicaId = args(1).toCharArray()(0)
-    val registry = LocateRegistry.getRegistry(rmiServer, 1099)
 
-    val server = registry.lookup("EcgHistory") match {
-      case s: EcgLog => s
+    println("Starting Replica" + replicaId)
+
+    println("=> Looking for ECG history")
+    val server = Naming.lookup("//" + rmiServer + "/EcgHistory") match {
+      case s: Master => s
       case other => throw new RuntimeException("Wrong objesct: " + other)
     }
-
-    val replica = new TactImpl(replicaId, server)
-    registry.rebind("Replica" + replicaId, replica)
-
     server.debug("Registered Replica" + replicaId)
+
+    println("=> Binding TACT Replica to RMI")
+    val replica = new TactImpl(replicaId, server)
+    server.register("//" + rmiServer + "/Replica" + replicaId, replica)
+
     println("Replica started on " + "rmi://" + rmiServer + "/Replica" + replicaId)
   }
 }

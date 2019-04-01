@@ -3,7 +3,7 @@ package main.scala.tact
 import java.rmi.server.UnicastRemoteObject
 
 import main.scala.database.Database
-import main.scala.log.{EcgLog, WriteLog, WriteLogItem, WriteOperation}
+import main.scala.log.{Master, WriteLog, WriteLogItem, WriteOperation}
 import main.scala.tact.conit.Conit
 import main.scala.tact.manager.ConsistencyManager
 import main.scala.tact.protocol.OneRound
@@ -17,7 +17,7 @@ import scala.util.control.Breaks._
   * @param replicaId  The identifier of the replica
   * @param ecgHistory The ECG history the replica uses to update errors
   */
-class TactImpl(val replicaId: Char, val ecgHistory: EcgLog) extends UnicastRemoteObject with Tact {
+class TactImpl(val replicaId: Char, val ecgHistory: Master) extends UnicastRemoteObject with Tact {
 
   /**
     * The writeLog contains all writes that are made
