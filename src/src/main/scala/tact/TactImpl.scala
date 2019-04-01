@@ -8,7 +8,7 @@ import main.scala.tact.conit.Conit
 import main.scala.tact.manager.ConsistencyManager
 import main.scala.tact.protocol.OneRound
 
-import scala.util.control.Breaks.break
+import scala.util.control.Breaks._
 
 /**
   * TactImpl class.
@@ -52,7 +52,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: EcgLog) extends UnicastRemot
     */
   override def write(key: Char, value: Int): Unit = {
     if (manager.inNeedOfAntiEntropy(key)) {
-      antiEntropy.start()
+      antiEntropy.start(key)
     }
 
     val conit = getOrCreateConit(key)
@@ -120,25 +120,32 @@ class TactImpl(val replicaId: Char, val ecgHistory: EcgLog) extends UnicastRemot
   /**
     * Accept the writeLog of another Replica.
     *
+    * @param key      of type Char
     * @param writeLog of type WriteLog
     * @return Boolean
     */
-  override def acceptWriteLog(writeLog: WriteLog): Boolean = {
-    val log = writeLog.partition(manager.logicalTimeVector)
+  override def acceptWriteLog(key: Char, writeLog: WriteLog): Boolean = {
+    for (item <- writeLog.writeLogItems) {
+      breakable {
+        val conit = getOrCreateConit(item.operation.key)
 
-    for (item <- log.writeLogItems) {
-      val conit = getOrCreateConit(item.operation.key)
+        // Skip writes that were written to this replica.
+        if (item.replicaId.equals(replicaId)) {
+          break
+        }
 
-      // Skip writes that were written to this replica.
-      if (item.replicaId.equals(replicaId)) {
-        break
+        if (manager.getTimeVector(item.replicaId, key) > item.timeVector) {
+          break
+        }
+
+        manager.setTimeVector(item.replicaId, key, item.timeVector)
+
+        conit.update(item.operation.value)
       }
-
-      conit.update(item.operation.value)
     }
 
     true
   }
 
-  override def currentTimeFactor(): Long = System.currentTimeMillis()
+  override def currentTimeVector(replicaId: Char, key:Char): Long = manager.getTimeVector(replicaId, key)
 }

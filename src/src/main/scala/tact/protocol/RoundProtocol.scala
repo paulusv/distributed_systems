@@ -8,8 +8,10 @@ import java.rmi.Remote
 trait RoundProtocol extends Remote {
 
   /**
-    * Start the round protocol.
+    * Start the round protocol of a conit key
+    *
+    * @param key of type Char
     */
-  def start()
+  def start(key: Char)
 
 }

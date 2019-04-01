@@ -17,9 +17,9 @@ trait Tact extends Remote {
   def read(key: Char): Int
 
   @throws(classOf[RemoteException])
-  def acceptWriteLog(writeLog: WriteLog): Boolean
+  def acceptWriteLog(key: Char, writeLog: WriteLog): Boolean
 
   @throws(classOf[RemoteException])
-  def currentTimeFactor(): Long
+  def currentTimeVector(replicaId: Char, key: Char): Long
 
 }

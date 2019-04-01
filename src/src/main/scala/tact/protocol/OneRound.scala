@@ -9,11 +9,12 @@ import main.scala.tact.{Tact, TactImpl}
   * One-Round protocol.
   */
 class OneRound(replica: TactImpl) extends Serializable with RoundProtocol {
+
   /**
     * Start the round protocol.
     */
-  override def start(): Unit = {
-    val writeLog = replica.writeLog
+  override def start(key: Char): Unit = {
+    val writeLog = replica.writeLog.getWriteLogForKey(key)
 
     for (server <- LocateRegistry.getRegistry().list()) {
       if (server.contains("Replica") && !server.endsWith(replica.replicaId.toString)) {
@@ -24,7 +25,7 @@ class OneRound(replica: TactImpl) extends Serializable with RoundProtocol {
           case other => throw new RuntimeException("Error: " + other)
         }
 
-        rep.acceptWriteLog(writeLog)
+        rep.acceptWriteLog(key, writeLog)
 
         println("Finished anti-entropy session with " + server)
       }

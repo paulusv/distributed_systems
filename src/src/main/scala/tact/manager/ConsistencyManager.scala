@@ -8,7 +8,32 @@ class ConsistencyManager(replica: TactImpl) {
   var numericalError: Int = 0
   var orderError: Int = 0
   var stalenessError: Int = 0
-  var logicalTimeVector: Int = 0
+
+  var timeVectors: Map[Char, TimeVector] = Map[Char, TimeVector]()
+
+  /**
+    * Get the latest timeVector of another replica.
+    *
+    * @param replicaId of type Char
+    * @return Long
+    */
+  def getTimeVector(replicaId: Char, key: Char): Long = {
+    val timeVector = timeVectors(replicaId)
+
+    timeVector.getByKey(key)
+  }
+
+  /**
+    * Set the timeVector of another replica
+    *
+    * @param replicaId  of type Char
+    * @param timeVector of type Long
+    */
+  def setTimeVector(replicaId: Char, key: Char, timeVector: Long): Unit = {
+    val item = timeVectors(replicaId)
+
+    item.setByKey(key, timeVector)
+  }
 
   /**
     * Checks if the given key (conit) is in need of an anti entropy session.
