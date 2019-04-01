@@ -1,6 +1,5 @@
 package main.scala.history
 
-import java.rmi.Naming
 import java.rmi.registry.LocateRegistry
 
 import main.scala.log.EcgLogImpl
@@ -16,12 +15,15 @@ object EcgHistory {
     * @param args of type Array[String]
     */
   def main(args: Array[String]): Unit = {
-    LocateRegistry.createRegistry(1099)
+    println("Starting...")
+    val registry = LocateRegistry.createRegistry(1099)
+    println("=> Created registry")
 
     val server = new EcgLogImpl
-    Naming.rebind("EcgHistory", server)
+    registry.rebind("EcgHistory", server)
+    println("=> Bind ECG history")
 
-    println("RMI Registry start on " + LocateRegistry.getRegistry())
+    println("RMI Registry started!")
     println("Use Crtl+C to stop the server")
   }
 }

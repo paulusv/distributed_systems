@@ -20,17 +20,17 @@ object TactReplica {
   def main(args: Array[String]): Unit = {
     val rmiServer = args(0)
     val replicaId = args(1).toCharArray()(0)
-    val registry = LocateRegistry.getRegistry(rmiServer, 1100)
+    val registry = LocateRegistry.getRegistry(rmiServer, 1099)
 
     val server = registry.lookup("rmi://" + rmiServer + "/EcgHistory") match {
       case s: EcgLog => s
-      case other => throw new RuntimeException("Wrong object: " + other)
+      case other => throw new RuntimeException("Wrong objesct: " + other)
     }
 
-
     val replica = new TactImpl(replicaId, server)
-    registry.rebind("rmi://" + rmiServer + "/Replica" + replicaId, replica)
+    registry.rebind("Replica" + replicaId, replica)
 
     server.debug("Registered Replica" + replicaId)
+    println("Replica started on " + "rmi://" + rmiServer + "/Replica" + replicaId)
   }
 }
