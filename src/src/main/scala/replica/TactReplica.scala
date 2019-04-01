@@ -22,7 +22,7 @@ object TactReplica {
     val replicaId = args(1).toCharArray()(0)
     val registry = LocateRegistry.getRegistry(rmiServer, 1099)
 
-    val server = registry.lookup("rmi://" + rmiServer + "/EcgHistory") match {
+    val server = registry.lookup("EcgHistory") match {
       case s: EcgLog => s
       case other => throw new RuntimeException("Wrong objesct: " + other)
     }
