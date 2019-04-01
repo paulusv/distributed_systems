@@ -18,9 +18,10 @@ object TactReplica {
     * @param args of type Array[String]
     */
   def main(args: Array[String]): Unit = {
-    val replicaId = args(0).toCharArray()(0)
+    val rmiServer = args(0)
+    val replicaId = args(1).toCharArray()(0)
 
-    val server = Naming.lookup("rmi://localhost/EcgHistory") match {
+    val server = Naming.lookup("rmi://" + rmiServer + "/EcgHistory") match {
       case s: EcgLog => s
       case other => throw new RuntimeException("Wrong object: " + other)
     }

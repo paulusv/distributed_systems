@@ -20,5 +20,8 @@ object EcgHistory {
 
     val server = new EcgLogImpl
     Naming.rebind("EcgHistory", server)
+
+    println("RMI Registry start on " + LocateRegistry.getRegistry())
+    println("Use Crtl+C to stop the server")
   }
 }
