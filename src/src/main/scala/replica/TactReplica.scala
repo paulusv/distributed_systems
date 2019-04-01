@@ -27,6 +27,6 @@ object TactReplica {
     }
 
     val replica = new TactImpl(replicaId, server)
-    Naming.rebind("Replica" + replicaId, replica)
+    Naming.rebind("rmi://" + rmiServer + "/Replica" + replicaId, replica)
   }
 }
