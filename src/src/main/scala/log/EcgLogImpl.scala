@@ -1,6 +1,7 @@
 package main.scala.log
 
 import java.rmi.server.UnicastRemoteObject
+import java.time.LocalDateTime
 
 /**
   * EcgLogImpl class.
@@ -31,5 +32,9 @@ class EcgLogImpl extends UnicastRemoteObject with EcgLog {
   override def read(): WriteLog = {
     println("Read ECG writelog")
     writeLog
+  }
+
+  override def debug(message: String): Unit = {
+    println("[" + LocalDateTime.now().toString + "] [INFO] " + message)
   }
 }

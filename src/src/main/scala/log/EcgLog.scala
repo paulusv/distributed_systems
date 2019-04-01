@@ -14,4 +14,6 @@ trait EcgLog extends Remote {
   @throws(classOf[RemoteException])
   def read(): WriteLog
 
+  @throws(classOf[RemoteException])
+  def debug(message: String): Unit
 }

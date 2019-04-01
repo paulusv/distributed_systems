@@ -26,7 +26,10 @@ object TactReplica {
       case other => throw new RuntimeException("Wrong object: " + other)
     }
 
+
     val replica = new TactImpl(replicaId, server)
     Naming.rebind("rmi://" + rmiServer + "/Replica" + replicaId, replica)
+
+    server.debug("Registered Replica" + replicaId)
   }
 }
