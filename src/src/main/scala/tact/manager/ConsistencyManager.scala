@@ -196,7 +196,7 @@ class ConsistencyManager(replica: TactImpl) {
     * @return The OWeight of the write operation
     */
   def oweight(writeLogItem: WriteLogItem, key: Char): Int = {
-    (writeLogItem.operation.key == key).asInstanceOf[Int]
+    if (writeLogItem.operation.key == key) 1 else 0
   }
 
   /**
