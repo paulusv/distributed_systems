@@ -3,9 +3,12 @@ package main.scala.client
 import java.rmi.Naming
 import java.time.LocalDateTime
 
+import com.sun.org.slf4j.internal.{Logger, LoggerFactory}
 import main.scala.tact.Tact
 
 object Client {
+
+  val logger: Logger = LoggerFactory.getLogger(classOf[Tact])
 
   /**
     * @param args
@@ -26,14 +29,14 @@ object Client {
       val value = server.read(key)
       val latency = System.currentTimeMillis() - start
 
-      println("[" + LocalDateTime.now().toString + "] [INFO] Read key = " + key + " and value = " + value + " in " + latency + "ms")
+      logger.debug("[" + LocalDateTime.now().toString + "] [INFO] Read key = " + key + " and value = " + value + " in " + latency + "ms")
     } else if (readOrWrite == "write") {
       val start = System.currentTimeMillis()
       val value = args(4).toInt
       server.write(key, value)
       val latency = System.currentTimeMillis() - start
 
-      println("[" + LocalDateTime.now().toString + "] [INFO] Write key = " + key + " and value = " + value + " in " + latency + "ms")
+      logger.debug("[" + LocalDateTime.now().toString + "] [INFO] Write key = " + key + " and value = " + value + " in " + latency + "ms")
     }
   }
 }

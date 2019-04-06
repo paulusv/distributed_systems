@@ -1,9 +1,12 @@
 package main.scala.tact.manager
 
+import com.sun.org.slf4j.internal.{Logger, LoggerFactory}
 import main.scala.log.{WriteLog, WriteLogItem}
 import main.scala.tact.TactImpl
 
 class ConsistencyManager(replica: TactImpl) {
+
+  val logger: Logger = LoggerFactory.getLogger(classOf[ConsistencyManager])
 
   var numericalError: Int = 0
   var orderError: Int = 0
@@ -43,7 +46,7 @@ class ConsistencyManager(replica: TactImpl) {
     * @return True if an anti entropy session is needed, otherwise false
     */
   def inNeedOfAntiEntropy(key: Char): Boolean = {
-    println("Anti entropy session check")
+    logger.debug("Anti entropy session check")
     numericalError = 0
     orderError = 0
     stalenessError = 0
@@ -70,6 +73,10 @@ class ConsistencyManager(replica: TactImpl) {
     if (conit.stalenessBound < stalenessError) {
       return true
     }
+
+    logger.debug("=> Numerical Error " + conit.numericBound)
+    logger.debug("=> Order Error " + conit.orderBound)
+    logger.debug("=> Staleness Error " + conit.stalenessBound)
 
     false
   }

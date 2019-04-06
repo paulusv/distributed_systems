@@ -1,14 +1,17 @@
 package main.scala.log
 
-import java.rmi.{Naming, Remote}
 import java.rmi.server.UnicastRemoteObject
-import java.time.LocalDateTime
+import java.rmi.{Naming, Remote}
+
+import com.sun.org.slf4j.internal.{Logger, LoggerFactory}
 
 /**
   * EcgLogImpl class.
   * Implements all the functions used with RMI for Ecg History
   */
 class MasterImpl extends UnicastRemoteObject with Master {
+
+  val logger: Logger = LoggerFactory.getLogger(classOf[Master])
 
   /**
     * The writeLog contains all writes that are made
@@ -21,7 +24,7 @@ class MasterImpl extends UnicastRemoteObject with Master {
     * @param item of type WriteLogItem
     */
   override def write(item: WriteLogItem): Unit = {
-    println("Write ECG writelog: " + item)
+    logger.debug("Write ECG writelog: " + item)
     writeLog.addItem(item)
   }
 
@@ -31,15 +34,17 @@ class MasterImpl extends UnicastRemoteObject with Master {
     * @return of type WriteLog
     */
   override def read(): WriteLog = {
-    println("Read ECG writelog")
+    logger.debug("Read ECG writelog")
+
     writeLog
   }
 
   override def debug(message: String): Unit = {
-    println("[" + LocalDateTime.now().toString + "] [INFO] " + message)
+    logger.debug(message)
   }
 
   override def register(name: String, obj: Remote): Unit = {
     Naming.bind(name, obj)
+    logger.debug("Registered " + name)
   }
 }

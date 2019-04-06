@@ -69,6 +69,10 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master) extends UnicastRemot
     * @return The value in the conit
     */
   override def read(key: Char): Int = {
+    if (manager.inNeedOfAntiEntropy(key)) {
+      antiEntropy.start(key)
+    }
+
     val conit = getOrCreateConit(key)
     conit.value
   }
