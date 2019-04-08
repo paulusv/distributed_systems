@@ -18,7 +18,7 @@ class TwoRound(replica: TactImpl) extends RoundProtocol {
       if (server.contains("Replica") && !server.endsWith(replica.replicaId.toString)) {
         println("Start anti-entropy session with " + server)
 
-        val rep = Naming.lookup("rmi://localhost/" + server) match {
+        val rep = Naming.lookup("rmi://" + replica.rmiServer + "/" + server) match {
           case s: Tact => s
           case other => throw new RuntimeException("Error: " + other)
         }

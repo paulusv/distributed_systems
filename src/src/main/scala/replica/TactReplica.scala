@@ -35,7 +35,7 @@ object TactReplica {
     server.debug("Registered Replica" + replicaId)
 
     println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Binding TACT Replica to RMI")
-    val replica = new TactImpl(replicaId, server)
+    val replica = new TactImpl(replicaId, server, rmiServer)
     server.register("//" + rmiServer + "/Replica" + replicaId, replica)
 
     println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Replica started on " + "rmi://" + rmiServer + "/Replica" + replicaId)

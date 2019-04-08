@@ -18,7 +18,7 @@ import scala.util.control.Breaks._
   * @param replicaId  The identifier of the replica
   * @param ecgHistory The ECG history the replica uses to update errors
   */
-class TactImpl(val replicaId: Char, val ecgHistory: Master) extends UnicastRemoteObject with Tact {
+class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: String) extends UnicastRemoteObject with Tact {
 
   /**
     * The writeLog contains all writes that are made
