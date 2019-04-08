@@ -1,77 +1,271 @@
-[2019-04-08T11:24:15.408][ReplicaA] Starting ReplicaA
-[2019-04-08T11:24:15.413][ReplicaA] => Looking for ECG history
-[2019-04-08T11:24:15.549][ReplicaA] => Binding TACT Replica to RMI
-java.rmi.UnexpectedException: unexpected exception; nested exception is: 
-	java.rmi.AlreadyBoundException: ReplicaA
-	at java.rmi.server.RemoteObjectInvocationHandler.invokeRemoteMethod(RemoteObjectInvocationHandler.java:245)
-	at java.rmi.server.RemoteObjectInvocationHandler.invoke(RemoteObjectInvocationHandler.java:179)
-	at com.sun.proxy.$Proxy0.register(Unknown Source)
-	at main.scala.replica.TactReplica$.main(TactReplica.scala:36)
-	at main.scala.replica.TactReplica.main(TactReplica.scala)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at scala.reflect.internal.util.ScalaClassLoader.$anonfun$run$2(ScalaClassLoader.scala:106)
-	at scala.reflect.internal.util.ScalaClassLoader.asContext(ScalaClassLoader.scala:41)
-	at scala.reflect.internal.util.ScalaClassLoader.asContext$(ScalaClassLoader.scala:37)
-	at scala.reflect.internal.util.ScalaClassLoader$URLClassLoader.asContext(ScalaClassLoader.scala:132)
-	at scala.reflect.internal.util.ScalaClassLoader.run(ScalaClassLoader.scala:106)
-	at scala.reflect.internal.util.ScalaClassLoader.run$(ScalaClassLoader.scala:98)
-	at scala.reflect.internal.util.ScalaClassLoader$URLClassLoader.run(ScalaClassLoader.scala:132)
-	at scala.tools.nsc.CommonRunner.run(ObjectRunner.scala:28)
-	at scala.tools.nsc.CommonRunner.run$(ObjectRunner.scala:27)
-	at scala.tools.nsc.ObjectRunner$.run(ObjectRunner.scala:45)
-	at scala.tools.nsc.CommonRunner.runAndCatch(ObjectRunner.scala:35)
-	at scala.tools.nsc.CommonRunner.runAndCatch$(ObjectRunner.scala:34)
-	at scala.tools.nsc.ObjectRunner$.runAndCatch(ObjectRunner.scala:45)
-	at scala.tools.nsc.MainGenericRunner.runTarget$1(MainGenericRunner.scala:73)
-	at scala.tools.nsc.MainGenericRunner.run$1(MainGenericRunner.scala:92)
-	at scala.tools.nsc.MainGenericRunner.process(MainGenericRunner.scala:103)
-	at scala.tools.nsc.MainGenericRunner$.main(MainGenericRunner.scala:108)
-	at scala.tools.nsc.MainGenericRunner.main(MainGenericRunner.scala)
-Caused by: java.rmi.AlreadyBoundException: ReplicaA
-	at sun.rmi.registry.RegistryImpl.bind(RegistryImpl.java:245)
-	at sun.rmi.registry.RegistryImpl_Skel.dispatch(RegistryImpl_Skel.java:82)
-	at sun.rmi.server.UnicastServerRef.oldDispatch(UnicastServerRef.java:468)
-	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:300)
-	at sun.rmi.transport.Transport$1.run(Transport.java:200)
-	at sun.rmi.transport.Transport$1.run(Transport.java:197)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
-	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:573)
-	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:834)
-	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:688)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:687)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)
-	at sun.rmi.transport.StreamRemoteCall.exceptionReceivedFromServer(StreamRemoteCall.java:283)
-	at sun.rmi.transport.StreamRemoteCall.executeCall(StreamRemoteCall.java:260)
-	at sun.rmi.server.UnicastRef.invoke(UnicastRef.java:375)
-	at sun.rmi.registry.RegistryImpl_Stub.bind(RegistryImpl_Stub.java:68)
-	at java.rmi.Naming.bind(Naming.java:128)
-	at main.scala.log.MasterImpl.register(MasterImpl.scala:44)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:357)
-	at sun.rmi.transport.Transport$1.run(Transport.java:200)
-	at sun.rmi.transport.Transport$1.run(Transport.java:197)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
-	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:573)
-	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:834)
-	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:688)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:687)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)
-	at sun.rmi.transport.StreamRemoteCall.exceptionReceivedFromServer(StreamRemoteCall.java:283)
-	at sun.rmi.transport.StreamRemoteCall.executeCall(StreamRemoteCall.java:260)
-	at sun.rmi.server.UnicastRef.invoke(UnicastRef.java:161)
-	at java.rmi.server.RemoteObjectInvocationHandler.invokeRemoteMethod(RemoteObjectInvocationHandler.java:227)
-	... 26 more
+[2019-04-08T11:54:45.360][ReplicaA] Starting ReplicaA
+[2019-04-08T11:54:45.362][ReplicaA] => Looking for ECG history
+[2019-04-08T11:54:45.566][ReplicaA] => Binding TACT Replica to RMI
+[2019-04-08T11:54:45.624][ReplicaA] Replica started on rmi://10.156.0.2/ReplicaA
+[2019-04-08T11:54:54.675][ReplicaA] Write key = y, value = 1
+[2019-04-08T11:54:54.675][ReplicaA] Anti entropy session check
+[2019-04-08T11:54:54.675][ReplicaA] => Updating errors
+[2019-04-08T11:54:54.752][ReplicaA] => Check errors out of bound
+[2019-04-08T11:54:54.752][ReplicaA] => Numerical Error 79
+[2019-04-08T11:54:54.752][ReplicaA] => Order Error 3
+[2019-04-08T11:54:54.753][ReplicaA] => Staleness Error 410
+[2019-04-08T11:55:02.451][ReplicaA] Write key = y, value = 1
+[2019-04-08T11:55:02.451][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:02.451][ReplicaA] => Updating errors
+[2019-04-08T11:55:02.454][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:02.454][ReplicaA] => Numerical Error 79
+[2019-04-08T11:55:02.455][ReplicaA] => Order Error 3
+[2019-04-08T11:55:02.455][ReplicaA] => Staleness Error 410
+[2019-04-08T11:55:04.788][ReplicaA] Read key = y
+[2019-04-08T11:55:04.788][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:04.788][ReplicaA] => Updating errors
+[2019-04-08T11:55:04.796][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:04.796][ReplicaA] => Numerical Error 79
+[2019-04-08T11:55:04.796][ReplicaA] => Order Error 3
+[2019-04-08T11:55:04.796][ReplicaA] => Staleness Error 410
+[2019-04-08T11:55:06.433][ReplicaA] Read key = y
+[2019-04-08T11:55:06.433][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:06.433][ReplicaA] => Updating errors
+[2019-04-08T11:55:06.440][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:06.440][ReplicaA] => Numerical Error 79
+[2019-04-08T11:55:06.441][ReplicaA] => Order Error 3
+[2019-04-08T11:55:06.441][ReplicaA] => Staleness Error 410
+[2019-04-08T11:55:08.618][ReplicaA] Read key = x
+[2019-04-08T11:55:08.618][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:08.618][ReplicaA] => Updating errors
+[2019-04-08T11:55:08.630][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:08.630][ReplicaA] => Numerical Error 86
+[2019-04-08T11:55:08.630][ReplicaA] => Order Error 3
+[2019-04-08T11:55:08.630][ReplicaA] => Staleness Error 695
+[2019-04-08T11:55:12.892][ReplicaA] Write key = z, value = 1
+[2019-04-08T11:55:12.892][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:12.893][ReplicaA] => Updating errors
+[2019-04-08T11:55:12.899][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:12.900][ReplicaA] => Numerical Error 56
+[2019-04-08T11:55:12.900][ReplicaA] => Order Error 9
+[2019-04-08T11:55:12.900][ReplicaA] => Staleness Error 987
+[2019-04-08T11:55:18.781][ReplicaA] Read key = y
+[2019-04-08T11:55:18.782][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:18.782][ReplicaA] => Updating errors
+[2019-04-08T11:55:18.787][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:18.787][ReplicaA] => Numerical Error 79
+[2019-04-08T11:55:18.787][ReplicaA] => Order Error 3
+[2019-04-08T11:55:18.790][ReplicaA] => Staleness Error 410
+[2019-04-08T11:55:20.544][ReplicaA] Read key = x
+[2019-04-08T11:55:20.544][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:20.544][ReplicaA] => Updating errors
+[2019-04-08T11:55:20.550][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:20.550][ReplicaA] => Numerical Error 86
+[2019-04-08T11:55:20.550][ReplicaA] => Order Error 3
+[2019-04-08T11:55:20.550][ReplicaA] => Staleness Error 695
+[2019-04-08T11:55:22.342][ReplicaA] Read key = y
+[2019-04-08T11:55:22.342][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:22.342][ReplicaA] => Updating errors
+[2019-04-08T11:55:22.346][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:22.346][ReplicaA] => Numerical Error 79
+[2019-04-08T11:55:22.346][ReplicaA] => Order Error 3
+[2019-04-08T11:55:22.346][ReplicaA] => Staleness Error 410
+[2019-04-08T11:55:49.967][ReplicaA] Read key = y
+[2019-04-08T11:55:49.967][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:49.967][ReplicaA] => Updating errors
+[2019-04-08T11:55:49.977][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:49.977][ReplicaA] => Numerical Error 79
+[2019-04-08T11:55:49.977][ReplicaA] => Order Error 3
+[2019-04-08T11:55:49.977][ReplicaA] => Staleness Error 410
+[2019-04-08T11:55:52.238][ReplicaA] Read key = z
+[2019-04-08T11:55:52.238][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:52.238][ReplicaA] => Updating errors
+[2019-04-08T11:55:52.245][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:52.245][ReplicaA] => Numerical Error 56
+[2019-04-08T11:55:52.245][ReplicaA] => Order Error 9
+[2019-04-08T11:55:52.245][ReplicaA] => Staleness Error 987
+[2019-04-08T11:55:54.986][ReplicaA] Read key = y
+[2019-04-08T11:55:54.986][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:54.986][ReplicaA] => Updating errors
+[2019-04-08T11:55:54.992][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:54.992][ReplicaA] => Numerical Error 79
+[2019-04-08T11:55:54.992][ReplicaA] => Order Error 3
+[2019-04-08T11:55:54.992][ReplicaA] => Staleness Error 410
+[2019-04-08T11:55:57.418][ReplicaA] Read key = x
+[2019-04-08T11:55:57.418][ReplicaA] Anti entropy session check
+[2019-04-08T11:55:57.418][ReplicaA] => Updating errors
+[2019-04-08T11:55:57.424][ReplicaA] => Check errors out of bound
+[2019-04-08T11:55:57.424][ReplicaA] => Numerical Error 86
+[2019-04-08T11:55:57.424][ReplicaA] => Order Error 3
+[2019-04-08T11:55:57.424][ReplicaA] => Staleness Error 695
+[2019-04-08T11:56:02.542][ReplicaA] Read key = x
+[2019-04-08T11:56:02.542][ReplicaA] Anti entropy session check
+[2019-04-08T11:56:02.542][ReplicaA] => Updating errors
+[2019-04-08T11:56:02.547][ReplicaA] => Check errors out of bound
+[2019-04-08T11:56:02.547][ReplicaA] => Numerical Error 86
+[2019-04-08T11:56:02.547][ReplicaA] => Order Error 3
+[2019-04-08T11:56:02.547][ReplicaA] => Staleness Error 695
+[2019-04-08T11:56:04.521][ReplicaA] Write key = z, value = 1
+[2019-04-08T11:56:04.521][ReplicaA] Anti entropy session check
+[2019-04-08T11:56:04.522][ReplicaA] => Updating errors
+[2019-04-08T11:56:04.528][ReplicaA] => Check errors out of bound
+[2019-04-08T11:56:04.528][ReplicaA] => Numerical Error 56
+[2019-04-08T11:56:04.528][ReplicaA] => Order Error 9
+[2019-04-08T11:56:04.528][ReplicaA] => Staleness Error 987
+[2019-04-08T11:56:13.329][ReplicaA] Read key = z
+[2019-04-08T11:56:13.329][ReplicaA] Anti entropy session check
+[2019-04-08T11:56:13.329][ReplicaA] => Updating errors
+[2019-04-08T11:56:13.338][ReplicaA] => Check errors out of bound
+[2019-04-08T11:56:13.338][ReplicaA] => Numerical Error 56
+[2019-04-08T11:56:13.338][ReplicaA] => Order Error 9
+[2019-04-08T11:56:13.338][ReplicaA] => Staleness Error 987
+[2019-04-08T11:56:24.678][ReplicaA] Read key = y
+[2019-04-08T11:56:24.678][ReplicaA] Anti entropy session check
+[2019-04-08T11:56:24.678][ReplicaA] => Updating errors
+[2019-04-08T11:56:24.680][ReplicaA] => Check errors out of bound
+[2019-04-08T11:56:24.680][ReplicaA] => Numerical Error 79
+[2019-04-08T11:56:24.681][ReplicaA] => Order Error 3
+[2019-04-08T11:56:24.681][ReplicaA] => Staleness Error 410
+[2019-04-08T11:56:33.297][ReplicaA] Read key = z
+[2019-04-08T11:56:33.297][ReplicaA] Anti entropy session check
+[2019-04-08T11:56:33.297][ReplicaA] => Updating errors
+[2019-04-08T11:56:33.303][ReplicaA] => Check errors out of bound
+[2019-04-08T11:56:33.303][ReplicaA] => Numerical Error 56
+[2019-04-08T11:56:33.303][ReplicaA] => Order Error 9
+[2019-04-08T11:56:33.303][ReplicaA] => Staleness Error 987
+[2019-04-08T11:56:35.507][ReplicaA] Read key = x
+[2019-04-08T11:56:35.507][ReplicaA] Anti entropy session check
+[2019-04-08T11:56:35.507][ReplicaA] => Updating errors
+[2019-04-08T11:56:35.510][ReplicaA] => Check errors out of bound
+[2019-04-08T11:56:35.510][ReplicaA] => Numerical Error 86
+[2019-04-08T11:56:35.511][ReplicaA] => Order Error 3
+[2019-04-08T11:56:35.511][ReplicaA] => Staleness Error 695
+[2019-04-08T11:56:43.041][ReplicaA] Read key = x
+[2019-04-08T11:56:43.041][ReplicaA] Anti entropy session check
+[2019-04-08T11:56:43.041][ReplicaA] => Updating errors
+[2019-04-08T11:56:43.045][ReplicaA] => Check errors out of bound
+[2019-04-08T11:56:43.045][ReplicaA] => Numerical Error 86
+[2019-04-08T11:56:43.045][ReplicaA] => Order Error 3
+[2019-04-08T11:56:43.045][ReplicaA] => Staleness Error 695
+[2019-04-08T11:56:49.033][ReplicaA] Read key = z
+[2019-04-08T11:56:49.033][ReplicaA] Anti entropy session check
+[2019-04-08T11:56:49.033][ReplicaA] => Updating errors
+[2019-04-08T11:56:49.040][ReplicaA] => Check errors out of bound
+[2019-04-08T11:56:49.040][ReplicaA] => Numerical Error 56
+[2019-04-08T11:56:49.040][ReplicaA] => Order Error 9
+[2019-04-08T11:56:49.040][ReplicaA] => Staleness Error 987
+[2019-04-08T11:56:59.402][ReplicaA] Read key = x
+[2019-04-08T11:56:59.402][ReplicaA] Anti entropy session check
+[2019-04-08T11:56:59.403][ReplicaA] => Updating errors
+[2019-04-08T11:56:59.406][ReplicaA] => Check errors out of bound
+[2019-04-08T11:56:59.406][ReplicaA] => Numerical Error 86
+[2019-04-08T11:56:59.406][ReplicaA] => Order Error 3
+[2019-04-08T11:56:59.406][ReplicaA] => Staleness Error 695
+[2019-04-08T11:57:14.413][ReplicaA] Read key = y
+[2019-04-08T11:57:14.413][ReplicaA] Anti entropy session check
+[2019-04-08T11:57:14.413][ReplicaA] => Updating errors
+[2019-04-08T11:57:14.416][ReplicaA] => Check errors out of bound
+[2019-04-08T11:57:14.416][ReplicaA] => Numerical Error 79
+[2019-04-08T11:57:14.416][ReplicaA] => Order Error 3
+[2019-04-08T11:57:14.416][ReplicaA] => Staleness Error 410
+[2019-04-08T11:57:15.912][ReplicaA] Read key = z
+[2019-04-08T11:57:15.913][ReplicaA] Anti entropy session check
+[2019-04-08T11:57:15.913][ReplicaA] => Updating errors
+[2019-04-08T11:57:15.918][ReplicaA] => Check errors out of bound
+[2019-04-08T11:57:15.918][ReplicaA] => Numerical Error 56
+[2019-04-08T11:57:15.918][ReplicaA] => Order Error 9
+[2019-04-08T11:57:15.918][ReplicaA] => Staleness Error 987
+[2019-04-08T11:57:22.047][ReplicaA] Write key = x, value = 1
+[2019-04-08T11:57:22.047][ReplicaA] Anti entropy session check
+[2019-04-08T11:57:22.047][ReplicaA] => Updating errors
+[2019-04-08T11:57:22.052][ReplicaA] => Check errors out of bound
+[2019-04-08T11:57:22.052][ReplicaA] => Numerical Error 86
+[2019-04-08T11:57:22.052][ReplicaA] => Order Error 3
+[2019-04-08T11:57:22.052][ReplicaA] => Staleness Error 695
+[2019-04-08T11:57:32.866][ReplicaA] Read key = z
+[2019-04-08T11:57:32.866][ReplicaA] Anti entropy session check
+[2019-04-08T11:57:32.866][ReplicaA] => Updating errors
+[2019-04-08T11:57:32.869][ReplicaA] => Check errors out of bound
+[2019-04-08T11:57:32.869][ReplicaA] => Numerical Error 56
+[2019-04-08T11:57:32.869][ReplicaA] => Order Error 9
+[2019-04-08T11:57:32.869][ReplicaA] => Staleness Error 987
+[2019-04-08T11:57:38.027][ReplicaA] Write key = z, value = 1
+[2019-04-08T11:57:38.027][ReplicaA] Anti entropy session check
+[2019-04-08T11:57:38.027][ReplicaA] => Updating errors
+[2019-04-08T11:57:38.032][ReplicaA] => Check errors out of bound
+[2019-04-08T11:57:38.033][ReplicaA] => Numerical Error 56
+[2019-04-08T11:57:38.033][ReplicaA] => Order Error 9
+[2019-04-08T11:57:38.033][ReplicaA] => Staleness Error 987
+[2019-04-08T11:58:04.587][ReplicaA] Read key = z
+[2019-04-08T11:58:04.587][ReplicaA] Anti entropy session check
+[2019-04-08T11:58:04.587][ReplicaA] => Updating errors
+[2019-04-08T11:58:04.593][ReplicaA] => Check errors out of bound
+[2019-04-08T11:58:04.593][ReplicaA] => Numerical Error 56
+[2019-04-08T11:58:04.593][ReplicaA] => Order Error 9
+[2019-04-08T11:58:04.593][ReplicaA] => Staleness Error 987
+[2019-04-08T11:58:10.260][ReplicaA] Read key = x
+[2019-04-08T11:58:10.260][ReplicaA] Anti entropy session check
+[2019-04-08T11:58:10.260][ReplicaA] => Updating errors
+[2019-04-08T11:58:10.267][ReplicaA] => Check errors out of bound
+[2019-04-08T11:58:10.267][ReplicaA] => Numerical Error 86
+[2019-04-08T11:58:10.267][ReplicaA] => Order Error 3
+[2019-04-08T11:58:10.267][ReplicaA] => Staleness Error 695
+[2019-04-08T11:58:15.641][ReplicaA] Write key = y, value = 1
+[2019-04-08T11:58:15.641][ReplicaA] Anti entropy session check
+[2019-04-08T11:58:15.641][ReplicaA] => Updating errors
+[2019-04-08T11:58:15.645][ReplicaA] => Check errors out of bound
+[2019-04-08T11:58:15.645][ReplicaA] => Numerical Error 79
+[2019-04-08T11:58:15.645][ReplicaA] => Order Error 3
+[2019-04-08T11:58:15.645][ReplicaA] => Staleness Error 410
+[2019-04-08T11:58:24.968][ReplicaA] Read key = y
+[2019-04-08T11:58:24.968][ReplicaA] Anti entropy session check
+[2019-04-08T11:58:24.968][ReplicaA] => Updating errors
+[2019-04-08T11:58:24.972][ReplicaA] => Check errors out of bound
+[2019-04-08T11:58:24.972][ReplicaA] => Numerical Error 79
+[2019-04-08T11:58:24.972][ReplicaA] => Order Error 3
+[2019-04-08T11:58:24.972][ReplicaA] => Staleness Error 410
+[2019-04-08T11:58:51.420][ReplicaA] Read key = y
+[2019-04-08T11:58:51.421][ReplicaA] Anti entropy session check
+[2019-04-08T11:58:51.421][ReplicaA] => Updating errors
+[2019-04-08T11:58:51.427][ReplicaA] => Check errors out of bound
+[2019-04-08T11:58:51.428][ReplicaA] => Numerical Error 79
+[2019-04-08T11:58:51.428][ReplicaA] => Order Error 3
+[2019-04-08T11:58:51.428][ReplicaA] => Staleness Error 410
+[2019-04-08T11:59:13.175][ReplicaA] Read key = y
+[2019-04-08T11:59:13.175][ReplicaA] Anti entropy session check
+[2019-04-08T11:59:13.175][ReplicaA] => Updating errors
+[2019-04-08T11:59:13.183][ReplicaA] => Check errors out of bound
+[2019-04-08T11:59:13.183][ReplicaA] => Numerical Error 79
+[2019-04-08T11:59:13.183][ReplicaA] => Order Error 3
+[2019-04-08T11:59:13.183][ReplicaA] => Staleness Error 410
+[2019-04-08T11:59:31.597][ReplicaA] Read key = x
+[2019-04-08T11:59:31.597][ReplicaA] Anti entropy session check
+[2019-04-08T11:59:31.597][ReplicaA] => Updating errors
+[2019-04-08T11:59:31.605][ReplicaA] => Check errors out of bound
+[2019-04-08T11:59:31.605][ReplicaA] => Numerical Error 86
+[2019-04-08T11:59:31.605][ReplicaA] => Order Error 3
+[2019-04-08T11:59:31.605][ReplicaA] => Staleness Error 695
+[2019-04-08T11:59:33.661][ReplicaA] Write key = y, value = 1
+[2019-04-08T11:59:33.661][ReplicaA] Anti entropy session check
+[2019-04-08T11:59:33.661][ReplicaA] => Updating errors
+[2019-04-08T11:59:33.665][ReplicaA] => Check errors out of bound
+[2019-04-08T11:59:33.665][ReplicaA] => Numerical Error 79
+[2019-04-08T11:59:33.665][ReplicaA] => Order Error 3
+[2019-04-08T11:59:33.665][ReplicaA] => Staleness Error 410
+[2019-04-08T11:59:38.793][ReplicaA] Read key = x
+[2019-04-08T11:59:38.793][ReplicaA] Anti entropy session check
+[2019-04-08T11:59:38.793][ReplicaA] => Updating errors
+[2019-04-08T11:59:38.800][ReplicaA] => Check errors out of bound
+[2019-04-08T11:59:38.800][ReplicaA] => Numerical Error 86
+[2019-04-08T11:59:38.800][ReplicaA] => Order Error 3
+[2019-04-08T11:59:38.800][ReplicaA] => Staleness Error 695
+[2019-04-08T11:59:40.115][ReplicaA] Read key = y
+[2019-04-08T11:59:40.115][ReplicaA] Anti entropy session check
+[2019-04-08T11:59:40.115][ReplicaA] => Updating errors
+[2019-04-08T11:59:40.119][ReplicaA] => Check errors out of bound
+[2019-04-08T11:59:40.119][ReplicaA] => Numerical Error 79
+[2019-04-08T11:59:40.119][ReplicaA] => Order Error 3
+[2019-04-08T11:59:40.119][ReplicaA] => Staleness Error 410
+[2019-04-08T11:59:41.217][ReplicaA] Read key = z
+[2019-04-08T11:59:41.217][ReplicaA] Anti entropy session check
+[2019-04-08T11:59:41.217][ReplicaA] => Updating errors
+[2019-04-08T11:59:41.219][ReplicaA] => Check errors out of bound
+[2019-04-08T11:59:41.219][ReplicaA] => Numerical Error 56
+[2019-04-08T11:59:41.219][ReplicaA] => Order Error 9
+[2019-04-08T11:59:41.219][ReplicaA] => Staleness Error 987
+/home/sven/.sdkman/candidates/scala/current/bin/scala: line 21: 29364 Killed                  "$@"
