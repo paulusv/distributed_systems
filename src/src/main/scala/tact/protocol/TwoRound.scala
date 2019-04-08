@@ -14,7 +14,7 @@ class TwoRound(replica: TactImpl) extends RoundProtocol {
     * Start the round protocol.
     */
   override def start(key: Char): Unit = {
-    for (server <- LocateRegistry.getRegistry().list()) {
+    for (server <- LocateRegistry.getRegistry(replica.rmiServer).list()) {
       if (server.contains("Replica") && !server.endsWith(replica.replicaId.toString)) {
         println("Start anti-entropy session with " + server)
 
