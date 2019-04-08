@@ -2,6 +2,7 @@ package main.scala.log
 
 import java.rmi.server.UnicastRemoteObject
 import java.rmi.{Naming, Remote}
+import java.time.LocalDateTime
 
 import com.sun.org.slf4j.internal.{Logger, LoggerFactory}
 
@@ -24,7 +25,7 @@ class MasterImpl extends UnicastRemoteObject with Master {
     * @param item of type WriteLogItem
     */
   override def write(item: WriteLogItem): Unit = {
-    logger.debug("Write ECG writelog: " + item)
+    println("[" + LocalDateTime.now() + "][Master] Write ECG writelog: " + item)
     writeLog.addItem(item)
   }
 
@@ -34,17 +35,17 @@ class MasterImpl extends UnicastRemoteObject with Master {
     * @return of type WriteLog
     */
   override def read(): WriteLog = {
-    logger.debug("Read ECG writelog")
+    println("[" + LocalDateTime.now() + "][Master] Read ECG writelog")
 
     writeLog
   }
 
   override def debug(message: String): Unit = {
-    logger.debug(message)
+    println("[" + LocalDateTime.now() + "][Master] " + message)
   }
 
   override def register(name: String, obj: Remote): Unit = {
     Naming.bind(name, obj)
-    logger.debug("Registered " + name)
+    println("[" + LocalDateTime.now() + "][Master] Registered " + name)
   }
 }

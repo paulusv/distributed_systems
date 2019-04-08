@@ -1,6 +1,7 @@
 package main.scala.tact
 
 import java.rmi.server.UnicastRemoteObject
+import java.time.LocalDateTime
 
 import main.scala.database.Database
 import main.scala.log.{Master, WriteLog, WriteLogItem, WriteOperation}
@@ -51,6 +52,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master) extends UnicastRemot
     * @param value The value which should be written
     */
   override def write(key: Char, value: Int): Unit = {
+    println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Write key = " + key + ", value = " + value)
     if (manager.inNeedOfAntiEntropy(key)) {
       antiEntropy.start(key)
     }
@@ -69,6 +71,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master) extends UnicastRemot
     * @return The value in the conit
     */
   override def read(key: Char): Int = {
+    println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Read key = " + key)
     if (manager.inNeedOfAntiEntropy(key)) {
       antiEntropy.start(key)
     }
