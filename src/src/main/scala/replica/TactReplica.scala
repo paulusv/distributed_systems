@@ -3,16 +3,13 @@ package main.scala.replica
 import java.rmi.Naming
 import java.time.LocalDateTime
 
-import com.sun.org.slf4j.internal.{Logger, LoggerFactory}
 import main.scala.log.Master
-import main.scala.tact.{Tact, TactImpl}
+import main.scala.tact.TactImpl
 
 /**
   * Class TactReplicaA
   */
 object TactReplica {
-
-  val logger: Logger = LoggerFactory.getLogger(classOf[Tact])
 
   /**
     * Starts a Tact Replica (ID = A)

@@ -4,15 +4,11 @@ import java.rmi.server.UnicastRemoteObject
 import java.rmi.{Naming, Remote}
 import java.time.LocalDateTime
 
-import com.sun.org.slf4j.internal.{Logger, LoggerFactory}
-
 /**
   * EcgLogImpl class.
   * Implements all the functions used with RMI for Ecg History
   */
 class MasterImpl extends UnicastRemoteObject with Master {
-
-  val logger: Logger = LoggerFactory.getLogger(classOf[Master])
 
   /**
     * The writeLog contains all writes that are made

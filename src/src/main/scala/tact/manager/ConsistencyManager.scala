@@ -2,13 +2,10 @@ package main.scala.tact.manager
 
 import java.time.LocalDateTime
 
-import com.sun.org.slf4j.internal.{Logger, LoggerFactory}
 import main.scala.log.{WriteLog, WriteLogItem}
 import main.scala.tact.TactImpl
 
 class ConsistencyManager(replica: TactImpl) {
-
-  val logger: Logger = LoggerFactory.getLogger(classOf[ConsistencyManager])
 
   var numericalError: Int = 0
   var orderError: Int = 0
