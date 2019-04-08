@@ -1,25 +1,238 @@
-java.lang.NoClassDefFoundError: com/sun/org/slf4j/internal/Logger
-	at java.lang.Class.getDeclaredMethods0(Native Method)
-	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701)
-	at java.lang.Class.privateGetMethodRecursive(Class.java:3048)
-	at java.lang.Class.getMethod0(Class.java:3018)
-	at java.lang.Class.getMethod(Class.java:1784)
-	at scala.reflect.internal.util.ScalaClassLoader.run(ScalaClassLoader.scala:102)
-	at scala.reflect.internal.util.ScalaClassLoader.run$(ScalaClassLoader.scala:98)
-	at scala.reflect.internal.util.ScalaClassLoader$URLClassLoader.run(ScalaClassLoader.scala:132)
-	at scala.tools.nsc.CommonRunner.run(ObjectRunner.scala:28)
-	at scala.tools.nsc.CommonRunner.run$(ObjectRunner.scala:27)
-	at scala.tools.nsc.ObjectRunner$.run(ObjectRunner.scala:45)
-	at scala.tools.nsc.CommonRunner.runAndCatch(ObjectRunner.scala:35)
-	at scala.tools.nsc.CommonRunner.runAndCatch$(ObjectRunner.scala:34)
-	at scala.tools.nsc.ObjectRunner$.runAndCatch(ObjectRunner.scala:45)
-	at scala.tools.nsc.MainGenericRunner.runTarget$1(MainGenericRunner.scala:73)
-	at scala.tools.nsc.MainGenericRunner.run$1(MainGenericRunner.scala:92)
-	at scala.tools.nsc.MainGenericRunner.process(MainGenericRunner.scala:103)
-	at scala.tools.nsc.MainGenericRunner$.main(MainGenericRunner.scala:108)
-	at scala.tools.nsc.MainGenericRunner.main(MainGenericRunner.scala)
-Caused by: java.lang.ClassNotFoundException: com.sun.org.slf4j.internal.Logger
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
-	... 19 more
+[2019-04-08T10:48:27.255][ReplicaA] Starting ReplicaA
+[2019-04-08T10:48:27.257][ReplicaA] => Looking for ECG history
+[2019-04-08T10:48:27.467][ReplicaA] => Binding TACT Replica to RMI
+[2019-04-08T10:48:27.523][ReplicaA] Replica started on rmi://10.156.0.2/ReplicaA
+[2019-04-08T10:48:36.828][ReplicaA] Write key = y, value = 1
+[2019-04-08T10:48:36.828][ReplicaA] Anti entropy session check
+[2019-04-08T10:48:36.828][ReplicaA] => Updating errors
+[2019-04-08T10:48:36.909][ReplicaA] => Check errors out of bound
+[2019-04-08T10:48:36.909][ReplicaA] => Numerical Error 44
+[2019-04-08T10:48:36.909][ReplicaA] => Order Error 2
+[2019-04-08T10:48:36.914][ReplicaA] => Staleness Error 421
+[2019-04-08T10:48:45.145][ReplicaA] Read key = z
+[2019-04-08T10:48:45.145][ReplicaA] Anti entropy session check
+[2019-04-08T10:48:45.145][ReplicaA] => Updating errors
+[2019-04-08T10:48:45.153][ReplicaA] => Check errors out of bound
+[2019-04-08T10:48:45.153][ReplicaA] => Numerical Error 39
+[2019-04-08T10:48:45.153][ReplicaA] => Order Error 6
+[2019-04-08T10:48:45.153][ReplicaA] => Staleness Error 88
+[2019-04-08T10:48:46.992][ReplicaA] Read key = z
+[2019-04-08T10:48:46.993][ReplicaA] Anti entropy session check
+[2019-04-08T10:48:46.993][ReplicaA] => Updating errors
+[2019-04-08T10:48:46.996][ReplicaA] => Check errors out of bound
+[2019-04-08T10:48:46.996][ReplicaA] => Numerical Error 39
+[2019-04-08T10:48:46.996][ReplicaA] => Order Error 6
+[2019-04-08T10:48:46.996][ReplicaA] => Staleness Error 88
+[2019-04-08T10:48:49.410][ReplicaA] Write key = x, value = 1
+[2019-04-08T10:48:49.410][ReplicaA] Anti entropy session check
+[2019-04-08T10:48:49.411][ReplicaA] => Updating errors
+[2019-04-08T10:48:49.420][ReplicaA] => Check errors out of bound
+[2019-04-08T10:48:49.420][ReplicaA] => Numerical Error 31
+[2019-04-08T10:48:49.420][ReplicaA] => Order Error 1
+[2019-04-08T10:48:49.420][ReplicaA] => Staleness Error 317
+[2019-04-08T10:48:51.253][ReplicaA] Read key = z
+[2019-04-08T10:48:51.253][ReplicaA] Anti entropy session check
+[2019-04-08T10:48:51.253][ReplicaA] => Updating errors
+[2019-04-08T10:48:51.259][ReplicaA] => Check errors out of bound
+[2019-04-08T10:48:51.259][ReplicaA] => Numerical Error 39
+[2019-04-08T10:48:51.263][ReplicaA] => Order Error 6
+[2019-04-08T10:48:51.263][ReplicaA] => Staleness Error 88
+[2019-04-08T10:49:00.832][ReplicaA] Read key = y
+[2019-04-08T10:49:00.833][ReplicaA] Anti entropy session check
+[2019-04-08T10:49:00.833][ReplicaA] => Updating errors
+[2019-04-08T10:49:00.837][ReplicaA] => Check errors out of bound
+[2019-04-08T10:49:00.837][ReplicaA] => Numerical Error 44
+[2019-04-08T10:49:00.837][ReplicaA] => Order Error 2
+[2019-04-08T10:49:00.840][ReplicaA] => Staleness Error 421
+[2019-04-08T10:49:13.210][ReplicaA] Read key = x
+[2019-04-08T10:49:13.210][ReplicaA] Anti entropy session check
+[2019-04-08T10:49:13.210][ReplicaA] => Updating errors
+[2019-04-08T10:49:13.214][ReplicaA] => Check errors out of bound
+[2019-04-08T10:49:13.214][ReplicaA] => Numerical Error 31
+[2019-04-08T10:49:13.214][ReplicaA] => Order Error 1
+[2019-04-08T10:49:13.214][ReplicaA] => Staleness Error 317
+[2019-04-08T10:49:25.537][ReplicaA] Write key = z, value = 1
+[2019-04-08T10:49:25.537][ReplicaA] Anti entropy session check
+[2019-04-08T10:49:25.537][ReplicaA] => Updating errors
+[2019-04-08T10:49:25.542][ReplicaA] => Check errors out of bound
+[2019-04-08T10:49:25.542][ReplicaA] => Numerical Error 39
+[2019-04-08T10:49:25.542][ReplicaA] => Order Error 6
+[2019-04-08T10:49:25.542][ReplicaA] => Staleness Error 88
+[2019-04-08T10:49:46.042][ReplicaA] Write key = z, value = 1
+[2019-04-08T10:49:46.042][ReplicaA] Anti entropy session check
+[2019-04-08T10:49:46.042][ReplicaA] => Updating errors
+[2019-04-08T10:49:46.048][ReplicaA] => Check errors out of bound
+[2019-04-08T10:49:46.049][ReplicaA] => Numerical Error 39
+[2019-04-08T10:49:46.049][ReplicaA] => Order Error 6
+[2019-04-08T10:49:46.049][ReplicaA] => Staleness Error 88
+[2019-04-08T10:49:47.740][ReplicaA] Write key = z, value = 1
+[2019-04-08T10:49:47.740][ReplicaA] Anti entropy session check
+[2019-04-08T10:49:47.740][ReplicaA] => Updating errors
+[2019-04-08T10:49:47.744][ReplicaA] => Check errors out of bound
+[2019-04-08T10:49:47.744][ReplicaA] => Numerical Error 39
+[2019-04-08T10:49:47.744][ReplicaA] => Order Error 6
+[2019-04-08T10:49:47.744][ReplicaA] => Staleness Error 88
+[2019-04-08T10:50:10.178][ReplicaA] Write key = y, value = 1
+[2019-04-08T10:50:10.178][ReplicaA] Anti entropy session check
+[2019-04-08T10:50:10.178][ReplicaA] => Updating errors
+[2019-04-08T10:50:10.182][ReplicaA] => Check errors out of bound
+[2019-04-08T10:50:10.182][ReplicaA] => Numerical Error 44
+[2019-04-08T10:50:10.182][ReplicaA] => Order Error 2
+[2019-04-08T10:50:10.182][ReplicaA] => Staleness Error 421
+[2019-04-08T10:50:15.717][ReplicaA] Read key = z
+[2019-04-08T10:50:15.717][ReplicaA] Anti entropy session check
+[2019-04-08T10:50:15.717][ReplicaA] => Updating errors
+[2019-04-08T10:50:15.720][ReplicaA] => Check errors out of bound
+[2019-04-08T10:50:15.720][ReplicaA] => Numerical Error 39
+[2019-04-08T10:50:15.721][ReplicaA] => Order Error 6
+[2019-04-08T10:50:15.721][ReplicaA] => Staleness Error 88
+[2019-04-08T10:50:28.394][ReplicaA] Read key = y
+[2019-04-08T10:50:28.394][ReplicaA] Anti entropy session check
+[2019-04-08T10:50:28.394][ReplicaA] => Updating errors
+[2019-04-08T10:50:28.397][ReplicaA] => Check errors out of bound
+[2019-04-08T10:50:28.397][ReplicaA] => Numerical Error 44
+[2019-04-08T10:50:28.397][ReplicaA] => Order Error 2
+[2019-04-08T10:50:28.397][ReplicaA] => Staleness Error 421
+[2019-04-08T10:50:30.645][ReplicaA] Write key = x, value = 1
+[2019-04-08T10:50:30.645][ReplicaA] Anti entropy session check
+[2019-04-08T10:50:30.645][ReplicaA] => Updating errors
+[2019-04-08T10:50:30.650][ReplicaA] => Check errors out of bound
+[2019-04-08T10:50:30.650][ReplicaA] => Numerical Error 31
+[2019-04-08T10:50:30.650][ReplicaA] => Order Error 1
+[2019-04-08T10:50:30.650][ReplicaA] => Staleness Error 317
+[2019-04-08T10:50:32.666][ReplicaA] Read key = x
+[2019-04-08T10:50:32.666][ReplicaA] Anti entropy session check
+[2019-04-08T10:50:32.666][ReplicaA] => Updating errors
+[2019-04-08T10:50:32.672][ReplicaA] => Check errors out of bound
+[2019-04-08T10:50:32.672][ReplicaA] => Numerical Error 31
+[2019-04-08T10:50:32.672][ReplicaA] => Order Error 1
+[2019-04-08T10:50:32.672][ReplicaA] => Staleness Error 317
+[2019-04-08T10:50:37.347][ReplicaA] Write key = x, value = 1
+[2019-04-08T10:50:37.347][ReplicaA] Anti entropy session check
+[2019-04-08T10:50:37.347][ReplicaA] => Updating errors
+[2019-04-08T10:50:37.354][ReplicaA] => Check errors out of bound
+[2019-04-08T10:50:37.355][ReplicaA] => Numerical Error 31
+[2019-04-08T10:50:37.355][ReplicaA] => Order Error 1
+[2019-04-08T10:50:37.355][ReplicaA] => Staleness Error 317
+[2019-04-08T10:50:41.737][ReplicaA] Write key = z, value = 1
+[2019-04-08T10:50:41.737][ReplicaA] Anti entropy session check
+[2019-04-08T10:50:41.737][ReplicaA] => Updating errors
+[2019-04-08T10:50:41.742][ReplicaA] => Check errors out of bound
+[2019-04-08T10:50:41.742][ReplicaA] => Numerical Error 39
+[2019-04-08T10:50:41.742][ReplicaA] => Order Error 6
+[2019-04-08T10:50:41.742][ReplicaA] => Staleness Error 88
+[2019-04-08T10:50:55.413][ReplicaA] Write key = z, value = 1
+[2019-04-08T10:50:55.414][ReplicaA] Anti entropy session check
+[2019-04-08T10:50:55.414][ReplicaA] => Updating errors
+[2019-04-08T10:50:55.418][ReplicaA] => Check errors out of bound
+[2019-04-08T10:50:55.418][ReplicaA] => Numerical Error 39
+[2019-04-08T10:50:55.419][ReplicaA] => Order Error 6
+[2019-04-08T10:50:55.419][ReplicaA] => Staleness Error 88
+[2019-04-08T10:50:57.298][ReplicaA] Write key = x, value = 1
+[2019-04-08T10:50:57.298][ReplicaA] Anti entropy session check
+[2019-04-08T10:50:57.298][ReplicaA] => Updating errors
+[2019-04-08T10:50:57.304][ReplicaA] => Check errors out of bound
+[2019-04-08T10:50:57.304][ReplicaA] Start anti-entropy session
+[2019-04-08T10:50:57.315][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:51:16.798][ReplicaA] Read key = x
+[2019-04-08T10:51:16.798][ReplicaA] Anti entropy session check
+[2019-04-08T10:51:16.798][ReplicaA] => Updating errors
+[2019-04-08T10:51:16.804][ReplicaA] => Check errors out of bound
+[2019-04-08T10:51:16.805][ReplicaA] Start anti-entropy session
+[2019-04-08T10:51:16.807][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:51:28.372][ReplicaA] Read key = x
+[2019-04-08T10:51:28.372][ReplicaA] Anti entropy session check
+[2019-04-08T10:51:28.372][ReplicaA] => Updating errors
+[2019-04-08T10:51:28.375][ReplicaA] => Check errors out of bound
+[2019-04-08T10:51:28.375][ReplicaA] Start anti-entropy session
+[2019-04-08T10:51:28.379][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:51:44.302][ReplicaA] Write key = z, value = 1
+[2019-04-08T10:51:44.302][ReplicaA] Anti entropy session check
+[2019-04-08T10:51:44.302][ReplicaA] => Updating errors
+[2019-04-08T10:51:44.306][ReplicaA] => Check errors out of bound
+[2019-04-08T10:51:44.307][ReplicaA] => Numerical Error 39
+[2019-04-08T10:51:44.307][ReplicaA] => Order Error 6
+[2019-04-08T10:51:44.307][ReplicaA] => Staleness Error 88
+[2019-04-08T10:51:46.225][ReplicaA] Write key = y, value = 1
+[2019-04-08T10:51:46.225][ReplicaA] Anti entropy session check
+[2019-04-08T10:51:46.225][ReplicaA] => Updating errors
+[2019-04-08T10:51:46.229][ReplicaA] => Check errors out of bound
+[2019-04-08T10:51:46.229][ReplicaA] => Numerical Error 44
+[2019-04-08T10:51:46.229][ReplicaA] => Order Error 2
+[2019-04-08T10:51:46.229][ReplicaA] => Staleness Error 421
+[2019-04-08T10:51:47.828][ReplicaA] Write key = y, value = 1
+[2019-04-08T10:51:47.828][ReplicaA] Anti entropy session check
+[2019-04-08T10:51:47.828][ReplicaA] => Updating errors
+[2019-04-08T10:51:47.831][ReplicaA] => Check errors out of bound
+[2019-04-08T10:51:47.831][ReplicaA] => Numerical Error 44
+[2019-04-08T10:51:47.831][ReplicaA] => Order Error 2
+[2019-04-08T10:51:47.831][ReplicaA] => Staleness Error 421
+[2019-04-08T10:52:14.272][ReplicaA] Write key = y, value = 1
+[2019-04-08T10:52:14.272][ReplicaA] Anti entropy session check
+[2019-04-08T10:52:14.272][ReplicaA] => Updating errors
+[2019-04-08T10:52:14.277][ReplicaA] => Check errors out of bound
+[2019-04-08T10:52:14.277][ReplicaA] => Numerical Error 44
+[2019-04-08T10:52:14.277][ReplicaA] => Order Error 2
+[2019-04-08T10:52:14.277][ReplicaA] => Staleness Error 421
+[2019-04-08T10:52:26.257][ReplicaA] Write key = z, value = 1
+[2019-04-08T10:52:26.257][ReplicaA] Anti entropy session check
+[2019-04-08T10:52:26.257][ReplicaA] => Updating errors
+[2019-04-08T10:52:26.260][ReplicaA] => Check errors out of bound
+[2019-04-08T10:52:26.260][ReplicaA] => Numerical Error 39
+[2019-04-08T10:52:26.261][ReplicaA] => Order Error 6
+[2019-04-08T10:52:26.261][ReplicaA] => Staleness Error 88
+[2019-04-08T10:52:32.285][ReplicaA] Write key = x, value = 1
+[2019-04-08T10:52:32.285][ReplicaA] Anti entropy session check
+[2019-04-08T10:52:32.285][ReplicaA] => Updating errors
+[2019-04-08T10:52:32.290][ReplicaA] => Check errors out of bound
+[2019-04-08T10:52:32.292][ReplicaA] Start anti-entropy session
+[2019-04-08T10:52:32.295][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:52:37.646][ReplicaA] Write key = z, value = 1
+[2019-04-08T10:52:37.646][ReplicaA] Anti entropy session check
+[2019-04-08T10:52:37.646][ReplicaA] => Updating errors
+[2019-04-08T10:52:37.652][ReplicaA] => Check errors out of bound
+[2019-04-08T10:52:37.652][ReplicaA] Start anti-entropy session
+[2019-04-08T10:52:37.655][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:52:44.627][ReplicaA] Write key = y, value = 1
+[2019-04-08T10:52:44.627][ReplicaA] Anti entropy session check
+[2019-04-08T10:52:44.627][ReplicaA] => Updating errors
+[2019-04-08T10:52:44.631][ReplicaA] => Check errors out of bound
+[2019-04-08T10:52:44.631][ReplicaA] Start anti-entropy session
+[2019-04-08T10:52:44.632][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:52:52.425][ReplicaA] Read key = y
+[2019-04-08T10:52:52.425][ReplicaA] Anti entropy session check
+[2019-04-08T10:52:52.425][ReplicaA] => Updating errors
+[2019-04-08T10:52:52.429][ReplicaA] => Check errors out of bound
+[2019-04-08T10:52:52.429][ReplicaA] Start anti-entropy session
+[2019-04-08T10:52:52.432][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:53:03][ReplicaA] Read key = y
+[2019-04-08T10:53:03][ReplicaA] Anti entropy session check
+[2019-04-08T10:53:03][ReplicaA] => Updating errors
+[2019-04-08T10:53:03.008][ReplicaA] => Check errors out of bound
+[2019-04-08T10:53:03.008][ReplicaA] Start anti-entropy session
+[2019-04-08T10:53:03.010][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:53:15.081][ReplicaA] Read key = x
+[2019-04-08T10:53:15.081][ReplicaA] Anti entropy session check
+[2019-04-08T10:53:15.081][ReplicaA] => Updating errors
+[2019-04-08T10:53:15.085][ReplicaA] => Check errors out of bound
+[2019-04-08T10:53:15.085][ReplicaA] Start anti-entropy session
+[2019-04-08T10:53:15.086][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:53:17.577][ReplicaA] Read key = x
+[2019-04-08T10:53:17.578][ReplicaA] Anti entropy session check
+[2019-04-08T10:53:17.578][ReplicaA] => Updating errors
+[2019-04-08T10:53:17.583][ReplicaA] => Check errors out of bound
+[2019-04-08T10:53:17.583][ReplicaA] Start anti-entropy session
+[2019-04-08T10:53:17.588][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:53:19.098][ReplicaA] Read key = y
+[2019-04-08T10:53:19.098][ReplicaA] Anti entropy session check
+[2019-04-08T10:53:19.098][ReplicaA] => Updating errors
+[2019-04-08T10:53:19.102][ReplicaA] => Check errors out of bound
+[2019-04-08T10:53:19.102][ReplicaA] Start anti-entropy session
+[2019-04-08T10:53:19.106][ReplicaA] => Start anti-entropy session with ReplicaB
+[2019-04-08T10:53:20.633][ReplicaA] Read key = z
+[2019-04-08T10:53:20.634][ReplicaA] Anti entropy session check
+[2019-04-08T10:53:20.634][ReplicaA] => Updating errors
+[2019-04-08T10:53:20.639][ReplicaA] => Check errors out of bound
+[2019-04-08T10:53:20.639][ReplicaA] Start anti-entropy session
+[2019-04-08T10:53:20.642][ReplicaA] => Start anti-entropy session with ReplicaB
+/home/sven/.sdkman/candidates/scala/current/bin/scala: line 21:  1266 Killed                  "$@"
