@@ -5,6 +5,10 @@ class TimeVector {
   var items: Map[Char, Long] = Map[Char, Long]()
 
   def getByKey(key: Char): Long = {
+    if (items.contains(key)) {
+      items += key -> 0
+    }
+
     items(key)
   }
 
