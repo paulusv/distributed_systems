@@ -53,7 +53,10 @@ class ConsistencyManager(replica: TactImpl) {
     orderError = 0
     stalenessError = 0
 
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Updating errors")
     updateErrors(key, System.currentTimeMillis())
+
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Check errors out of bound")
     errorsOutOfBound(key)
   }
 
