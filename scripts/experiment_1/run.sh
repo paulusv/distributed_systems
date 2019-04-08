@@ -84,6 +84,7 @@ do
     RND_LETTERS=$((RANDOM % 3))
     LETTER=${LETTERS[$RND_LETTERS]}
 
+    echo "($i / 100)"
     echo "=> Action: ${READORWRITE} ${LETTER} at ${REPLICA}"
 
     ssh sven@instance-01 "

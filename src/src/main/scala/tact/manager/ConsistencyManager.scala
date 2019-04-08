@@ -20,8 +20,11 @@ class ConsistencyManager(replica: TactImpl) {
     * @return Long
     */
   def getTimeVector(replicaId: Char, key: Char): Long = {
-    val timeVector = timeVectors(replicaId)
+    if (!timeVectors.contains(replicaId)) {
+      timeVectors += key -> new TimeVector()
+    }
 
+    val timeVector = timeVectors(replicaId)
     timeVector.getByKey(key)
   }
 
