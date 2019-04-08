@@ -22,7 +22,7 @@ class OneRound(replica: TactImpl) extends Serializable with RoundProtocol {
       if (server.contains("Replica") && !server.endsWith(replica.replicaId.toString)) {
         println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Start anti-entropy session with " + server)
 
-        val rep = Naming.lookup("rmi://localhost/" + server) match {
+        val rep = Naming.lookup("rmi://" + replica.ecgHistory + "/" + server) match {
           case s: Tact => s
           case other =>
             println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] Error cannot find " + server)
