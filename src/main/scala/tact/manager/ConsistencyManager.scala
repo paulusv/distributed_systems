@@ -69,6 +69,10 @@ class ConsistencyManager(replica: TactImpl) {
   def errorsOutOfBound(key: Char): Boolean = {
     val conit = replica.getOrCreateConit(key)
 
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] \t => Numerical Error " + numericalError)
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] \t => Order Error " + orderError)
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] \t => Staleness Error " + stalenessError)
+
     if (conit.numericBound < numericalError) {
       return true
     }
@@ -78,10 +82,6 @@ class ConsistencyManager(replica: TactImpl) {
     if (conit.stalenessBound < stalenessError) {
       return true
     }
-
-    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Numerical Error " + conit.numericBound)
-    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Order Error " + conit.orderBound)
-    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Staleness Error " + conit.stalenessBound)
 
     false
   }

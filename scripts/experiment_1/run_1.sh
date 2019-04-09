@@ -127,6 +127,12 @@ do
     done
     echo ""
 
+    #########################################################################
+    #                                                                       # 
+    # Fetching results                                                      #
+    #                                                                       #
+    #########################################################################
+
     echo "Fetch Master results:"
     ssh sven@instance-01 "
         source /home/sven/.sdkman/bin/sdkman-init.sh;
@@ -134,13 +140,6 @@ do
         scala main.scala.client.History ${RMI_IP}
     "
     echo ""
-
-
-    #########################################################################
-    #                                                                       # 
-    # Fetching results                                                      #
-    #                                                                       #
-    #########################################################################
 
     echo "Results:"
     echo "=> Replica A"
