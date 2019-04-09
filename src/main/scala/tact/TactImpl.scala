@@ -46,12 +46,18 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
   var antiEntropy = new OneRound(this)
 
   /**
+    * If replica is busy with something.
+    */
+  var busy = false
+
+  /**
     * Write item to replica. Writes to the conit, the writeLog and the ecgHistory
     *
     * @param key   The key which should be written
     * @param value The value which should be written
     */
   override def write(key: Char, value: Int): Unit = {
+    busy = true
     println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Write key = " + key + ", value = " + value)
     val conit = getOrCreateConit(key)
 
@@ -63,6 +69,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
       antiEntropy.start(key)
     }
     println()
+    busy = false
   }
 
   /**
@@ -72,9 +79,11 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
     * @return The value in the conit
     */
   override def read(key: Char): Int = {
+    busy = true
     println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Read key = " + key)
 
     val conit = getOrCreateConit(key)
+    busy = false
     conit.value
   }
 
@@ -140,6 +149,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
     * @return Boolean
     */
   override def acceptWriteLog(key: Char, writeLog: WriteLog): Boolean = {
+    busy = true
     println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Accept WriteLog")
     for (item <- writeLog.writeLogItems) {
       breakable {
@@ -164,9 +174,21 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
       }
     }
     println()
+    busy = false
 
     true
   }
 
   override def currentTimeVector(replicaId: Char, key: Char): Long = manager.getTimeVector(replicaId, key)
+
+  /**
+    * Start an voluntary anti entropy sessions for each conit in the replica.
+    */
+  override def startVoluntaryAntiEntropy(): Unit = {
+    for ((key, _) <- conits) {
+      antiEntropy.start(key)
+    }
+  }
+
+  override def isBusy: Boolean = busy
 }

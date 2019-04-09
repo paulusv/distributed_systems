@@ -22,4 +22,9 @@ trait Tact extends Remote {
   @throws(classOf[RemoteException])
   def currentTimeVector(replicaId: Char, key: Char): Long
 
+  @throws(classOf[RemoteException])
+  def startVoluntaryAntiEntropy(): Unit
+
+  @throws(classOf[RemoteException])
+  def isBusy: Boolean
 }
