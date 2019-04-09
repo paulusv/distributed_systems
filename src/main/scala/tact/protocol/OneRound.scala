@@ -15,7 +15,7 @@ class OneRound(replica: TactImpl) extends Serializable with RoundProtocol {
     * Start the round protocol.
     */
   override def start(key: Char): Unit = {
-    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] Start anti-entropy session")
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] Anti-entropy session for key = " + key)
     val writeLog = replica.writeLog.getWriteLogForKey(key)
 
     for (server <- LocateRegistry.getRegistry(replica.rmiServer).list()) {
