@@ -71,7 +71,7 @@ class ConsistencyManager(replica: TactImpl) {
 
     println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] \t => Numerical Error " + numericalError)
     println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] \t => Order Error " + orderError)
-    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] \t => Staleness Error " + stalenessError)
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] \t => Staleness Error " + (System.currentTimeMillis() - stalenessError))
 
     if (conit.numericBound < numericalError) {
       return true
@@ -79,7 +79,7 @@ class ConsistencyManager(replica: TactImpl) {
     if (conit.orderBound < orderError) {
       return true
     }
-    if (conit.stalenessBound < stalenessError) {
+    if ((System.currentTimeMillis() - conit.stalenessBound) < stalenessError) {
       return true
     }
 
