@@ -13,7 +13,7 @@ class WriteLog extends Serializable {
     * @param writeLogItem a write paul.log item
     */
   def addItem(writeLogItem: WriteLogItem): Unit = {
-    writeLogItems = writeLogItem :: writeLogItems
+    writeLogItems = writeLogItems ::: List(writeLogItem)
   }
 
   /**

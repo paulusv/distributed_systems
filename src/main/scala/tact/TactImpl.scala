@@ -156,7 +156,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
           break
         }
 
-        println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Update wuth key " + key + ", value = " + item.operation.value)
+        println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Update with key " + key + ", value = " + item.operation.value)
         manager.setTimeVector(item.replicaId, key, item.timeVector)
 
         conit.update(item.operation.value)
