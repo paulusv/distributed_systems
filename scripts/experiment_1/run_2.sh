@@ -116,7 +116,7 @@ echo ""
 sleep 5
 
 echo "Random reads and writes"
-for r in {1..3}
+for r in {1..1}
 do
     #########################################################################
     #                                                                       # 
@@ -124,7 +124,7 @@ do
     #                                                                       #
     #########################################################################
 
-    for i in {1..30}
+    for i in {1..20}
     do
         RND_REPLICA=$((RANDOM % 9))
         REPLICA=${REPLICAS[$RND_REPLICA]}
@@ -135,29 +135,29 @@ do
         LETTER=${LETTERS[$RND_LETTERS]}
         
         
-        if  [ "$REPLICA" == "ReplicaA" || "$REPLICA" == "ReplicaB" || "$REPLICA" == "ReplicaC" ]; then
+        if  [ "$REPLICA" == "ReplicaA" ] || [ "$REPLICA" == "ReplicaB" ] || [ "$REPLICA" == "ReplicaC" ]; then
             ssh sven@instance-01 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                echo -ne '($i/30) $REPLICA: ';
+                echo -ne '($i/20) $REPLICA: ';
                 scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
             "
         fi
 
-        if  [ "$REPLICA" == "ReplicaD" || "$REPLICA" == "ReplicaE" || "$REPLICA" == "ReplicaF" ]; then
+        if  [ "$REPLICA" == "ReplicaD" ] || [ "$REPLICA" == "ReplicaE" ] || [ "$REPLICA" == "ReplicaF" ]; then
             ssh sven@instance-02 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                echo -ne '($i/30) $REPLICA: ';
+                echo -ne '($i/20) $REPLICA: ';
                 scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
             "
         fi
 
-        if  [ "$REPLICA" == "ReplicaG" || "$REPLICA" == "ReplicaH" || "$REPLICA" == "ReplicaI" ]; then
+        if  [ "$REPLICA" == "ReplicaG" ] || [ "$REPLICA" == "ReplicaH" ] || [ "$REPLICA" == "ReplicaI" ]; then
             ssh sven@instance-03 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                echo -ne '($i/30) $REPLICA: ';
+                echo -ne '($i/20) $REPLICA: ';
                 scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
             "
         fi
@@ -182,44 +182,74 @@ do
     #########################################################################
 
     echo "Results:"
-    echo "=> Replica A, B and C"
+    echo "=> Replica A"
     ssh sven@instance-01 "
         source /home/sven/.sdkman/bin/sdkman-init.sh;
         cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaA read x;
         scala main.scala.client.Client ${HOST_IP} ReplicaA read y;
         scala main.scala.client.Client ${HOST_IP} ReplicaA read z;
+    "
+    echo "=> Replica B"
+    ssh sven@instance-01 "    
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaB read x;
         scala main.scala.client.Client ${HOST_IP} ReplicaB read y;
         scala main.scala.client.Client ${HOST_IP} ReplicaB read z;
+    "
+    echo "=> Replica C"
+    ssh sven@instance-01 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaC read x;
         scala main.scala.client.Client ${HOST_IP} ReplicaC read y;
         scala main.scala.client.Client ${HOST_IP} ReplicaC read z;
     "
-    echo "=> Replica D, E and F"
-    ssh sven@instance-02 "
+    echo "=> Replica D"
+    ssh sven@instance-01 "
         source /home/sven/.sdkman/bin/sdkman-init.sh;
         cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaD read x;
         scala main.scala.client.Client ${HOST_IP} ReplicaD read y;
         scala main.scala.client.Client ${HOST_IP} ReplicaD read z;
+    "
+    echo "=> Replica E"
+    ssh sven@instance-01 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaE read x;
         scala main.scala.client.Client ${HOST_IP} ReplicaE read y;
         scala main.scala.client.Client ${HOST_IP} ReplicaE read z;
+    "
+    echo "=> Replica F"
+    ssh sven@instance-01 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaF read x;
         scala main.scala.client.Client ${HOST_IP} ReplicaF read y;
         scala main.scala.client.Client ${HOST_IP} ReplicaF read z;
     "
-    echo "=> Replica G, H and I"
-    ssh sven@instance-03 "
+    echo "=> Replica G"
+    ssh sven@instance-01 "
         source /home/sven/.sdkman/bin/sdkman-init.sh;
         cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaG read x;
         scala main.scala.client.Client ${HOST_IP} ReplicaG read y;
         scala main.scala.client.Client ${HOST_IP} ReplicaG read z;
+    "
+    echo "=> Replica H"
+    ssh sven@instance-01 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaH read x;
         scala main.scala.client.Client ${HOST_IP} ReplicaH read y;
         scala main.scala.client.Client ${HOST_IP} ReplicaH read z;
+    "
+    echo "=> Replica I"
+    ssh sven@instance-01 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaI read x;
         scala main.scala.client.Client ${HOST_IP} ReplicaI read y;
         scala main.scala.client.Client ${HOST_IP} ReplicaI read z;

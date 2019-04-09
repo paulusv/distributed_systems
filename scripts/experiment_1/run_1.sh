@@ -1,7 +1,7 @@
 #!/bin/sh
 HOST_IP="35.246.243.109"
 RMI_IP="10.156.0.2"
-LOG_DIR="logs/experiment_1/instances_1"
+LOG_DIR="logs/experiment_1/instances_2"
 HOME_DIR="distributed_systems/out/production/rmi-tact"
 
 REPLICAS=(ReplicaA ReplicaB ReplicaC)
@@ -151,7 +151,7 @@ do
         scala main.scala.client.Client ${HOST_IP} ReplicaA read z;
     "
     echo "=> Replica B"
-    ssh sven@instance-02 "
+    ssh sven@instance-01 "
         source /home/sven/.sdkman/bin/sdkman-init.sh;
         cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaB read x;
@@ -159,7 +159,7 @@ do
         scala main.scala.client.Client ${HOST_IP} ReplicaB read z;
     "
     echo "=> Replica C"
-    ssh sven@instance-03 "
+    ssh sven@instance-01 "
         source /home/sven/.sdkman/bin/sdkman-init.sh;
         cd ${HOME_DIR};
         scala main.scala.client.Client ${HOST_IP} ReplicaC read x;
