@@ -53,9 +53,9 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
     */
   override def write(key: Char, value: Int): Unit = {
     println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Write key = " + key + ", value = " + value)
-//    if (manager.inNeedOfAntiEntropy(key)) {
+    if (manager.inNeedOfAntiEntropy(key)) {
       antiEntropy.start(key)
-//    }
+    }
 
     val conit = getOrCreateConit(key)
 
@@ -113,10 +113,10 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
       conit = new Conit(key, database.readValue(key), 0, 0, 0)
     }
     if (key == 'y') {
-      conit = new Conit(key, database.readValue(key), 0, 0, 0)
+      conit = new Conit(key, database.readValue(key), 5, 5, 5)
     }
     if (key == 'z') {
-      conit = new Conit(key, database.readValue(key), 0, 0, 0)
+      conit = new Conit(key, database.readValue(key), 10, 10, 10)
     }
 
     conits += (key -> conit)
@@ -164,5 +164,5 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
     true
   }
 
-  override def currentTimeVector(replicaId: Char, key:Char): Long = manager.getTimeVector(replicaId, key)
+  override def currentTimeVector(replicaId: Char, key: Char): Long = manager.getTimeVector(replicaId, key)
 }

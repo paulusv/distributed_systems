@@ -80,7 +80,7 @@ echo ""
 sleep 5
 
 echo "Random reads and writes"
-for r in {1..1}
+for r in {1..3}
 do
     #########################################################################
     #                                                                       # 
@@ -143,6 +143,29 @@ do
     #########################################################################
 
     echo "Results:"
+    
+    ssh sven@instance-01 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
+        scala main.scala.client.Client ${HOST_IP} ReplicaA read x >/dev/null 2>&1
+        scala main.scala.client.Client ${HOST_IP} ReplicaA read y >/dev/null 2>&1;
+        scala main.scala.client.Client ${HOST_IP} ReplicaA read z >/dev/null 2>&1;
+    "
+    ssh sven@instance-02 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
+        scala main.scala.client.Client ${HOST_IP} ReplicaB read x >/dev/null 2>&1;
+        scala main.scala.client.Client ${HOST_IP} ReplicaB read y >/dev/null 2>&1;
+        scala main.scala.client.Client ${HOST_IP} ReplicaB read z >/dev/null 2>&1;
+    "
+    ssh sven@instance-03 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
+        scala main.scala.client.Client ${HOST_IP} ReplicaC read x >/dev/null 2>&1;
+        scala main.scala.client.Client ${HOST_IP} ReplicaC read y >/dev/null 2>&1;
+        scala main.scala.client.Client ${HOST_IP} ReplicaC read z >/dev/null 2>&1;
+    "
+
     echo "=> Replica A"
     ssh sven@instance-01 "
         source /home/sven/.sdkman/bin/sdkman-init.sh;
