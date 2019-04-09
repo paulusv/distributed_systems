@@ -80,7 +80,7 @@ echo ""
 sleep 5
 
 echo "Random reads and writes"
-for r in {1..3}
+for r in {1..1}
 do
     #########################################################################
     #                                                                       # 
@@ -92,7 +92,7 @@ do
     do
         RND_REPLICA=$((RANDOM % 3))
         REPLICA=${REPLICAS[$RND_REPLICA]}
-        
+
         RND_LETTERS=$((RANDOM % 3))
         LETTER=${LETTERS[$RND_LETTERS]}
         
@@ -191,7 +191,10 @@ ssh sven@instance-03 "lsof -tc java | xargs --no-run-if-empty kill -9"
 
 sleep 10;
 echo "Fetching logs..."
+echo "=> Remove old logs"
+rm -rf $LOG_DIR
 mkdir -p $LOG_DIR
+echo "=> Obtain new logs"
 ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/master.log" > $LOG_DIR/master.log
 ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/replicaA.log" > $LOG_DIR/replicaA.log
 ssh sven@instance-02 "cat ${HOME_DIR}/${LOG_DIR}/replicaB.log" > $LOG_DIR/replicaB.log

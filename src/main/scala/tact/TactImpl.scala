@@ -155,7 +155,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
 //          break
 //        }
 
-        manager.setTimeVector(item.replicaId, key, item.timeVector)
+//        manager.setTimeVector(item.replicaId, key, item.timeVector)
 
         conit.update(item.operation.value)
       }
