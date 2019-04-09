@@ -1,7 +1,7 @@
 #!/bin/sh
 HOST_IP="35.246.243.109"
 RMI_IP="10.156.0.2"
-LOG_DIR="logs/experiment_1/instances_2"
+LOG_DIR="logs/experiment_1/instances_1"
 HOME_DIR="distributed_systems/out/production/rmi-tact"
 
 REPLICAS=(ReplicaA ReplicaB ReplicaC)
@@ -80,7 +80,7 @@ echo ""
 sleep 5
 
 echo "Random reads and writes"
-for r in {1..5}
+for r in {1..1}
 do
     #########################################################################
     #                                                                       # 
@@ -88,7 +88,7 @@ do
     #                                                                       #
     #########################################################################
 
-    for i in {1..20}
+    for i in {1..75}
     do
         RND_REPLICA=$((RANDOM % 3))
         REPLICA=${REPLICAS[$RND_REPLICA]}
@@ -100,7 +100,7 @@ do
             ssh sven@instance-01 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                echo -ne '($i/20) $REPLICA: ';
+                echo -ne '($i/75) $REPLICA: ';
                 scala main.scala.client.Client ${RMI_IP} ${REPLICA} write ${LETTER} 1
             "
         fi
@@ -109,7 +109,7 @@ do
             ssh sven@instance-02 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                echo -ne '($i/20) $REPLICA: ';
+                echo -ne '($i/75) $REPLICA: ';
                 scala main.scala.client.Client ${RMI_IP} ${REPLICA} write ${LETTER} 1
             "
         fi
@@ -118,7 +118,7 @@ do
             ssh sven@instance-03 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                echo -ne '($i/20) $REPLICA: ';
+                echo -ne '($i/75) $REPLICA: ';
                 scala main.scala.client.Client ${RMI_IP} ${REPLICA} write ${LETTER} 1
             "
         fi
@@ -191,8 +191,8 @@ ssh sven@instance-03 "lsof -tc java | xargs --no-run-if-empty kill -9"
 sleep 10;
 echo "Fetching logs..."
 echo "=> Remove old logs"
-rm -rf $LOG_DIR
 mkdir -p $LOG_DIR
+
 echo "=> Obtain new logs"
 ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/master.log" > $LOG_DIR/master.log
 ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/replicaA.log" > $LOG_DIR/replicaA.log

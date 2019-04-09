@@ -144,19 +144,20 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
     for (item <- writeLog.writeLogItems) {
       breakable {
         val conit = getOrCreateConit(item.operation.key)
+        print(item)
 
         // Skip writes that were written to this replica.
         if (item.replicaId.equals(replicaId)) {
-          println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Skip own write")
+          println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] -- Skip own write")
           break
         }
 
         if (manager.getTimeVector(item.replicaId, key) > item.timeVector) {
-          println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Skip time vector")
+          println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] -- Skip time vector")
           break
         }
 
-        println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Update with key " + key + ", value = " + item.operation.value)
+        println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] -- Update with key " + key + ", value = " + item.operation.value)
         manager.setTimeVector(item.replicaId, key, item.timeVector)
 
         conit.update(item.operation.value)

@@ -1,7 +1,7 @@
 #!/bin/sh
 HOST_IP="35.246.243.109"
 RMI_IP="10.156.0.2"
-LOG_DIR="logs/experiment_1/instances_1"
+LOG_DIR="logs/experiment_1/instances_2"
 HOME_DIR="distributed_systems/out/production/rmi-tact"
 
 REPLICAS=(ReplicaA ReplicaB ReplicaC ReplicaD ReplicaE ReplicaF ReplicaG ReplicaH ReplicaI)
@@ -116,7 +116,7 @@ echo ""
 sleep 5
 
 echo "Random reads and writes"
-for r in {1..1}
+for r in {1..5}
 do
     #########################################################################
     #                                                                       # 
@@ -124,7 +124,7 @@ do
     #                                                                       #
     #########################################################################
 
-    for i in {1..20}
+    for i in {1..75}
     do
         RND_REPLICA=$((RANDOM % 9))
         REPLICA=${REPLICAS[$RND_REPLICA]}
@@ -278,17 +278,17 @@ ssh sven@instance-03 "lsof -tc java | xargs --no-run-if-empty kill -9"
 
 sleep 10;
 echo "Fetching logs..."
+echo "=> Remove old logs"
 mkdir -p $LOG_DIR
-ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/master.log" > $LOG_DIR/master.log
 
+echo "=> Obtain new logs"
+ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/master.log" > $LOG_DIR/master.log
 ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/replicaA.log" > $LOG_DIR/replicaA.log
 ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/replicaB.log" > $LOG_DIR/replicaB.log
 ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/replicaC.log" > $LOG_DIR/replicaC.log
-
 ssh sven@instance-02 "cat ${HOME_DIR}/${LOG_DIR}/replicaD.log" > $LOG_DIR/replicaD.log
 ssh sven@instance-02 "cat ${HOME_DIR}/${LOG_DIR}/replicaE.log" > $LOG_DIR/replicaE.log
 ssh sven@instance-02 "cat ${HOME_DIR}/${LOG_DIR}/replicaF.log" > $LOG_DIR/replicaF.log
-
 ssh sven@instance-03 "cat ${HOME_DIR}/${LOG_DIR}/replicaG.log" > $LOG_DIR/replicaG.log
 ssh sven@instance-03 "cat ${HOME_DIR}/${LOG_DIR}/replicaH.log" > $LOG_DIR/replicaH.log
 ssh sven@instance-03 "cat ${HOME_DIR}/${LOG_DIR}/replicaI.log" > $LOG_DIR/replicaI.log

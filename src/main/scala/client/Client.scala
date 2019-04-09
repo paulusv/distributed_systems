@@ -23,7 +23,6 @@ object Client {
     }
 
     if (readOrWrite == "read") {
-
       val value = server.read(key)
       val latency = System.currentTimeMillis() - start
 
