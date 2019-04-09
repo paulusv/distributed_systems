@@ -1,14 +1,18 @@
 #!/bin/sh
 HOST_IP="35.246.243.109"
 RMI_IP="10.156.0.2"
-LOG_DIR="logs/experiment_1/instances_2"
+LOG_DIR="logs/experiment_1/instances_1"
 HOME_DIR="distributed_systems/out/production/rmi-tact"
 
 REPLICAS=(ReplicaA ReplicaB ReplicaC ReplicaD ReplicaE ReplicaF ReplicaG ReplicaH ReplicaI)
-READWRITE=(read write)
 LETTERS=(x y z)
 
-# Start replica on instance-01
+#########################################################################
+#                                                                       # 
+# Initalize experiment                                                  #
+#                                                                       #
+#########################################################################
+
 echo "Initialize experiment"
 
 echo "=> Setup instance-01"
@@ -36,7 +40,12 @@ ssh sven@instance-03 "
 "
 echo ""
 
-# Stat master and 3 replicas
+#########################################################################
+#                                                                       # 
+# Start master and 3 replicas per instance                              #
+#                                                                       #
+#########################################################################
+
 echo "Start master and replicas"
 echo "=> Start master on instance-01"
 ssh sven@instance-01 "
@@ -106,91 +115,137 @@ echo ""
 # Wait for everything to start
 sleep 5
 
-# Random reads and writes on the replicas
 echo "Random reads and writes"
-cd ~/Development/Other/rmi-tact/out/production/rmi-tact/
-for i in {1..250}
+for r in {1..3}
 do
-    RND_REPLICA=$((RANDOM % 9))
-    REPLICA=${REPLICAS[$RND_REPLICA]}
+    #########################################################################
+    #                                                                       # 
+    # Write simulation                                                      #
+    #                                                                       #
+    #########################################################################
 
-    RND_READWRITE=$((RANDOM % 2))
-    # READORWRITE=${READWRITE[$RND_READWRITE]}
-    READORWRITE="write"
+    for i in {1..30}
+    do
+        RND_REPLICA=$((RANDOM % 9))
+        REPLICA=${REPLICAS[$RND_REPLICA]}
+        
+        READORWRITE="write"
 
-    RND_LETTERS=$((RANDOM % 3))
-    LETTER=${LETTERS[$RND_LETTERS]}
+        RND_LETTERS=$((RANDOM % 3))
+        LETTER=${LETTERS[$RND_LETTERS]}
+        
+        
+        if  [ "$REPLICA" == "ReplicaA" || "$REPLICA" == "ReplicaB" || "$REPLICA" == "ReplicaC" ]; then
+            ssh sven@instance-01 "
+                source /home/sven/.sdkman/bin/sdkman-init.sh;
+                cd ${HOME_DIR};
+                echo -ne '($i/30) $REPLICA: ';
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
+            "
+        fi
 
-    echo "($i/250)"
-    echo "=> Action: ${READORWRITE} ${LETTER} at ${REPLICA}"
+        if  [ "$REPLICA" == "ReplicaD" || "$REPLICA" == "ReplicaE" || "$REPLICA" == "ReplicaF" ]; then
+            ssh sven@instance-02 "
+                source /home/sven/.sdkman/bin/sdkman-init.sh;
+                cd ${HOME_DIR};
+                echo -ne '($i/30) $REPLICA: ';
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
+            "
+        fi
 
+        if  [ "$REPLICA" == "ReplicaG" || "$REPLICA" == "ReplicaH" || "$REPLICA" == "ReplicaI" ]; then
+            ssh sven@instance-03 "
+                source /home/sven/.sdkman/bin/sdkman-init.sh;
+                cd ${HOME_DIR};
+                echo -ne '($i/30) $REPLICA: ';
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
+            "
+        fi
+
+        sleep $(bc -l <<< "scale=4 ; ${RANDOM}/32767")
+    done
+    echo ""
+
+    echo "Fetch Master results:"
     ssh sven@instance-01 "
         source /home/sven/.sdkman/bin/sdkman-init.sh;
         cd ${HOME_DIR};
-        scala main.scala.client.Client ${HOST_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
+        scala main.scala.client.History ${RMI_IP}
     "
+    echo ""
 
-    SLEEP=$(bc -l <<< "scale=4 ; ${RANDOM}/32767")
-    echo "=> Sleep for ${SLEEP} seconds"
-    sleep ${SLEEP}s
+
+    #########################################################################
+    #                                                                       # 
+    # Fetching results                                                      #
+    #                                                                       #
+    #########################################################################
+
+    echo "Results:"
+    echo "=> Replica A, B and C"
+    ssh sven@instance-01 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
+        scala main.scala.client.Client ${HOST_IP} ReplicaA read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaA read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaA read z;
+        scala main.scala.client.Client ${HOST_IP} ReplicaB read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaB read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaB read z;
+        scala main.scala.client.Client ${HOST_IP} ReplicaC read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaC read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaC read z;
+    "
+    echo "=> Replica D, E and F"
+    ssh sven@instance-02 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
+        scala main.scala.client.Client ${HOST_IP} ReplicaD read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaD read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaD read z;
+        scala main.scala.client.Client ${HOST_IP} ReplicaE read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaE read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaE read z;
+        scala main.scala.client.Client ${HOST_IP} ReplicaF read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaF read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaF read z;
+    "
+    echo "=> Replica G, H and I"
+    ssh sven@instance-03 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
+        scala main.scala.client.Client ${HOST_IP} ReplicaG read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaG read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaG read z;
+        scala main.scala.client.Client ${HOST_IP} ReplicaH read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaH read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaH read z;
+        scala main.scala.client.Client ${HOST_IP} ReplicaI read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaI read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaI read z;
+    "
     echo ""
 done
-echo ""
 
-# Fetch the results
-echo "Results:"
-echo "=> Replica A, B and C"
-ssh sven@instance-01 "
-    source /home/sven/.sdkman/bin/sdkman-init.sh;
-    cd ${HOME_DIR};
-    scala main.scala.client.Client ${HOST_IP} ReplicaA read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaA read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaA read z;
-    scala main.scala.client.Client ${HOST_IP} ReplicaB read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaB read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaB read z;
-    scala main.scala.client.Client ${HOST_IP} ReplicaC read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaC read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaC read z;
-"
-echo "=> Replica D, E and F"
-ssh sven@instance-02 "
-    source /home/sven/.sdkman/bin/sdkman-init.sh;
-    cd ${HOME_DIR};
-    scala main.scala.client.Client ${HOST_IP} ReplicaD read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaD read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaD read z;
-    scala main.scala.client.Client ${HOST_IP} ReplicaE read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaE read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaE read z;
-    scala main.scala.client.Client ${HOST_IP} ReplicaF read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaF read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaF read z;
-"
-echo "=> Replica G, H and I"
-ssh sven@instance-03 "
-    source /home/sven/.sdkman/bin/sdkman-init.sh;
-    cd ${HOME_DIR};
-    scala main.scala.client.Client ${HOST_IP} ReplicaG read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaG read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaG read z;
-    scala main.scala.client.Client ${HOST_IP} ReplicaH read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaH read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaH read z;
-    scala main.scala.client.Client ${HOST_IP} ReplicaI read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaI read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaI read z;
-"
-echo ""
 
-# Stop everything
+#########################################################################
+#                                                                       #
+# Kill the master and replicas                                          #
+#                                                                       #
+#########################################################################
+
 echo "Stop the master and all the replicas..."
 ssh sven@instance-01 "lsof -tc java | xargs --no-run-if-empty kill -9"
 ssh sven@instance-02 "lsof -tc java | xargs --no-run-if-empty kill -9"
 ssh sven@instance-03 "lsof -tc java | xargs --no-run-if-empty kill -9"
-echo ""
 
-# Wait for everything to start
+
+#########################################################################
+#                                                                       #
+# Fetch generated logs                                                  #
+#                                                                       #
+#########################################################################
+
 sleep 10;
 echo "Fetching logs..."
 mkdir -p $LOG_DIR
@@ -207,5 +262,6 @@ ssh sven@instance-02 "cat ${HOME_DIR}/${LOG_DIR}/replicaF.log" > $LOG_DIR/replic
 ssh sven@instance-03 "cat ${HOME_DIR}/${LOG_DIR}/replicaG.log" > $LOG_DIR/replicaG.log
 ssh sven@instance-03 "cat ${HOME_DIR}/${LOG_DIR}/replicaH.log" > $LOG_DIR/replicaH.log
 ssh sven@instance-03 "cat ${HOME_DIR}/${LOG_DIR}/replicaI.log" > $LOG_DIR/replicaI.log
+echo "";
 
 echo "Done!"

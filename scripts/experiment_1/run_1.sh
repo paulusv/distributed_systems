@@ -5,7 +5,6 @@ LOG_DIR="logs/experiment_1/instances_1"
 HOME_DIR="distributed_systems/out/production/rmi-tact"
 
 REPLICAS=(ReplicaA ReplicaB ReplicaC)
-READWRITE=(read write)
 LETTERS=(x y z)
 
 #########################################################################
@@ -89,13 +88,11 @@ do
     #                                                                       #
     #########################################################################
 
-    for i in {1..5}
+    for i in {1..30}
     do
         RND_REPLICA=$((RANDOM % 3))
         REPLICA=${REPLICAS[$RND_REPLICA]}
         
-        READORWRITE="write"
-
         RND_LETTERS=$((RANDOM % 3))
         LETTER=${LETTERS[$RND_LETTERS]}
         
@@ -104,7 +101,7 @@ do
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
                 echo -ne '($i/30) $REPLICA: ';
-                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} write ${LETTER} 1
             "
         fi
 
@@ -113,7 +110,7 @@ do
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
                 echo -ne '($i/30) $REPLICA: ';
-                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} write ${LETTER} 1
             "
         fi
 
@@ -122,7 +119,7 @@ do
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
                 echo -ne '($i/30) $REPLICA: ';
-                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} write ${LETTER} 1
             "
         fi
 
@@ -184,7 +181,6 @@ echo "Stop the master and all the replicas..."
 ssh sven@instance-01 "lsof -tc java | xargs --no-run-if-empty kill -9"
 ssh sven@instance-02 "lsof -tc java | xargs --no-run-if-empty kill -9"
 ssh sven@instance-03 "lsof -tc java | xargs --no-run-if-empty kill -9"
-echo ""
 
 
 #########################################################################
@@ -200,5 +196,6 @@ ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/master.log" > $LOG_DIR/master.l
 ssh sven@instance-01 "cat ${HOME_DIR}/${LOG_DIR}/replicaA.log" > $LOG_DIR/replicaA.log
 ssh sven@instance-02 "cat ${HOME_DIR}/${LOG_DIR}/replicaB.log" > $LOG_DIR/replicaB.log
 ssh sven@instance-03 "cat ${HOME_DIR}/${LOG_DIR}/replicaC.log" > $LOG_DIR/replicaC.log
+echo "";
 
 echo "Done!"
