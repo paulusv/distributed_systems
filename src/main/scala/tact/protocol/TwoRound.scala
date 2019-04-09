@@ -32,6 +32,6 @@ class TwoRound(replica: TactImpl) extends RoundProtocol {
     }
 
     replica.writeToDB(replica.writeLog)
-    replica.writeLog.flush()
+    replica.writeLog.flush(key)
   }
 }

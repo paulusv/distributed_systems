@@ -32,8 +32,8 @@ class WriteLog extends Serializable {
   /**
     * Flush the current writeLog.
     */
-  def flush(): Unit = {
-    writeLogItems = List[WriteLogItem]()
+  def flush(key: Char): Unit = {
+    writeLogItems = writeLogItems.filter(item => item.operation.key != key)
   }
 
   /**
