@@ -136,7 +136,7 @@ do
         scala main.scala.client.History ${HOST_IP}
     "
     echo ""
-end
+done
 
 
 #########################################################################
