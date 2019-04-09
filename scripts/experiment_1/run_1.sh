@@ -91,7 +91,8 @@ do
     for i in {1..20}
     do
         RND_REPLICA=$((RANDOM % 3))
-        REPLICA=${REPLICAS[$RND_REPLICA]}
+        # REPLICA=${REPLICAS[$RND_REPLICA]}
+        REPLICA="ReplicaA"
 
         RND_LETTERS=$((RANDOM % 3))
         LETTER=${LETTERS[$RND_LETTERS]}
