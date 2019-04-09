@@ -72,9 +72,6 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
     */
   override def read(key: Char): Int = {
     println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Read key = " + key)
-    if (manager.inNeedOfAntiEntropy(key)) {
-      antiEntropy.start(key)
-    }
 
     val conit = getOrCreateConit(key)
     conit.value
