@@ -151,9 +151,9 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
           break
         }
 
-        if (manager.getTimeVector(item.replicaId, key) > item.timeVector) {
-          break
-        }
+//        if (manager.getTimeVector(item.replicaId, key) > item.timeVector) {
+//          break
+//        }
 
         manager.setTimeVector(item.replicaId, key, item.timeVector)
 
