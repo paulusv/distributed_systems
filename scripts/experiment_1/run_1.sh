@@ -80,7 +80,7 @@ echo ""
 sleep 5
 
 echo "Random reads and writes"
-for r in {1..1}
+for r in {1..5}
 do
     #########################################################################
     #                                                                       # 
@@ -91,8 +91,7 @@ do
     for i in {1..20}
     do
         RND_REPLICA=$((RANDOM % 3))
-        # REPLICA=${REPLICAS[$RND_REPLICA]}
-        REPLICA="ReplicaA"
+        REPLICA=${REPLICAS[$RND_REPLICA]}
 
         RND_LETTERS=$((RANDOM % 3))
         LETTER=${LETTERS[$RND_LETTERS]}
