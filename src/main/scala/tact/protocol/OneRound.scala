@@ -2,6 +2,7 @@ package main.scala.tact.protocol
 
 import java.rmi.Naming
 import java.rmi.registry.LocateRegistry
+import java.time.LocalDateTime
 
 import main.scala.tact.{Tact, TactImpl}
 
@@ -9,24 +10,28 @@ import main.scala.tact.{Tact, TactImpl}
   * One-Round protocol.
   */
 class OneRound(replica: TactImpl) extends Serializable with RoundProtocol {
+
   /**
     * Start the round protocol.
     */
-  override def start(): Unit = {
-    val writeLog = replica.writeLog
+  override def start(key: Char): Unit = {
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] Start anti-entropy session")
+    val writeLog = replica.writeLog.getWriteLogForKey(key)
 
-    for (server <- LocateRegistry.getRegistry().list()) {
+    for (server <- LocateRegistry.getRegistry(replica.rmiServer).list()) {
       if (server.contains("Replica") && !server.endsWith(replica.replicaId.toString)) {
-        println("Start anti-entropy session with " + server)
+        println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Start anti-entropy session with " + server)
 
-        val rep = Naming.lookup("rmi://localhost/" + server) match {
+        val rep = Naming.lookup("//" + replica.rmiServer + "/" + server) match {
           case s: Tact => s
-          case other => throw new RuntimeException("Error: " + other)
+          case other =>
+            println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] Error cannot find " + server)
+            throw new RuntimeException("Error cannot find " + server)
         }
 
-        rep.acceptWriteLog(writeLog)
+        rep.acceptWriteLog(key, writeLog)
 
-        println("Finished anti-entropy session with " + server)
+        println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Finished anti-entropy session with " + server)
       }
     }
 

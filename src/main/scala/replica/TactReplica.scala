@@ -1,8 +1,9 @@
 package main.scala.replica
 
 import java.rmi.Naming
+import java.time.LocalDateTime
 
-import main.scala.log.EcgLog
+import main.scala.log.Master
 import main.scala.tact.TactImpl
 
 /**
@@ -18,14 +19,22 @@ object TactReplica {
     * @param args of type Array[String]
     */
   def main(args: Array[String]): Unit = {
-    val replicaId = args(0).toCharArray()(0)
+    val rmiServer = args(0)
+    val replicaId = args(1).toCharArray()(0)
 
-    val server = Naming.lookup("rmi://localhost/EcgHistory") match {
-      case s: EcgLog => s
-      case other => throw new RuntimeException("Wrong object: " + other)
+    println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Starting Replica" + replicaId)
+
+    println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Looking for ECG history")
+    val server = Naming.lookup("//" + rmiServer + "/EcgHistory") match {
+      case s: Master => s
+      case other => throw new RuntimeException("Wrong objesct: " + other)
     }
+    server.debug("Registered Replica" + replicaId)
 
-    val replica = new TactImpl(replicaId, server)
-    Naming.rebind("Replica" + replicaId, replica)
+    println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Binding TACT Replica to RMI")
+    val replica = new TactImpl(replicaId, server, rmiServer)
+    server.register("//" + rmiServer + "/Replica" + replicaId, replica)
+
+    println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Replica started on " + "rmi://" + rmiServer + "/Replica" + replicaId)
   }
 }

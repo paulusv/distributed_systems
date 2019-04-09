@@ -10,6 +10,10 @@ import java.time.LocalDateTime
   */
 class MasterImpl extends UnicastRemoteObject with Master {
 
+  var trueValX: Int = 0
+  var trueValY: Int = 0
+  var trueValZ: Int = 0
+
   /**
     * The writeLog contains all writes that are made
     */
@@ -22,6 +26,18 @@ class MasterImpl extends UnicastRemoteObject with Master {
     */
   override def write(item: WriteLogItem): Unit = {
     println("[" + LocalDateTime.now() + "][Master] Write ECG writelog: " + item)
+
+    val value = item.operation.value
+    val key = item.operation.key
+
+    if (key == 'x') {
+      trueValX += value
+    } else if (key == 'y') {
+      trueValY += value
+    } else (key == 'z') {
+      trueValZ += value
+    }
+
     writeLog.addItem(item)
   }
 

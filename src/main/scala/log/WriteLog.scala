@@ -43,13 +43,7 @@ class WriteLog extends Serializable {
     * @return The summed weight of all items with the given key
     */
   def getSummedWeightsForKey(key: Char): Int = {
-    var sum: Int = 0
-    for (writeLogItem <- writeLogItems) {
-      if (writeLogItem.operation.key == key) {
-        sum += writeLogItem.operation.value
-      }
-    }
-    sum
+    writeLogItems.filter(item => item.operation.key == key).map(item => item.operation.value).sum
   }
 
   /**
@@ -60,11 +54,8 @@ class WriteLog extends Serializable {
     */
   def getWriteLogForKey(key: Char): WriteLog = {
     val writeLog = new WriteLog
-    for (writeLogItem <- writeLogItems) {
-      if (writeLogItem.replicaId == key) {
-        writeLog.addItem(writeLogItem)
-      }
-    }
+    writeLog.writeLogItems = writeLogItems.filter(item => item.operation.key == key)
+
     writeLog
   }
 }

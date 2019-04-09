@@ -1,5 +1,7 @@
 package main.scala.tact.manager
 
+import java.time.LocalDateTime
+
 import main.scala.log.{WriteLog, WriteLogItem}
 import main.scala.tact.TactImpl
 
@@ -8,7 +10,35 @@ class ConsistencyManager(replica: TactImpl) {
   var numericalError: Int = 0
   var orderError: Int = 0
   var stalenessError: Int = 0
-  var logicalTimeVector: Int = 0
+
+  var timeVectors: Map[Char, TimeVector] = Map[Char, TimeVector]()
+
+  /**
+    * Get the latest timeVector of another replica.
+    *
+    * @param replicaId of type Char
+    * @return Long
+    */
+  def getTimeVector(replicaId: Char, key: Char): Long = {
+    if (!timeVectors.contains(replicaId)) {
+      timeVectors += replicaId -> new TimeVector()
+    }
+
+    val timeVector = timeVectors(replicaId)
+    timeVector.getByKey(key)
+  }
+
+  /**
+    * Set the timeVector of another replica
+    *
+    * @param replicaId  of type Char
+    * @param timeVector of type Long
+    */
+  def setTimeVector(replicaId: Char, key: Char, timeVector: Long): Unit = {
+    val item = timeVectors(replicaId)
+
+    item.setByKey(key, timeVector)
+  }
 
   /**
     * Checks if the given key (conit) is in need of an anti entropy session.
@@ -18,12 +48,15 @@ class ConsistencyManager(replica: TactImpl) {
     * @return True if an anti entropy session is needed, otherwise false
     */
   def inNeedOfAntiEntropy(key: Char): Boolean = {
-    println("Anti entropy session check")
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] Anti entropy session check")
     numericalError = 0
     orderError = 0
     stalenessError = 0
 
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Updating errors")
     updateErrors(key, System.currentTimeMillis())
+
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Check errors out of bound")
     errorsOutOfBound(key)
   }
 
@@ -45,6 +78,10 @@ class ConsistencyManager(replica: TactImpl) {
     if (conit.stalenessBound < stalenessError) {
       return true
     }
+
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Numerical Error " + conit.numericBound)
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Order Error " + conit.orderBound)
+    println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Staleness Error " + conit.stalenessBound)
 
     false
   }
@@ -171,7 +208,7 @@ class ConsistencyManager(replica: TactImpl) {
     * @return The OWeight of the write operation
     */
   def oweight(writeLogItem: WriteLogItem, key: Char): Int = {
-    (writeLogItem.operation.key == key).asInstanceOf[Int]
+    if (writeLogItem.operation.key == key) 1 else 0
   }
 
   /**
