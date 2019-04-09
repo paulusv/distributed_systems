@@ -62,6 +62,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
     conit.update(value)
     writeLog.addItem(WriteLogItem(System.currentTimeMillis(), replicaId, WriteOperation(key, '+', value)))
     ecgHistory.write(WriteLogItem(System.currentTimeMillis(), replicaId, WriteOperation(key, '+', value)))
+    println()
   }
 
   /**
@@ -139,24 +140,29 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
     * @return Boolean
     */
   override def acceptWriteLog(key: Char, writeLog: WriteLog): Boolean = {
+    println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Accept WriteLog")
     for (item <- writeLog.writeLogItems) {
       breakable {
         val conit = getOrCreateConit(item.operation.key)
 
         // Skip writes that were written to this replica.
         if (item.replicaId.equals(replicaId)) {
+          println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Skip own write")
           break
         }
 
         if (manager.getTimeVector(item.replicaId, key) > item.timeVector) {
+          println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Skip time vector")
           break
         }
 
+        println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] => Update wuth key " + key + ", value = " + item.operation.value)
         manager.setTimeVector(item.replicaId, key, item.timeVector)
 
         conit.update(item.operation.value)
       }
     }
+    println()
 
     true
   }

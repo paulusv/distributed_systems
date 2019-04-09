@@ -36,5 +36,7 @@ object TactReplica {
     server.register("//" + rmiServer + "/Replica" + replicaId, replica)
 
     println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] Replica started on " + "rmi://" + rmiServer + "/Replica" + replicaId)
+    println("--------------------------------------------------------------------------------------------")
+    println()
   }
 }
