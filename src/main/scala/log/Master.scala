@@ -21,5 +21,5 @@ trait Master extends Remote {
   def register(name: String, obj: Remote): Unit
 
   @throws(classOf[RemoteException])
-  def originalValues(): Unit
+  def originalValues(): List[Int]
 }

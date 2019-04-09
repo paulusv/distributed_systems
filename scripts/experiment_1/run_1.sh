@@ -80,34 +80,31 @@ echo ""
 # Wait for everything to start
 sleep 5
 
-#########################################################################
-#                                                                       # 
-# Write simulation                                                      #
-#                                                                       #
-#########################################################################
-
 echo "Random reads and writes"
 for r in {1..3}
 do
-    for i in {1..30}
+    #########################################################################
+    #                                                                       # 
+    # Write simulation                                                      #
+    #                                                                       #
+    #########################################################################
+
+    for i in {1..5}
     do
         RND_REPLICA=$((RANDOM % 3))
         REPLICA=${REPLICAS[$RND_REPLICA]}
-
-        RND_READWRITE=$((RANDOM % 2))
-        # READORWRITE=${READWRITE[$RND_READWRITE]}
+        
         READORWRITE="write"
 
         RND_LETTERS=$((RANDOM % 3))
         LETTER=${LETTERS[$RND_LETTERS]}
-
-        echo -n "($i/250) $REPLICA: "
-
+        
         if  [ "$REPLICA" == "ReplicaA" ]; then
             ssh sven@instance-01 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                scala main.scala.client.Client ${HOST_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
+                echo -ne '($i/30) $REPLICA: ';
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
             "
         fi
 
@@ -115,7 +112,8 @@ do
             ssh sven@instance-02 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                scala main.scala.client.Client ${HOST_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
+                echo -ne '($i/30) $REPLICA: ';
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
             "
         fi
 
@@ -123,54 +121,57 @@ do
             ssh sven@instance-03 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                scala main.scala.client.Client ${HOST_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
+                echo -ne '($i/30) $REPLICA: ';
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1
             "
         fi
 
         sleep $(bc -l <<< "scale=4 ; ${RANDOM}/32767")
     done
+    echo ""
 
+    echo "Fetch Master results:"
     ssh sven@instance-01 "
         source /home/sven/.sdkman/bin/sdkman-init.sh;
         cd ${HOME_DIR};
-        scala main.scala.client.History ${HOST_IP}
+        scala main.scala.client.History ${RMI_IP}
+    "
+    echo ""
+
+
+    #########################################################################
+    #                                                                       # 
+    # Fetching results                                                      #
+    #                                                                       #
+    #########################################################################
+
+    echo "Results:"
+    echo "=> Replica A"
+    ssh sven@instance-01 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
+        scala main.scala.client.Client ${HOST_IP} ReplicaA read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaA read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaA read z;
+    "
+    echo "=> Replica B"
+    ssh sven@instance-02 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
+        scala main.scala.client.Client ${HOST_IP} ReplicaB read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaB read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaB read z;
+    "
+    echo "=> Replica C"
+    ssh sven@instance-03 "
+        source /home/sven/.sdkman/bin/sdkman-init.sh;
+        cd ${HOME_DIR};
+        scala main.scala.client.Client ${HOST_IP} ReplicaC read x;
+        scala main.scala.client.Client ${HOST_IP} ReplicaC read y;
+        scala main.scala.client.Client ${HOST_IP} ReplicaC read z;
     "
     echo ""
 done
-
-
-#########################################################################
-#                                                                       # 
-# Fetching results                                                      #
-#                                                                       #
-#########################################################################
-
-echo "Results:"
-echo "=> Replica A"
-ssh sven@instance-01 "
-    source /home/sven/.sdkman/bin/sdkman-init.sh;
-    cd ${HOME_DIR};
-    scala main.scala.client.Client ${HOST_IP} ReplicaA read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaA read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaA read z;
-"
-echo "=> Replica B"
-ssh sven@instance-02 "
-    source /home/sven/.sdkman/bin/sdkman-init.sh;
-    cd ${HOME_DIR};
-    scala main.scala.client.Client ${HOST_IP} ReplicaB read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaB read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaB read z;
-"
-echo "=> Replica C"
-ssh sven@instance-03 "
-    source /home/sven/.sdkman/bin/sdkman-init.sh;
-    cd ${HOME_DIR};
-    scala main.scala.client.Client ${HOST_IP} ReplicaC read x;
-    scala main.scala.client.Client ${HOST_IP} ReplicaC read y;
-    scala main.scala.client.Client ${HOST_IP} ReplicaC read z;
-"
-echo ""
 
 
 #########################################################################

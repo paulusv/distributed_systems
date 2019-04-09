@@ -1,6 +1,7 @@
 package main.scala.client
 
 import java.rmi.Naming
+import java.time.LocalDateTime
 
 import main.scala.log.Master
 
@@ -17,6 +18,9 @@ object History {
       case other => throw new RuntimeException("Wrong objesct: " + other)
     }
 
-    server.originalValues()
+    val list = server.originalValues()
+    println("[" + LocalDateTime.now() + "][Master] x = " + list.head)
+    println("[" + LocalDateTime.now() + "][Master] y = " + list(1))
+    println("[" + LocalDateTime.now() + "][Master] z = " + list(2))
   }
 }
