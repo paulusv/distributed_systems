@@ -80,7 +80,7 @@ echo ""
 sleep 5
 
 echo "Random reads and writes"
-for r in {1..1}
+for r in {1..5}
 do
     #########################################################################
     #                                                                       # 
