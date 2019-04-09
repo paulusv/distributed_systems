@@ -34,7 +34,7 @@ class MasterImpl extends UnicastRemoteObject with Master {
       trueValX += value
     } else if (key == 'y') {
       trueValY += value
-    } else (key == 'z') {
+    } else if (key == 'z') {
       trueValZ += value
     }
 
