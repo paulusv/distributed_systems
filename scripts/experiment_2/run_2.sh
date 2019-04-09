@@ -1,10 +1,10 @@
 #!/bin/sh
 HOST_IP="35.246.243.109"
 RMI_IP="10.156.0.2"
-LOG_DIR="logs/experiment_2/instances_1"
+LOG_DIR="logs/experiment_2/instances_2"
 HOME_DIR="distributed_systems/out/production/rmi-tact"
 
-REPLICAS=(ReplicaA ReplicaB ReplicaC ReplicaD ReplicaE ReplicaF)
+REPLICAS=(ReplicaA ReplicaB)
 LETTERS=(x y z)
 
 #########################################################################
@@ -113,7 +113,9 @@ do
 
     for i in {1..75}
     do
-        REPLICA="ReplicaA"        
+        RND_REPLICA=$((RANDOM % 2))
+        REPLICA=${REPLICAS[$RND_REPLICA]}
+        
         READORWRITE="write"
 
         RND_LETTERS=$((RANDOM % 3))

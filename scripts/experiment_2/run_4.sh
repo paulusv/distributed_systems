@@ -1,7 +1,7 @@
 #!/bin/sh
 HOST_IP="35.246.243.109"
 RMI_IP="10.156.0.2"
-LOG_DIR="logs/experiment_2/instances_1"
+LOG_DIR="logs/experiment_2/instances_4"
 HOME_DIR="distributed_systems/out/production/rmi-tact"
 
 REPLICAS=(ReplicaA ReplicaB ReplicaC ReplicaD ReplicaE ReplicaF)
@@ -113,18 +113,41 @@ do
 
     for i in {1..75}
     do
-        REPLICA="ReplicaA"        
+        RND_REPLICA=$((RANDOM % 6))
+        REPLICA=${REPLICAS[$RND_REPLICA]}        
+
         READORWRITE="write"
 
         RND_LETTERS=$((RANDOM % 3))
         LETTER=${LETTERS[$RND_LETTERS]}
         
-        ssh sven@instance-01 "
-            source /home/sven/.sdkman/bin/sdkman-init.sh;
-            cd ${HOME_DIR};
-            echo -ne '($i/20) $REPLICA: ';
-            scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1 &
-        "
+        
+        if  [ "$REPLICA" == "ReplicaA" ] || [ "$REPLICA" == "ReplicaB" ]; then
+            ssh sven@instance-01 "
+                source /home/sven/.sdkman/bin/sdkman-init.sh;
+                cd ${HOME_DIR};
+                echo -ne '($i/20) $REPLICA: ';
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1 &
+            "
+        fi
+
+        if  [ "$REPLICA" == "ReplicaC" ] || [ "$REPLICA" == "ReplicaD" ]; then
+            ssh sven@instance-02 "
+                source /home/sven/.sdkman/bin/sdkman-init.sh;
+                cd ${HOME_DIR};
+                echo -ne '($i/20) $REPLICA: ';
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1 &
+            "
+        fi
+
+        if  [ "$REPLICA" == "ReplicaE" ] || [ "$REPLICA" == "ReplicaF" ]; then
+            ssh sven@instance-03 "
+                source /home/sven/.sdkman/bin/sdkman-init.sh;
+                cd ${HOME_DIR};
+                echo -ne '($i/20) $REPLICA: ';
+                scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1 &
+            "
+        fi
 
         sleep $(bc -l <<< "scale=4 ; ${RANDOM}/32767")
     done
