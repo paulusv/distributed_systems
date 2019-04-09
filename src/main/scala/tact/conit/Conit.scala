@@ -55,8 +55,5 @@ class Conit(val key: Char, var value: Int, var numericBound: Int, var orderBound
     */
   def randomizeBounds(): Unit = {
     val random = new scala.util.Random
-    numericBound = random.nextInt(100)
-    orderBound = random.nextInt(10)
-    stalenessBound = random.nextInt(1000)
   }
 }
