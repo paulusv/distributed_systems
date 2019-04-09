@@ -30,8 +30,12 @@ class OneRound(replica: TactImpl) extends Serializable with RoundProtocol {
         }
 
         rep.acceptWriteLog(key, writeLog)
+        for (item <- writeLog.writeLogItems) {
+          println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] \t Push key = "+ item.operation.key + " value = " + item.operation.value)
+        }
 
         println("[" + LocalDateTime.now() + "][Replica" + replica.replicaId + "] => Finished anti-entropy session with " + server)
+        println()
       }
     }
 
