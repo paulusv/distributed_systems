@@ -60,4 +60,10 @@ class MasterImpl extends UnicastRemoteObject with Master {
     Naming.bind(name, obj)
     println("[" + LocalDateTime.now() + "][Master] Registered " + name)
   }
+
+  override def originalValues(): Unit = {
+    println("[" + LocalDateTime.now() + "][Master] x = " + trueValX)
+    println("[" + LocalDateTime.now() + "][Master] y = " + trueValY)
+    println("[" + LocalDateTime.now() + "][Master] z = " + trueValZ)
+  }
 }

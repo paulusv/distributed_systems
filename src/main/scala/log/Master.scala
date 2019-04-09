@@ -19,4 +19,7 @@ trait Master extends Remote {
 
   @throws(classOf[RemoteException])
   def register(name: String, obj: Remote): Unit
+
+  @throws(classOf[RemoteException])
+  def originalValues(): Unit
 }
