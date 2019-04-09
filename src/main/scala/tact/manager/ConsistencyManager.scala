@@ -168,7 +168,7 @@ class ConsistencyManager(replica: TactImpl) {
     val idealNotObserved = idealMinusObserved(ecgWriteLog.getWriteLogForKey(key),
       replicaWriteLog.getWriteLogForKey(key))
 
-    var min: Long = 0
+    var min: Long = Long.MaxValue
     for (writeLogItem: WriteLogItem <- idealNotObserved.writeLogItems) {
       if ((nweight(writeLogItem, key) != 0) && (writeLogItem.timeVector < stime))
         if (writeLogItem.timeVector < min) {
