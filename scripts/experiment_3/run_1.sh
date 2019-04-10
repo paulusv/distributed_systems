@@ -54,11 +54,6 @@ ssh ${USER}@${INSTANCE_01_IP} "
     cd ${HOME_DIR};
     nohup scala -Djava.rmi.server.hostname=${HOST_IP} main.scala.history.MasterReplica > ${LOG_DIR}/master.log 2>&1 &
 "
-ssh ${USER}@${INSTANCE_01_IP} "
-    source /home/${USER}/.sdkman/bin/sdkman-init.sh;
-    cd ${HOME_DIR};
-    nohup scala main.scala.history.VoluntaryCoordinator ${RMI_IP} > ${LOG_DIR}/coordinator.log 2>&1 &
-"
 
 echo "=> Start replicas on ${INSTANCE_01_IP}"
 for replica in ${REPLICAS_INSTANCE_01[@]}
@@ -92,6 +87,13 @@ do
         nohup scala main.scala.replica.TactReplica ${RMI_IP} ${replica: -1} > ${LOG_DIR}/${replica}.log 2>&1 &
     "
 done
+
+echo "=> Start coordinator on ${INSTANCE_01_IP}"
+ssh ${USER}@${INSTANCE_01_IP} "
+    source /home/${USER}/.sdkman/bin/sdkman-init.sh;
+    cd ${HOME_DIR};
+    nohup scala main.scala.history.VoluntaryCoordinator ${RMI_IP} > ${LOG_DIR}/coordinator.log 2>&1 &
+"
 echo "Done! \n"
 
 # Wait for everything to start

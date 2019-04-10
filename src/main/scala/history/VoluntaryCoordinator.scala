@@ -27,7 +27,6 @@ object VoluntaryCoordinator {
 
     while (true) {
       val random = r.nextInt(list.length)
-      println("[" + LocalDateTime.now() + "][Coordinator] Draw number is " + random);
       val serverName = list(random)
 
       println("[" + LocalDateTime.now() + "][Coordinator] Check voluntary AntiEntropy session with " + serverName)
@@ -46,7 +45,7 @@ object VoluntaryCoordinator {
         }
       }
 
-      Thread.sleep(1000)
+      Thread.sleep(60000)
     }
   }
 }
