@@ -1,0 +1,1888 @@
+[2019-04-10T18:45:47.277][ReplicaC] Starting ReplicaC
+[2019-04-10T18:45:47.282][ReplicaC] => Looking for ECG history
+[2019-04-10T18:45:49.486][ReplicaC] => Binding TACT Replica to RMI
+[2019-04-10T18:45:50.445][ReplicaC] Replica started on rmi://10.156.0.2/ReplicaC
+--------------------------------------------------------------------------------------------
+
+[2019-04-10T18:46:08.219][ReplicaC] Write key = i, value = 1
+[2019-04-10T18:46:08.706][ReplicaC] Anti entropy session check
+[2019-04-10T18:46:08.706][ReplicaC] => Updating errors
+[2019-04-10T18:46:09.014][ReplicaC] => Check errors out of bound
+[2019-04-10T18:46:09.014][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:46:09.014][ReplicaC] 	 => Order Error 0
+[2019-04-10T18:46:09.014][ReplicaC] 	 => Staleness Error 143807555 	 1554921969014
+[2019-04-10T18:46:09.015][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T18:46:09.477][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:46:11.150][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:46:11.150][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:46:11.150][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:46:13.014][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:46:13.014][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:46:13.014][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:46:13.505][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:46:13.505][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:46:13.505][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:46:14.269][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:46:14.269][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:46:14.269][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:46:15.045][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:46:15.045][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:46:22.951][ReplicaC] Write key = k, value = 1
+[2019-04-10T18:46:23.413][ReplicaC] Anti entropy session check
+[2019-04-10T18:46:23.413][ReplicaC] => Updating errors
+[2019-04-10T18:46:23.652][ReplicaC] => Check errors out of bound
+[2019-04-10T18:46:23.652][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:46:23.652][ReplicaC] 	 => Order Error 0
+[2019-04-10T18:46:23.652][ReplicaC] 	 => Staleness Error 143822262 	 1554921983652
+
+[2019-04-10T18:46:40.918][ReplicaC] Accept WriteLog
+WriteLogItem(1554921997502,F,WriteOperation(i,+,1))[2019-04-10T18:46:40.922][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:46:49.953][ReplicaC] Write key = i, value = 1
+[2019-04-10T18:46:50.644][ReplicaC] Anti entropy session check
+[2019-04-10T18:46:50.644][ReplicaC] => Updating errors
+[2019-04-10T18:46:50.878][ReplicaC] => Check errors out of bound
+[2019-04-10T18:46:50.878][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:46:50.879][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:46:50.879][ReplicaC] 	 => Staleness Error 42425 	 1554922010879
+[2019-04-10T18:46:50.879][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T18:46:51.570][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:46:52.497][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:46:52.498][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:46:52.498][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:46:53.658][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:46:53.659][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:46:53.659][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:46:54.129][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:46:54.129][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:46:54.129][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:46:54.749][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:46:54.749][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:46:54.749][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:46:55.362][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:46:55.362][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:47:05.384][ReplicaC] Write key = j, value = 1
+[2019-04-10T18:47:05.846][ReplicaC] Anti entropy session check
+[2019-04-10T18:47:05.846][ReplicaC] => Updating errors
+[2019-04-10T18:47:06.080][ReplicaC] => Check errors out of bound
+[2019-04-10T18:47:06.081][ReplicaC] 	 => Numerical Error 1
+[2019-04-10T18:47:06.081][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:47:06.081][ReplicaC] 	 => Staleness Error 33840 	 1554922026081
+
+[2019-04-10T18:47:28.138][ReplicaC] Accept WriteLog
+WriteLogItem(1554922045984,F,WriteOperation(i,+,1))[2019-04-10T18:47:28.139][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:47:36.685][ReplicaC] Write key = j, value = 1
+[2019-04-10T18:47:37.376][ReplicaC] Anti entropy session check
+[2019-04-10T18:47:37.376][ReplicaC] => Updating errors
+[2019-04-10T18:47:37.616][ReplicaC] => Check errors out of bound
+[2019-04-10T18:47:37.617][ReplicaC] 	 => Numerical Error 1
+[2019-04-10T18:47:37.617][ReplicaC] 	 => Order Error 2
+[2019-04-10T18:47:37.617][ReplicaC] 	 => Staleness Error 65370 	 1554922057617
+[2019-04-10T18:47:37.617][ReplicaC] Anti-entropy session for key = j
+[2019-04-10T18:47:38.307][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:47:39.232][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:47:39.234][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:47:39.234][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:47:39.234][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:47:40.389][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:47:40.389][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:47:40.389][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:47:40.389][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:47:40.854][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:47:40.854][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:47:40.854][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:47:40.854][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:47:41.471][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:47:41.471][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:47:41.471][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:47:41.471][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:47:42.084][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:47:42.084][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:47:42.084][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:48:07.994][ReplicaC] Write key = j, value = 1
+[2019-04-10T18:48:08.685][ReplicaC] Anti entropy session check
+[2019-04-10T18:48:08.685][ReplicaC] => Updating errors
+[2019-04-10T18:48:08.925][ReplicaC] => Check errors out of bound
+[2019-04-10T18:48:08.926][ReplicaC] 	 => Numerical Error 2
+[2019-04-10T18:48:08.926][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:48:08.926][ReplicaC] 	 => Staleness Error 96679 	 1554922088926
+
+[2019-04-10T18:48:16.299][ReplicaC] Write key = i, value = 1
+[2019-04-10T18:48:16.760][ReplicaC] Anti entropy session check
+[2019-04-10T18:48:16.760][ReplicaC] => Updating errors
+[2019-04-10T18:48:16.993][ReplicaC] => Check errors out of bound
+[2019-04-10T18:48:16.993][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:48:16.993][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:48:16.993][ReplicaC] 	 => Staleness Error 128540 	 1554922096993
+[2019-04-10T18:48:16.993][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T18:48:17.682][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:48:18.607][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:48:18.607][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:48:18.607][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:48:19.763][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:48:19.764][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:48:19.764][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:48:20.229][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:48:20.229][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:48:20.229][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:48:20.847][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:48:20.848][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:48:20.848][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:48:21.462][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:48:21.462][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:48:53.762][ReplicaC] Write key = j, value = 1
+[2019-04-10T18:48:54.455][ReplicaC] Anti entropy session check
+[2019-04-10T18:48:54.455][ReplicaC] => Updating errors
+[2019-04-10T18:48:54.689][ReplicaC] => Check errors out of bound
+[2019-04-10T18:48:54.691][ReplicaC] 	 => Numerical Error 4
+[2019-04-10T18:48:54.691][ReplicaC] 	 => Order Error 2
+[2019-04-10T18:48:54.691][ReplicaC] 	 => Staleness Error 142449 	 1554922134691
+[2019-04-10T18:48:54.691][ReplicaC] Anti-entropy session for key = j
+[2019-04-10T18:48:55.384][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:48:56.309][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:48:56.309][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:48:56.309][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:48:56.309][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:48:57.459][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:48:57.460][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:48:57.460][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:48:57.460][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:48:57.935][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:48:57.935][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:48:57.935][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:48:57.935][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:48:58.548][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:48:58.548][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:48:58.548][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:48:58.548][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:48:59.165][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:48:59.166][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:48:59.166][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:49:06.367][ReplicaC] Accept WriteLog
+WriteLogItem(1554922143044,E,WriteOperation(i,+,1))[2019-04-10T18:49:06.367][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:49:20.865][ReplicaC] Accept WriteLog
+WriteLogItem(1554922155279,D,WriteOperation(i,+,1))[2019-04-10T18:49:20.866][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:49:41.347][ReplicaC] Accept WriteLog
+WriteLogItem(1554921992006,E,WriteOperation(j,+,1))[2019-04-10T18:49:41.349][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922068719,E,WriteOperation(j,+,1))[2019-04-10T18:49:41.349][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922179101,E,WriteOperation(j,+,1))[2019-04-10T18:49:41.349][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T18:49:53.392][ReplicaC] Write key = j, value = 1
+[2019-04-10T18:49:54.090][ReplicaC] Anti entropy session check
+[2019-04-10T18:49:54.091][ReplicaC] => Updating errors
+[2019-04-10T18:49:54.328][ReplicaC] => Check errors out of bound
+[2019-04-10T18:49:54.328][ReplicaC] 	 => Numerical Error 2
+[2019-04-10T18:49:54.328][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:49:54.328][ReplicaC] 	 => Staleness Error 202085 	 1554922194328
+
+[2019-04-10T18:50:01.663][ReplicaC] Accept WriteLog
+WriteLogItem(1554922199609,E,WriteOperation(i,+,1))[2019-04-10T18:50:01.664][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:50:05.445][ReplicaC] Accept WriteLog
+WriteLogItem(1554922204556,A,WriteOperation(i,+,1))[2019-04-10T18:50:05.445][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:50:15.501][ReplicaC] Write key = i, value = 1
+[2019-04-10T18:50:15.967][ReplicaC] Anti entropy session check
+[2019-04-10T18:50:15.967][ReplicaC] => Updating errors
+[2019-04-10T18:50:16.209][ReplicaC] => Check errors out of bound
+[2019-04-10T18:50:16.209][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:50:16.209][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:50:16.209][ReplicaC] 	 => Staleness Error 247748 	 1554922216209
+[2019-04-10T18:50:16.210][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T18:50:16.900][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:50:17.827][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:50:17.829][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:50:17.829][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:50:18.985][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:50:18.985][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:50:18.985][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:50:19.456][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:50:19.457][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:50:19.457][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:50:20.069][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:50:20.073][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:50:20.074][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:50:20.696][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:50:20.697][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:50:25.050][ReplicaC] Accept WriteLog
+WriteLogItem(1554922224139,B,WriteOperation(i,+,1))[2019-04-10T18:50:25.052][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:50:36.296][ReplicaC] Accept WriteLog
+WriteLogItem(1554922234035,F,WriteOperation(i,+,1))[2019-04-10T18:50:36.297][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:50:39.921][ReplicaC] Accept WriteLog
+WriteLogItem(1554922239550,B,WriteOperation(i,+,1))[2019-04-10T18:50:39.922][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:50:53.495][ReplicaC] Accept WriteLog
+WriteLogItem(1554922122125,D,WriteOperation(j,+,1))[2019-04-10T18:50:53.495][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922249329,D,WriteOperation(j,+,1))[2019-04-10T18:50:53.495][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T18:51:00.889][ReplicaC] Accept WriteLog
+WriteLogItem(1554922126464,B,WriteOperation(j,+,1))[2019-04-10T18:51:00.889][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922260291,B,WriteOperation(j,+,1))[2019-04-10T18:51:00.890][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T18:51:10.022][ReplicaC] Accept WriteLog
+WriteLogItem(1554922267883,E,WriteOperation(i,+,1))[2019-04-10T18:51:10.022][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:51:18.156][ReplicaC] Write key = i, value = 1
+[2019-04-10T18:51:18.848][ReplicaC] Anti entropy session check
+[2019-04-10T18:51:18.848][ReplicaC] => Updating errors
+[2019-04-10T18:51:19.083][ReplicaC] => Check errors out of bound
+[2019-04-10T18:51:19.083][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:51:19.083][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:51:19.083][ReplicaC] 	 => Staleness Error 310628 	 1554922279083
+[2019-04-10T18:51:19.083][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T18:51:19.774][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:51:21.385][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:51:21.386][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:51:21.386][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:51:23.231][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:51:23.231][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:51:23.233][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:51:23.701][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:51:23.701][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:51:23.701][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:51:24.444][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:51:24.444][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:51:24.445][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:51:24.930][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:51:24.930][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:51:35.520][ReplicaC] Accept WriteLog
+WriteLogItem(1554922294916,B,WriteOperation(i,+,1))[2019-04-10T18:51:35.522][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:51:43.965][ReplicaC] Accept WriteLog
+WriteLogItem(1554922302153,F,WriteOperation(i,+,1))[2019-04-10T18:51:43.965][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:51:51.284][ReplicaC] Accept WriteLog
+WriteLogItem(1554922308672,E,WriteOperation(i,+,1))[2019-04-10T18:51:51.284][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:51:59.941][ReplicaC] Write key = j, value = 1
+[2019-04-10T18:52:00.631][ReplicaC] Anti entropy session check
+[2019-04-10T18:52:00.632][ReplicaC] => Updating errors
+[2019-04-10T18:52:00.863][ReplicaC] => Check errors out of bound
+[2019-04-10T18:52:00.863][ReplicaC] 	 => Numerical Error 1
+[2019-04-10T18:52:00.864][ReplicaC] 	 => Order Error 2
+[2019-04-10T18:52:00.864][ReplicaC] 	 => Staleness Error 328626 	 1554922320864
+[2019-04-10T18:52:00.864][ReplicaC] Anti-entropy session for key = j
+[2019-04-10T18:52:01.559][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:52:02.484][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:52:02.484][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:52:02.484][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:52:02.484][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:52:03.642][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:52:03.642][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:52:03.642][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:52:03.642][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:52:04.110][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:52:04.110][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:52:04.110][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:52:04.110][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:52:04.726][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:52:04.727][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:52:04.727][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:52:04.727][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:52:05.339][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:52:05.340][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:52:05.340][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:52:11.625][ReplicaC] Write key = i, value = 1
+[2019-04-10T18:52:12.087][ReplicaC] Anti entropy session check
+[2019-04-10T18:52:12.087][ReplicaC] => Updating errors
+[2019-04-10T18:52:12.322][ReplicaC] => Check errors out of bound
+[2019-04-10T18:52:12.322][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:52:12.325][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:52:12.325][ReplicaC] 	 => Staleness Error 363867 	 1554922332325
+[2019-04-10T18:52:12.325][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T18:52:12.789][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:52:13.484][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:52:13.484][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:52:13.484][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:52:14.412][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:52:14.412][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:52:14.412][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:52:14.880][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:52:14.880][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:52:14.880][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:52:15.371][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:52:15.371][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:52:15.371][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:52:15.857][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:52:15.857][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:52:29.450][ReplicaC] Accept WriteLog
+WriteLogItem(1554922346882,E,WriteOperation(i,+,1))[2019-04-10T18:52:29.451][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:52:33.293][ReplicaC] Accept WriteLog
+WriteLogItem(1554922352693,B,WriteOperation(i,+,1))[2019-04-10T18:52:33.293][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:52:43.985][ReplicaC] Accept WriteLog
+WriteLogItem(1554922360845,F,WriteOperation(i,+,1))[2019-04-10T18:52:43.986][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:52:57.223][ReplicaC] Write key = i, value = 1
+[2019-04-10T18:52:57.915][ReplicaC] Anti entropy session check
+[2019-04-10T18:52:57.915][ReplicaC] => Updating errors
+[2019-04-10T18:52:58.148][ReplicaC] => Check errors out of bound
+[2019-04-10T18:52:58.148][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:52:58.148][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:52:58.148][ReplicaC] 	 => Staleness Error 409695 	 1554922378148
+[2019-04-10T18:52:58.148][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T18:52:58.839][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:52:59.762][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:52:59.764][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:52:59.765][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:53:00.918][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:53:00.918][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:53:00.918][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:53:01.384][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:53:01.384][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:53:01.384][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:53:01.997][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:53:01.997][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:53:01.997][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:53:02.615][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:53:02.616][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:53:09.003][ReplicaC] Write key = j, value = 1
+[2019-04-10T18:53:09.465][ReplicaC] Anti entropy session check
+[2019-04-10T18:53:09.465][ReplicaC] => Updating errors
+[2019-04-10T18:53:09.697][ReplicaC] => Check errors out of bound
+[2019-04-10T18:53:09.697][ReplicaC] 	 => Numerical Error 3
+[2019-04-10T18:53:09.697][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:53:09.697][ReplicaC] 	 => Staleness Error 397459 	 1554922389697
+
+[2019-04-10T18:53:17.884][ReplicaC] Accept WriteLog
+WriteLogItem(1554922395630,E,WriteOperation(i,+,1))[2019-04-10T18:53:17.885][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:53:22.142][ReplicaC] Accept WriteLog
+WriteLogItem(1554922401301,B,WriteOperation(i,+,1))[2019-04-10T18:53:22.143][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:53:30.256][ReplicaC] Write key = k, value = 1
+[2019-04-10T18:53:30.945][ReplicaC] Anti entropy session check
+[2019-04-10T18:53:30.945][ReplicaC] => Updating errors
+[2019-04-10T18:53:31.177][ReplicaC] => Check errors out of bound
+[2019-04-10T18:53:31.177][ReplicaC] 	 => Numerical Error 13
+[2019-04-10T18:53:31.177][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:53:31.177][ReplicaC] 	 => Staleness Error 392700 	 1554922411177
+
+[2019-04-10T18:53:34.803][ReplicaC] Accept WriteLog
+WriteLogItem(1554922414441,B,WriteOperation(i,+,1))[2019-04-10T18:53:34.803][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:53:48.998][ReplicaC] Accept WriteLog
+WriteLogItem(1554922426756,F,WriteOperation(i,+,1))[2019-04-10T18:53:48.998][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:54:03.344][ReplicaC] Accept WriteLog
+WriteLogItem(1554922442749,B,WriteOperation(i,+,1))[2019-04-10T18:54:03.345][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:54:10.981][ReplicaC] Accept WriteLog
+WriteLogItem(1554922448852,E,WriteOperation(i,+,1))[2019-04-10T18:54:10.981][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:54:18.765][ReplicaC] Accept WriteLog
+WriteLogItem(1554922457079,E,WriteOperation(i,+,1))[2019-04-10T18:54:18.766][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:54:41.314][ReplicaC] Accept WriteLog
+WriteLogItem(1554922477157,D,WriteOperation(i,+,1))[2019-04-10T18:54:41.314][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:55:08.172][ReplicaC] Write key = j, value = 1
+[2019-04-10T18:55:08.862][ReplicaC] Anti entropy session check
+[2019-04-10T18:55:08.863][ReplicaC] => Updating errors
+[2019-04-10T18:55:09.099][ReplicaC] => Check errors out of bound
+[2019-04-10T18:55:09.099][ReplicaC] 	 => Numerical Error 4
+[2019-04-10T18:55:09.099][ReplicaC] 	 => Order Error 2
+[2019-04-10T18:55:09.099][ReplicaC] 	 => Staleness Error 516857 	 1554922509099
+[2019-04-10T18:55:09.099][ReplicaC] Anti-entropy session for key = j
+[2019-04-10T18:55:09.787][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:55:10.709][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:55:10.711][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:55:10.711][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:55:10.711][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:55:11.861][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:55:11.861][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:55:11.861][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:55:11.861][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:55:12.325][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:55:12.325][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:55:12.325][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:55:12.325][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:55:12.937][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:55:12.937][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:55:12.937][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:55:12.937][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:55:13.555][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:55:13.555][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T18:55:13.555][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:55:17.665][ReplicaC] Accept WriteLog
+WriteLogItem(1554922517069,B,WriteOperation(i,+,1))[2019-04-10T18:55:17.665][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:55:31.170][ReplicaC] Read key = i
+[2019-04-10T18:55:33.332][ReplicaC] Read key = j
+[2019-04-10T18:55:35.523][ReplicaC] Read key = k
+[2019-04-10T18:55:56.228][ReplicaC] Accept WriteLog
+WriteLogItem(1554922555623,A,WriteOperation(i,+,1))[2019-04-10T18:55:56.229][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:56:01.361][ReplicaC] Accept WriteLog
+WriteLogItem(1554922342661,A,WriteOperation(j,+,1))[2019-04-10T18:56:01.364][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922560506,A,WriteOperation(j,+,1))[2019-04-10T18:56:01.364][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T18:56:10.319][ReplicaC] Accept WriteLog
+WriteLogItem(1554922568181,E,WriteOperation(i,+,1))[2019-04-10T18:56:10.319][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:56:17.540][ReplicaC] Accept WriteLog
+WriteLogItem(1554922575853,E,WriteOperation(i,+,1))[2019-04-10T18:56:17.541][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:56:39.029][ReplicaC] Accept WriteLog
+WriteLogItem(1554922598425,B,WriteOperation(i,+,1))[2019-04-10T18:56:39.030][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:56:43.287][ReplicaC] Accept WriteLog
+WriteLogItem(1554922602695,A,WriteOperation(i,+,1))[2019-04-10T18:56:43.287][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:56:47.068][ReplicaC] Accept WriteLog
+WriteLogItem(1554922606705,A,WriteOperation(i,+,1))[2019-04-10T18:56:47.068][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:57:03.087][ReplicaC] Write key = k, value = 1
+[2019-04-10T18:57:03.778][ReplicaC] Anti entropy session check
+[2019-04-10T18:57:03.778][ReplicaC] => Updating errors
+[2019-04-10T18:57:04.011][ReplicaC] => Check errors out of bound
+[2019-04-10T18:57:04.011][ReplicaC] 	 => Numerical Error 24
+[2019-04-10T18:57:04.011][ReplicaC] 	 => Order Error 2
+[2019-04-10T18:57:04.011][ReplicaC] 	 => Staleness Error 605533 	 1554922624011
+
+[2019-04-10T18:57:10.915][ReplicaC] Write key = k, value = 1
+[2019-04-10T18:57:11.376][ReplicaC] Anti entropy session check
+[2019-04-10T18:57:11.376][ReplicaC] => Updating errors
+[2019-04-10T18:57:11.611][ReplicaC] => Check errors out of bound
+[2019-04-10T18:57:11.611][ReplicaC] 	 => Numerical Error 24
+[2019-04-10T18:57:11.611][ReplicaC] 	 => Order Error 3
+[2019-04-10T18:57:11.611][ReplicaC] 	 => Staleness Error 613131 	 1554922631611
+
+[2019-04-10T18:57:19.586][ReplicaC] Write key = i, value = 1
+[2019-04-10T18:57:20.047][ReplicaC] Anti entropy session check
+[2019-04-10T18:57:20.047][ReplicaC] => Updating errors
+[2019-04-10T18:57:20.281][ReplicaC] => Check errors out of bound
+[2019-04-10T18:57:20.282][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:57:20.282][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:57:20.282][ReplicaC] 	 => Staleness Error 671827 	 1554922640282
+[2019-04-10T18:57:20.282][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T18:57:20.972][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:57:21.895][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:57:21.895][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:57:21.895][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:57:23.051][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:57:23.051][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:57:23.051][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:57:23.513][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:57:23.514][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:57:23.514][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:57:24.127][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:57:24.127][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:57:24.127][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:57:24.740][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:57:24.740][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:57:33.593][ReplicaC] Accept WriteLog
+WriteLogItem(1554922369732,E,WriteOperation(j,+,1))[2019-04-10T18:57:33.594][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922651467,E,WriteOperation(j,+,1))[2019-04-10T18:57:33.594][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T18:57:40.778][ReplicaC] Accept WriteLog
+WriteLogItem(1554922290248,F,WriteOperation(j,+,1))[2019-04-10T18:57:40.778][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922658534,F,WriteOperation(j,+,1))[2019-04-10T18:57:40.778][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T18:57:54.147][ReplicaC] Accept WriteLog
+WriteLogItem(1554922668584,D,WriteOperation(i,+,1))[2019-04-10T18:57:54.147][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:58:03.800][ReplicaC] Accept WriteLog
+WriteLogItem(1554922682108,F,WriteOperation(i,+,1))[2019-04-10T18:58:03.800][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:58:13.074][ReplicaC] Accept WriteLog
+WriteLogItem(1554922587724,A,WriteOperation(j,+,1))[2019-04-10T18:58:13.075][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922692476,A,WriteOperation(j,+,1))[2019-04-10T18:58:13.075][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T18:58:21.784][ReplicaC] Write key = i, value = 1
+[2019-04-10T18:58:22.479][ReplicaC] Anti entropy session check
+[2019-04-10T18:58:22.479][ReplicaC] => Updating errors
+[2019-04-10T18:58:22.717][ReplicaC] => Check errors out of bound
+[2019-04-10T18:58:22.717][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:58:22.717][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:58:22.717][ReplicaC] 	 => Staleness Error 734259 	 1554922702717
+[2019-04-10T18:58:22.717][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T18:58:23.407][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:58:25.018][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:58:25.018][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:58:25.018][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:58:26.862][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:58:26.862][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:58:26.862][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:58:27.332][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:58:27.332][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:58:27.333][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:58:28.073][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:58:28.073][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:58:28.073][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:58:28.815][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:58:28.815][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:58:31.525][ReplicaC] Accept WriteLog
+WriteLogItem(1554922710933,A,WriteOperation(i,+,1))[2019-04-10T18:58:31.526][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:58:39.831][ReplicaC] Write key = j, value = 1
+[2019-04-10T18:58:40.296][ReplicaC] Anti entropy session check
+[2019-04-10T18:58:40.296][ReplicaC] => Updating errors
+[2019-04-10T18:58:40.536][ReplicaC] => Check errors out of bound
+[2019-04-10T18:58:40.537][ReplicaC] 	 => Numerical Error 3
+[2019-04-10T18:58:40.537][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:58:40.537][ReplicaC] 	 => Staleness Error 728290 	 1554922720537
+
+[2019-04-10T18:58:43.249][ReplicaC] Accept WriteLog
+WriteLogItem(1554922722652,B,WriteOperation(i,+,1))[2019-04-10T18:58:43.249][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:58:59.879][ReplicaC] Write key = i, value = 1
+[2019-04-10T18:59:00.343][ReplicaC] Anti entropy session check
+[2019-04-10T18:59:00.343][ReplicaC] => Updating errors
+[2019-04-10T18:59:00.580][ReplicaC] => Check errors out of bound
+[2019-04-10T18:59:00.580][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T18:59:00.580][ReplicaC] 	 => Order Error 1
+[2019-04-10T18:59:00.580][ReplicaC] 	 => Staleness Error 772123 	 1554922740580
+[2019-04-10T18:59:00.580][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T18:59:01.270][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T18:59:02.192][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:59:02.194][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T18:59:02.194][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T18:59:03.351][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:59:03.351][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T18:59:03.351][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T18:59:03.813][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:59:03.813][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T18:59:03.813][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T18:59:04.429][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:59:04.430][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T18:59:04.430][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T18:59:05.040][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T18:59:05.040][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T18:59:13.948][ReplicaC] Accept WriteLog
+WriteLogItem(1554922689034,E,WriteOperation(j,+,1))[2019-04-10T18:59:13.948][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922750708,E,WriteOperation(j,+,1))[2019-04-10T18:59:13.948][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T18:59:24.657][ReplicaC] Accept WriteLog
+WriteLogItem(1554922760740,D,WriteOperation(i,+,1))[2019-04-10T18:59:24.657][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:59:30.080][ReplicaC] Accept WriteLog
+WriteLogItem(1554922769487,A,WriteOperation(i,+,1))[2019-04-10T18:59:30.080][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:59:38.802][ReplicaC] Accept WriteLog
+WriteLogItem(1554922777109,E,WriteOperation(i,+,1))[2019-04-10T18:59:38.802][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:59:51.655][ReplicaC] Accept WriteLog
+WriteLogItem(1554922791052,B,WriteOperation(i,+,1))[2019-04-10T18:59:51.655][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T18:59:55.960][ReplicaC] Accept WriteLog
+WriteLogItem(1554922795571,B,WriteOperation(i,+,1))[2019-04-10T18:59:55.960][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:00:17.325][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:00:18.021][ReplicaC] Anti entropy session check
+[2019-04-10T19:00:18.021][ReplicaC] => Updating errors
+[2019-04-10T19:00:18.254][ReplicaC] => Check errors out of bound
+[2019-04-10T19:00:18.254][ReplicaC] 	 => Numerical Error 28
+[2019-04-10T19:00:18.254][ReplicaC] 	 => Order Error 4
+[2019-04-10T19:00:18.254][ReplicaC] 	 => Staleness Error 799776 	 1554922818254
+
+[2019-04-10T19:00:24.974][ReplicaC] Accept WriteLog
+WriteLogItem(1554922822730,E,WriteOperation(i,+,1))[2019-04-10T19:00:24.974][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:00:38.588][ReplicaC] Accept WriteLog
+WriteLogItem(1554922615187,D,WriteOperation(j,+,1))[2019-04-10T19:00:38.589][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922834431,D,WriteOperation(j,+,1))[2019-04-10T19:00:38.589][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:00:47.205][ReplicaC] Accept WriteLog
+WriteLogItem(1554922846602,A,WriteOperation(i,+,1))[2019-04-10T19:00:47.206][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:00:51.560][ReplicaC] Accept WriteLog
+WriteLogItem(1554922851197,A,WriteOperation(i,+,1))[2019-04-10T19:00:51.561][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:01][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:01:00.462][ReplicaC] Anti entropy session check
+[2019-04-10T19:01:00.462][ReplicaC] => Updating errors
+[2019-04-10T19:01:00.697][ReplicaC] => Check errors out of bound
+[2019-04-10T19:01:00.697][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:01:00.697][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:01:00.697][ReplicaC] 	 => Staleness Error 892242 	 1554922860697
+[2019-04-10T19:01:00.697][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:01:01.387][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:01:02.306][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:02.306][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:01:02.306][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:01:03.456][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:03.456][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:01:03.456][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:01:03.919][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:03.919][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:01:03.919][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:01:04.534][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:04.535][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:01:04.535][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:01:05.149][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:05.149][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:01:09.625][ReplicaC] Accept WriteLog
+WriteLogItem(1554922869027,B,WriteOperation(i,+,1))[2019-04-10T19:01:09.625][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:01:16.953][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:01:17.415][ReplicaC] Anti entropy session check
+[2019-04-10T19:01:17.416][ReplicaC] => Updating errors
+[2019-04-10T19:01:17.651][ReplicaC] => Check errors out of bound
+[2019-04-10T19:01:17.651][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:01:17.651][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:01:17.651][ReplicaC] 	 => Staleness Error 909196 	 1554922877651
+[2019-04-10T19:01:17.651][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:01:18.111][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:01:19.032][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:19.032][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:01:19.032][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:01:20.185][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:20.185][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:01:20.185][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:01:20.648][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:20.648][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:01:20.648][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:01:21.259][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:21.259][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:01:21.259][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:01:21.868][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:21.869][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:01:25.113][ReplicaC] Accept WriteLog
+WriteLogItem(1554922810450,A,WriteOperation(j,+,1))[2019-04-10T19:01:25.114][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922884522,A,WriteOperation(j,+,1))[2019-04-10T19:01:25.114][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:01:33.748][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:01:34.211][ReplicaC] Anti entropy session check
+[2019-04-10T19:01:34.211][ReplicaC] => Updating errors
+[2019-04-10T19:01:34.448][ReplicaC] => Check errors out of bound
+[2019-04-10T19:01:34.449][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:01:34.449][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:01:34.449][ReplicaC] 	 => Staleness Error 925991 	 1554922894449
+[2019-04-10T19:01:34.449][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:01:34.908][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:01:35.828][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:35.829][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:01:35.829][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:01:36.978][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:36.978][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:01:36.979][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:01:37.440][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:37.440][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:01:37.440][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:01:38.050][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:38.050][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:01:38.050][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:01:38.661][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:01:38.661][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:01:54.001][ReplicaC] Accept WriteLog
+WriteLogItem(1554922911760,F,WriteOperation(i,+,1))[2019-04-10T19:01:54.001][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:02:08.299][ReplicaC] Accept WriteLog
+WriteLogItem(1554922927699,B,WriteOperation(i,+,1))[2019-04-10T19:02:08.300][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:02:15.634][ReplicaC] Accept WriteLog
+WriteLogItem(1554922935028,A,WriteOperation(i,+,1))[2019-04-10T19:02:15.635][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:02:26.295][ReplicaC] Accept WriteLog
+WriteLogItem(1554922943068,F,WriteOperation(i,+,1))[2019-04-10T19:02:26.295][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:02:31.609][ReplicaC] Accept WriteLog
+WriteLogItem(1554922440129,B,WriteOperation(j,+,1))[2019-04-10T19:02:31.609][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922951022,B,WriteOperation(j,+,1))[2019-04-10T19:02:31.610][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:02:39.235][ReplicaC] Accept WriteLog
+WriteLogItem(1554922957549,F,WriteOperation(i,+,1))[2019-04-10T19:02:39.235][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:02:50.469][ReplicaC] Accept WriteLog
+WriteLogItem(1554922906939,D,WriteOperation(j,+,1))[2019-04-10T19:02:50.469][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554922966313,D,WriteOperation(j,+,1))[2019-04-10T19:02:50.469][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:03:02.157][ReplicaC] Accept WriteLog
+WriteLogItem(1554922978920,D,WriteOperation(i,+,1))[2019-04-10T19:03:02.157][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:03:13.919][ReplicaC] Accept WriteLog
+WriteLogItem(1554922989770,D,WriteOperation(i,+,1))[2019-04-10T19:03:13.919][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:03:18.154][ReplicaC] Accept WriteLog
+WriteLogItem(1554922997550,B,WriteOperation(i,+,1))[2019-04-10T19:03:18.155][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:03:26.669][ReplicaC] Accept WriteLog
+WriteLogItem(1554923004326,F,WriteOperation(i,+,1))[2019-04-10T19:03:26.669][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:03:50.684][ReplicaC] Accept WriteLog
+WriteLogItem(1554923026524,D,WriteOperation(i,+,1))[2019-04-10T19:03:50.684][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:04:00.332][ReplicaC] Write key = j, value = 1
+[2019-04-10T19:04:01.022][ReplicaC] Anti entropy session check
+[2019-04-10T19:04:01.022][ReplicaC] => Updating errors
+[2019-04-10T19:04:01.258][ReplicaC] => Check errors out of bound
+[2019-04-10T19:04:01.258][ReplicaC] 	 => Numerical Error 1
+[2019-04-10T19:04:01.258][ReplicaC] 	 => Order Error 2
+[2019-04-10T19:04:01.259][ReplicaC] 	 => Staleness Error 1049016 	 1554923041259
+[2019-04-10T19:04:01.259][ReplicaC] Anti-entropy session for key = j
+[2019-04-10T19:04:01.947][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:04:02.870][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:04:02.872][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:04:02.872][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:04:02.873][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:04:04.021][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:04:04.021][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:04:04.022][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:04:04.022][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:04:04.483][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:04:04.483][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:04:04.483][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:04:04.483][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:04:05.096][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:04:05.096][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:04:05.096][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:04:05.096][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:04:05.708][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:04:05.708][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:04:05.708][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:04:11.747][ReplicaC] Accept WriteLog
+WriteLogItem(1554922036634,E,WriteOperation(k,+,1))[2019-04-10T19:04:11.747][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922041290,E,WriteOperation(k,+,1))[2019-04-10T19:04:11.747][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922107109,E,WriteOperation(k,+,1))[2019-04-10T19:04:11.747][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922422200,E,WriteOperation(k,+,1))[2019-04-10T19:04:11.747][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922465800,E,WriteOperation(k,+,1))[2019-04-10T19:04:11.748][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922470759,E,WriteOperation(k,+,1))[2019-04-10T19:04:11.748][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922500600,E,WriteOperation(k,+,1))[2019-04-10T19:04:11.749][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922925400,E,WriteOperation(k,+,1))[2019-04-10T19:04:11.750][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923019572,E,WriteOperation(k,+,1))[2019-04-10T19:04:11.750][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923049610,E,WriteOperation(k,+,1))[2019-04-10T19:04:11.750][ReplicaC] -- Update with key k, value = 1
+
+[2019-04-10T19:04:19.697][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:04:20.157][ReplicaC] Anti entropy session check
+[2019-04-10T19:04:20.158][ReplicaC] => Updating errors
+[2019-04-10T19:04:20.392][ReplicaC] => Check errors out of bound
+[2019-04-10T19:04:20.392][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:04:20.392][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:04:20.392][ReplicaC] 	 => Staleness Error 1091938 	 1554923060392
+[2019-04-10T19:04:20.392][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:04:20.851][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:04:21.777][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:04:21.782][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:04:21.782][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:04:22.943][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:04:22.943][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:04:22.943][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:04:23.574][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:04:23.574][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:04:23.574][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:04:24.506][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:04:24.506][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:04:24.506][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:04:25.243][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:04:25.243][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:04:33.403][ReplicaC] Accept WriteLog
+WriteLogItem(1554923071169,F,WriteOperation(i,+,1))[2019-04-10T19:04:33.403][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:05:01.885][ReplicaC] Read key = i
+[2019-04-10T19:05:04.074][ReplicaC] Read key = j
+[2019-04-10T19:05:06.249][ReplicaC] Read key = k
+[2019-04-10T19:05:26.014][ReplicaC] Accept WriteLog
+WriteLogItem(1554923033671,B,WriteOperation(j,+,1))[2019-04-10T19:05:26.017][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923125409,B,WriteOperation(j,+,1))[2019-04-10T19:05:26.017][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:05:39.723][ReplicaC] Accept WriteLog
+WriteLogItem(1554922113823,D,WriteOperation(k,+,1))[2019-04-10T19:05:39.724][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922169959,D,WriteOperation(k,+,1))[2019-04-10T19:05:39.724][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922435772,D,WriteOperation(k,+,1))[2019-04-10T19:05:39.724][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922595543,D,WriteOperation(k,+,1))[2019-04-10T19:05:39.724][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922731299,D,WriteOperation(k,+,1))[2019-04-10T19:05:39.724][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922787397,D,WriteOperation(k,+,1))[2019-04-10T19:05:39.724][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922807021,D,WriteOperation(k,+,1))[2019-04-10T19:05:39.724][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922921141,D,WriteOperation(k,+,1))[2019-04-10T19:05:39.724][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923083371,D,WriteOperation(k,+,1))[2019-04-10T19:05:39.724][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923135561,D,WriteOperation(k,+,1))[2019-04-10T19:05:39.724][ReplicaC] -- Update with key k, value = 1
+
+[2019-04-10T19:05:48.868][ReplicaC] Accept WriteLog
+WriteLogItem(1554923146632,F,WriteOperation(i,+,1))[2019-04-10T19:05:48.868][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:05:56.914][ReplicaC] Accept WriteLog
+WriteLogItem(1554923154683,E,WriteOperation(i,+,1))[2019-04-10T19:05:56.914][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:06:06.633][ReplicaC] Accept WriteLog
+WriteLogItem(1554922030747,F,WriteOperation(k,+,1))[2019-04-10T19:06:06.633][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922076103,F,WriteOperation(k,+,1))[2019-04-10T19:06:06.634][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922081456,F,WriteOperation(k,+,1))[2019-04-10T19:06:06.634][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922340286,F,WriteOperation(k,+,1))[2019-04-10T19:06:06.634][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922491912,F,WriteOperation(k,+,1))[2019-04-10T19:06:06.634][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922584161,F,WriteOperation(k,+,1))[2019-04-10T19:06:06.635][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922844077,F,WriteOperation(k,+,1))[2019-04-10T19:06:06.635][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923012125,F,WriteOperation(k,+,1))[2019-04-10T19:06:06.635][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923088120,F,WriteOperation(k,+,1))[2019-04-10T19:06:06.635][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923164607,F,WriteOperation(k,+,1))[2019-04-10T19:06:06.635][ReplicaC] -- Update with key k, value = 1
+
+[2019-04-10T19:06:21.573][ReplicaC] Accept WriteLog
+WriteLogItem(1554923177643,D,WriteOperation(i,+,1))[2019-04-10T19:06:21.573][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:06:29.359][ReplicaC] Write key = j, value = 1
+[2019-04-10T19:06:30.051][ReplicaC] Anti entropy session check
+[2019-04-10T19:06:30.051][ReplicaC] => Updating errors
+[2019-04-10T19:06:30.284][ReplicaC] => Check errors out of bound
+[2019-04-10T19:06:30.284][ReplicaC] 	 => Numerical Error 1
+[2019-04-10T19:06:30.284][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:06:30.284][ReplicaC] 	 => Staleness Error 1198045 	 1554923190284
+
+[2019-04-10T19:06:34.990][ReplicaC] Accept WriteLog
+WriteLogItem(1554923171311,B,WriteOperation(j,+,1))[2019-04-10T19:06:34.990][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923193929,B,WriteOperation(j,+,1))[2019-04-10T19:06:34.990][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:07:15.091][ReplicaC] Accept WriteLog
+WriteLogItem(1554923232959,F,WriteOperation(i,+,1))[2019-04-10T19:07:15.091][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:07:33.205][ReplicaC] Write key = j, value = 1
+[2019-04-10T19:07:33.895][ReplicaC] Anti entropy session check
+[2019-04-10T19:07:33.895][ReplicaC] => Updating errors
+[2019-04-10T19:07:34.132][ReplicaC] => Check errors out of bound
+[2019-04-10T19:07:34.133][ReplicaC] 	 => Numerical Error 1
+[2019-04-10T19:07:34.133][ReplicaC] 	 => Order Error 2
+[2019-04-10T19:07:34.133][ReplicaC] 	 => Staleness Error 1261889 	 1554923254133
+[2019-04-10T19:07:34.133][ReplicaC] Anti-entropy session for key = j
+[2019-04-10T19:07:34.822][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:07:36.436][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:07:36.436][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:07:36.436][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:07:36.436][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:07:37.589][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:07:37.590][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:07:37.590][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:07:37.590][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:07:38.055][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:07:38.056][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:07:38.056][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:07:38.056][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:07:38.669][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:07:38.669][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:07:38.669][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:07:38.669][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:07:39.282][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:07:39.283][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:07:39.283][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:07:47.367][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:07:47.828][ReplicaC] Anti entropy session check
+[2019-04-10T19:07:47.828][ReplicaC] => Updating errors
+[2019-04-10T19:07:48.060][ReplicaC] => Check errors out of bound
+[2019-04-10T19:07:48.060][ReplicaC] 	 => Numerical Error 17
+[2019-04-10T19:07:48.060][ReplicaC] 	 => Order Error 5
+[2019-04-10T19:07:48.060][ReplicaC] 	 => Staleness Error 1249583 	 1554923268060
+
+[2019-04-10T19:07:56.060][ReplicaC] Accept WriteLog
+WriteLogItem(1554923215608,F,WriteOperation(j,+,1))[2019-04-10T19:07:56.060][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923272836,F,WriteOperation(j,+,1))[2019-04-10T19:07:56.061][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:08:07.293][ReplicaC] Accept WriteLog
+WriteLogItem(1554923281017,F,WriteOperation(j,+,1))[2019-04-10T19:08:07.293][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923285605,F,WriteOperation(j,+,1))[2019-04-10T19:08:07.293][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:08:17.679][ReplicaC] Accept WriteLog
+WriteLogItem(1554923297081,A,WriteOperation(i,+,1))[2019-04-10T19:08:17.679][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:08:38.200][ReplicaC] Accept WriteLog
+WriteLogItem(1554923314048,D,WriteOperation(i,+,1))[2019-04-10T19:08:38.200][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:08:52.960][ReplicaC] Accept WriteLog
+WriteLogItem(1554923329826,E,WriteOperation(i,+,1))[2019-04-10T19:08:52.961][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:09:08.333][ReplicaC] Accept WriteLog
+WriteLogItem(1554923346648,E,WriteOperation(i,+,1))[2019-04-10T19:09:08.334][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:09:15.826][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:09:16.516][ReplicaC] Anti entropy session check
+[2019-04-10T19:09:16.516][ReplicaC] => Updating errors
+[2019-04-10T19:09:16.752][ReplicaC] => Check errors out of bound
+[2019-04-10T19:09:16.752][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:09:16.752][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:09:16.752][ReplicaC] 	 => Staleness Error 1388296 	 1554923356752
+[2019-04-10T19:09:16.752][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:09:17.440][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:09:18.360][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:09:18.360][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:09:18.360][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:09:19.509][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:09:19.509][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:09:19.509][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:09:19.971][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:09:19.971][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:09:19.971][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:09:20.582][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:09:20.582][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:09:20.582][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:09:21.192][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:09:21.192][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:09:28.823][ReplicaC] Accept WriteLog
+WriteLogItem(1554923366483,F,WriteOperation(i,+,1))[2019-04-10T19:09:28.823][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:09:46.063][ReplicaC] Accept WriteLog
+WriteLogItem(1554923384044,F,WriteOperation(i,+,1))[2019-04-10T19:09:46.063][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:09:54.868][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:09:55.559][ReplicaC] Anti entropy session check
+[2019-04-10T19:09:55.559][ReplicaC] => Updating errors
+[2019-04-10T19:09:55.792][ReplicaC] => Check errors out of bound
+[2019-04-10T19:09:55.792][ReplicaC] 	 => Numerical Error 23
+[2019-04-10T19:09:55.792][ReplicaC] 	 => Order Error 6
+[2019-04-10T19:09:55.792][ReplicaC] 	 => Staleness Error 1377314 	 1554923395793
+
+[2019-04-10T19:10:12.676][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:10:13.137][ReplicaC] Anti entropy session check
+[2019-04-10T19:10:13.137][ReplicaC] => Updating errors
+[2019-04-10T19:10:13.369][ReplicaC] => Check errors out of bound
+[2019-04-10T19:10:13.369][ReplicaC] 	 => Numerical Error 24
+[2019-04-10T19:10:13.369][ReplicaC] 	 => Order Error 7
+[2019-04-10T19:10:13.369][ReplicaC] 	 => Staleness Error 1394892 	 1554923413376
+
+[2019-04-10T19:10:16.353][ReplicaC] Accept WriteLog
+WriteLogItem(1554923305962,B,WriteOperation(j,+,1))[2019-04-10T19:10:16.353][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923415767,B,WriteOperation(j,+,1))[2019-04-10T19:10:16.353][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:10:29.406][ReplicaC] Accept WriteLog
+WriteLogItem(1554923425249,D,WriteOperation(i,+,1))[2019-04-10T19:10:29.407][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:10:54.152][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:10:54.617][ReplicaC] Anti entropy session check
+[2019-04-10T19:10:54.617][ReplicaC] => Updating errors
+[2019-04-10T19:10:54.859][ReplicaC] => Check errors out of bound
+[2019-04-10T19:10:54.859][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:10:54.859][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:10:54.859][ReplicaC] 	 => Staleness Error 1486397 	 1554923454859
+[2019-04-10T19:10:54.859][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:10:55.549][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:10:56.472][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:10:56.472][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:10:56.472][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:10:57.624][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:10:57.624][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:10:57.624][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:10:58.089][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:10:58.089][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:10:58.089][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:10:58.702][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:10:58.703][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:10:58.703][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:10:59.312][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:10:59.312][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:11:17.075][ReplicaC] Accept WriteLog
+WriteLogItem(1554923476478,A,WriteOperation(i,+,1))[2019-04-10T19:11:17.075][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:11:26.595][ReplicaC] Accept WriteLog
+WriteLogItem(1554923484359,E,WriteOperation(i,+,1))[2019-04-10T19:11:26.595][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:11:35.068][ReplicaC] Accept WriteLog
+WriteLogItem(1554923446605,F,WriteOperation(j,+,1))[2019-04-10T19:11:35.069][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923492845,F,WriteOperation(j,+,1))[2019-04-10T19:11:35.069][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:11:47.363][ReplicaC] Accept WriteLog
+WriteLogItem(1554923502061,D,WriteOperation(i,+,1))[2019-04-10T19:11:47.363][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:12:00.214][ReplicaC] Accept WriteLog
+WriteLogItem(1554923519391,A,WriteOperation(i,+,1))[2019-04-10T19:12:00.216][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:12:06.049][ReplicaC] Accept WriteLog
+WriteLogItem(1554923525458,B,WriteOperation(i,+,1))[2019-04-10T19:12:06.050][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:12:15.126][ReplicaC] Accept WriteLog
+WriteLogItem(1554923435492,E,WriteOperation(j,+,1))[2019-04-10T19:12:15.126][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923532895,E,WriteOperation(j,+,1))[2019-04-10T19:12:15.126][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:12:26.465][ReplicaC] Accept WriteLog
+WriteLogItem(1554923542314,D,WriteOperation(i,+,1))[2019-04-10T19:12:26.465][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:12:34.276][ReplicaC] Write key = j, value = 1
+[2019-04-10T19:12:34.966][ReplicaC] Anti entropy session check
+[2019-04-10T19:12:34.966][ReplicaC] => Updating errors
+[2019-04-10T19:12:35.198][ReplicaC] => Check errors out of bound
+[2019-04-10T19:12:35.198][ReplicaC] 	 => Numerical Error 2
+[2019-04-10T19:12:35.198][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:12:35.198][ReplicaC] 	 => Staleness Error 1562960 	 1554923555198
+
+[2019-04-10T19:12:46.282][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:12:46.743][ReplicaC] Anti entropy session check
+[2019-04-10T19:12:46.743][ReplicaC] => Updating errors
+[2019-04-10T19:12:46.974][ReplicaC] => Check errors out of bound
+[2019-04-10T19:12:46.974][ReplicaC] 	 => Numerical Error 29
+[2019-04-10T19:12:46.974][ReplicaC] 	 => Order Error 8
+[2019-04-10T19:12:46.974][ReplicaC] 	 => Staleness Error 1548498 	 1554923566974
+
+[2019-04-10T19:12:54.259][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:12:54.719][ReplicaC] Anti entropy session check
+[2019-04-10T19:12:54.719][ReplicaC] => Updating errors
+[2019-04-10T19:12:54.954][ReplicaC] => Check errors out of bound
+[2019-04-10T19:12:54.954][ReplicaC] 	 => Numerical Error 29
+[2019-04-10T19:12:54.954][ReplicaC] 	 => Order Error 9
+[2019-04-10T19:12:54.954][ReplicaC] 	 => Staleness Error 1556474 	 1554923574954
+
+[2019-04-10T19:13:02.555][ReplicaC] Write key = j, value = 1
+[2019-04-10T19:13:03.017][ReplicaC] Anti entropy session check
+[2019-04-10T19:13:03.017][ReplicaC] => Updating errors
+[2019-04-10T19:13:03.248][ReplicaC] => Check errors out of bound
+[2019-04-10T19:13:03.249][ReplicaC] 	 => Numerical Error 3
+[2019-04-10T19:13:03.249][ReplicaC] 	 => Order Error 2
+[2019-04-10T19:13:03.249][ReplicaC] 	 => Staleness Error 1591011 	 1554923583249
+[2019-04-10T19:13:03.249][ReplicaC] Anti-entropy session for key = j
+[2019-04-10T19:13:03.937][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:13:04.863][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:13:04.865][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:13:04.866][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:13:04.866][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:13:06.014][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:13:06.015][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:13:06.015][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:13:06.015][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:13:06.478][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:13:06.478][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:13:06.478][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:13:06.478][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:13:07.089][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:13:07.089][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:13:07.089][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:13:07.089][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:13:07.698][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:13:07.698][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:13:07.698][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:13:11.141][ReplicaC] Accept WriteLog
+WriteLogItem(1554923590546,A,WriteOperation(i,+,1))[2019-04-10T19:13:11.141][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:13:23.156][ReplicaC] Accept WriteLog
+WriteLogItem(1554923602563,B,WriteOperation(i,+,1))[2019-04-10T19:13:23.156][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:13:28.314][ReplicaC] Accept WriteLog
+WriteLogItem(1554923303869,A,WriteOperation(j,+,1))[2019-04-10T19:13:28.314][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923607728,A,WriteOperation(j,+,1))[2019-04-10T19:13:28.314][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:13:33.482][ReplicaC] Accept WriteLog
+WriteLogItem(1554923613123,B,WriteOperation(i,+,1))[2019-04-10T19:13:33.482][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:13:42.916][ReplicaC] Accept WriteLog
+WriteLogItem(1554923598729,E,WriteOperation(j,+,1))[2019-04-10T19:13:42.917][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923620794,E,WriteOperation(j,+,1))[2019-04-10T19:13:42.920][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:13:52.164][ReplicaC] Accept WriteLog
+WriteLogItem(1554923629936,F,WriteOperation(i,+,1))[2019-04-10T19:13:52.164][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:13:59.972][ReplicaC] Write key = j, value = 1
+[2019-04-10T19:14:00.664][ReplicaC] Anti entropy session check
+[2019-04-10T19:14:00.664][ReplicaC] => Updating errors
+[2019-04-10T19:14:00.900][ReplicaC] => Check errors out of bound
+[2019-04-10T19:14:00.900][ReplicaC] 	 => Numerical Error 2
+[2019-04-10T19:14:00.900][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:14:00.900][ReplicaC] 	 => Staleness Error 1648662 	 1554923640900
+
+[2019-04-10T19:14:31.209][ReplicaC] Read key = i
+[2019-04-10T19:14:33.432][ReplicaC] Read key = j
+[2019-04-10T19:14:35.671][ReplicaC] Read key = k
+[2019-04-10T19:15:04.348][ReplicaC] Accept WriteLog
+WriteLogItem(1554923403156,D,WriteOperation(j,+,1))[2019-04-10T19:15:04.348][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923700199,D,WriteOperation(j,+,1))[2019-04-10T19:15:04.348][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:15:13.213][ReplicaC] Accept WriteLog
+WriteLogItem(1554923559687,F,WriteOperation(j,+,1))[2019-04-10T19:15:13.213][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923709992,F,WriteOperation(j,+,1))[2019-04-10T19:15:13.213][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:15:28.621][ReplicaC] Accept WriteLog
+WriteLogItem(1554923656496,E,WriteOperation(j,+,1))[2019-04-10T19:15:28.621][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923725502,E,WriteOperation(j,+,1))[2019-04-10T19:15:28.621][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:15:40.712][ReplicaC] Accept WriteLog
+WriteLogItem(1554923736558,D,WriteOperation(i,+,1))[2019-04-10T19:15:40.713][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:15:52.249][ReplicaC] Accept WriteLog
+WriteLogItem(1554923749027,D,WriteOperation(i,+,1))[2019-04-10T19:15:52.249][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:15:55.894][ReplicaC] Accept WriteLog
+WriteLogItem(1554923755047,B,WriteOperation(i,+,1))[2019-04-10T19:15:55.895][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:16:04.735][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:16:05.424][ReplicaC] Anti entropy session check
+[2019-04-10T19:16:05.424][ReplicaC] => Updating errors
+[2019-04-10T19:16:05.656][ReplicaC] => Check errors out of bound
+[2019-04-10T19:16:05.656][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:16:05.656][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:16:05.656][ReplicaC] 	 => Staleness Error 1797204 	 1554923765656
+[2019-04-10T19:16:05.656][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:16:06.350][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:16:07.958][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:16:07.958][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:16:07.958][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:16:09.804][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:16:09.804][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:16:09.804][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:16:10.268][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:16:10.268][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:16:10.268][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:16:11.009][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:16:11.009][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:16:11.009][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:16:11.751][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:16:11.751][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:16:36.161][ReplicaC] Accept WriteLog
+WriteLogItem(1554923651108,A,WriteOperation(j,+,1))[2019-04-10T19:16:36.161][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923795571,A,WriteOperation(j,+,1))[2019-04-10T19:16:36.162][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:16:40.168][ReplicaC] Accept WriteLog
+WriteLogItem(1554923799817,A,WriteOperation(i,+,1))[2019-04-10T19:16:40.169][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:16:54.496][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:16:55.186][ReplicaC] Anti entropy session check
+[2019-04-10T19:16:55.186][ReplicaC] => Updating errors
+[2019-04-10T19:16:55.420][ReplicaC] => Check errors out of bound
+[2019-04-10T19:16:55.420][ReplicaC] 	 => Numerical Error 34
+[2019-04-10T19:16:55.420][ReplicaC] 	 => Order Error 10
+[2019-04-10T19:16:55.420][ReplicaC] 	 => Staleness Error 1796941 	 1554923815420
+[2019-04-10T19:16:55.420][ReplicaC] Anti-entropy session for key = k
+[2019-04-10T19:16:56.109][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:16:57.029][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:57.031][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:16:57.031][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.189][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:16:58.189][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:58.652][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:16:58.652][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:16:59.269][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.269][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.269][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.269][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.269][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.269][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.269][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.270][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.270][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.270][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.270][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.270][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:16:59.270][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] 	 Push key = k value = 1
+[2019-04-10T19:16:59.883][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:17:06.805][ReplicaC] Accept WriteLog
+WriteLogItem(1554923824573,F,WriteOperation(i,+,1))[2019-04-10T19:17:06.806][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:17:14.101][ReplicaC] Accept WriteLog
+WriteLogItem(1554923831861,E,WriteOperation(i,+,1))[2019-04-10T19:17:14.101][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:17:17.212][ReplicaC] Accept WriteLog
+WriteLogItem(1554922018245,A,WriteOperation(k,+,1))[2019-04-10T19:17:17.213][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922484526,A,WriteOperation(k,+,1))[2019-04-10T19:17:17.213][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922487975,A,WriteOperation(k,+,1))[2019-04-10T19:17:17.213][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922495957,A,WriteOperation(k,+,1))[2019-04-10T19:17:17.213][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922799819,A,WriteOperation(k,+,1))[2019-04-10T19:17:17.213][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922827991,A,WriteOperation(k,+,1))[2019-04-10T19:17:17.213][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922932197,A,WriteOperation(k,+,1))[2019-04-10T19:17:17.213][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923406476,A,WriteOperation(k,+,1))[2019-04-10T19:17:17.213][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923643555,A,WriteOperation(k,+,1))[2019-04-10T19:17:17.213][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923836856,A,WriteOperation(k,+,1))[2019-04-10T19:17:17.213][ReplicaC] -- Update with key k, value = 1
+
+[2019-04-10T19:17:38.112][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:17:38.808][ReplicaC] Anti entropy session check
+[2019-04-10T19:17:38.808][ReplicaC] => Updating errors
+[2019-04-10T19:17:39.043][ReplicaC] => Check errors out of bound
+[2019-04-10T19:17:39.043][ReplicaC] 	 => Numerical Error 26
+[2019-04-10T19:17:39.043][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:17:39.043][ReplicaC] 	 => Staleness Error 1875857 	 1554923859043
+
+[2019-04-10T19:17:49.980][ReplicaC] Accept WriteLog
+WriteLogItem(1554923869156,A,WriteOperation(i,+,1))[2019-04-10T19:17:49.981][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:18:00.144][ReplicaC] Accept WriteLog
+WriteLogItem(1554923776733,F,WriteOperation(j,+,1))[2019-04-10T19:18:00.145][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923877906,F,WriteOperation(j,+,1))[2019-04-10T19:18:00.145][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:18:11.045][ReplicaC] Accept WriteLog
+WriteLogItem(1554923803234,B,WriteOperation(j,+,1))[2019-04-10T19:18:11.045][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554923890451,B,WriteOperation(j,+,1))[2019-04-10T19:18:11.046][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:18:23.808][ReplicaC] Accept WriteLog
+WriteLogItem(1554923898504,D,WriteOperation(i,+,1))[2019-04-10T19:18:23.808][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:18:34.137][ReplicaC] Accept WriteLog
+WriteLogItem(1554922173623,B,WriteOperation(k,+,1))[2019-04-10T19:18:34.137][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922257387,B,WriteOperation(k,+,1))[2019-04-10T19:18:34.137][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554922293094,B,WriteOperation(k,+,1))[2019-04-10T19:18:34.138][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923015934,B,WriteOperation(k,+,1))[2019-04-10T19:18:34.138][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923076084,B,WriteOperation(k,+,1))[2019-04-10T19:18:34.138][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923301102,B,WriteOperation(k,+,1))[2019-04-10T19:18:34.138][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923337160,B,WriteOperation(k,+,1))[2019-04-10T19:18:34.138][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923340338,B,WriteOperation(k,+,1))[2019-04-10T19:18:34.138][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923516104,B,WriteOperation(k,+,1))[2019-04-10T19:18:34.138][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923913541,B,WriteOperation(k,+,1))[2019-04-10T19:18:34.138][ReplicaC] -- Update with key k, value = 1
+
+[2019-04-10T19:18:43.192][ReplicaC] Accept WriteLog
+WriteLogItem(1554923920960,E,WriteOperation(i,+,1))[2019-04-10T19:18:43.193][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:18:56.757][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:18:57.452][ReplicaC] Anti entropy session check
+[2019-04-10T19:18:57.452][ReplicaC] => Updating errors
+[2019-04-10T19:18:57.685][ReplicaC] => Check errors out of bound
+[2019-04-10T19:18:57.685][ReplicaC] 	 => Numerical Error 21
+[2019-04-10T19:18:57.685][ReplicaC] 	 => Order Error 2
+[2019-04-10T19:18:57.685][ReplicaC] 	 => Staleness Error 1954501 	 1554923937685
+
+[2019-04-10T19:19:06.470][ReplicaC] Accept WriteLog
+WriteLogItem(1554923945881,B,WriteOperation(i,+,1))[2019-04-10T19:19:06.470][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:19:12.079][ReplicaC] Accept WriteLog
+WriteLogItem(1554923951487,A,WriteOperation(i,+,1))[2019-04-10T19:19:12.080][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:19:21.643][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:19:22.108][ReplicaC] Anti entropy session check
+[2019-04-10T19:19:22.108][ReplicaC] => Updating errors
+[2019-04-10T19:19:22.343][ReplicaC] => Check errors out of bound
+[2019-04-10T19:19:22.343][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:19:22.343][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:19:22.343][ReplicaC] 	 => Staleness Error 1993888 	 1554923962343
+[2019-04-10T19:19:22.343][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:19:23.033][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:19:23.958][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:19:23.959][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:19:23.960][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:19:25.108][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:19:25.108][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:19:25.108][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:19:25.570][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:19:25.570][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:19:25.570][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:19:26.181][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:19:26.181][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:19:26.182][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:19:26.792][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:19:26.792][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:19:34.372][ReplicaC] Accept WriteLog
+WriteLogItem(1554923972145,F,WriteOperation(i,+,1))[2019-04-10T19:19:34.373][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:19:42.903][ReplicaC] Accept WriteLog
+WriteLogItem(1554923980676,E,WriteOperation(i,+,1))[2019-04-10T19:19:42.903][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:19:50.207][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:19:50.899][ReplicaC] Anti entropy session check
+[2019-04-10T19:19:50.899][ReplicaC] => Updating errors
+[2019-04-10T19:19:51.130][ReplicaC] => Check errors out of bound
+[2019-04-10T19:19:51.130][ReplicaC] 	 => Numerical Error 22
+[2019-04-10T19:19:51.130][ReplicaC] 	 => Order Error 3
+[2019-04-10T19:19:51.130][ReplicaC] 	 => Staleness Error 2007948 	 1554923991130
+
+[2019-04-10T19:19:58.464][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:19:58.925][ReplicaC] Anti entropy session check
+[2019-04-10T19:19:58.925][ReplicaC] => Updating errors
+[2019-04-10T19:19:59.158][ReplicaC] => Check errors out of bound
+[2019-04-10T19:19:59.158][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:19:59.158][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:19:59.158][ReplicaC] 	 => Staleness Error 2030705 	 1554923999158
+[2019-04-10T19:19:59.158][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:19:59.848][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:20:00.769][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:20:00.769][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:20:00.769][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:20:01.918][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:20:01.919][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:20:01.919][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:20:02.381][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:20:02.381][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:20:02.381][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:20:02.991][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:20:02.991][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:20:02.991][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:20:03.605][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:20:03.605][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:20:06.987][ReplicaC] Accept WriteLog
+WriteLogItem(1554924006400,A,WriteOperation(i,+,1))[2019-04-10T19:20:06.987][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:20:11.159][ReplicaC] Accept WriteLog
+WriteLogItem(1554924010579,B,WriteOperation(i,+,1))[2019-04-10T19:20:11.159][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:20:24.757][ReplicaC] Accept WriteLog
+WriteLogItem(1554924020607,D,WriteOperation(i,+,1))[2019-04-10T19:20:24.757][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:20:33.070][ReplicaC] Accept WriteLog
+WriteLogItem(1554924030847,F,WriteOperation(i,+,1))[2019-04-10T19:20:33.070][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:20:39.295][ReplicaC] Accept WriteLog
+WriteLogItem(1554924037612,F,WriteOperation(i,+,1))[2019-04-10T19:20:39.295][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:20:47.949][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:20:48.639][ReplicaC] Anti entropy session check
+[2019-04-10T19:20:48.639][ReplicaC] => Updating errors
+[2019-04-10T19:20:48.871][ReplicaC] => Check errors out of bound
+[2019-04-10T19:20:48.871][ReplicaC] 	 => Numerical Error 22
+[2019-04-10T19:20:48.871][ReplicaC] 	 => Order Error 4
+[2019-04-10T19:20:48.871][ReplicaC] 	 => Staleness Error 2065688 	 1554924048871
+
+[2019-04-10T19:20:52.886][ReplicaC] Accept WriteLog
+WriteLogItem(1554924052298,A,WriteOperation(i,+,1))[2019-04-10T19:20:52.886][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:20:56.974][ReplicaC] Accept WriteLog
+WriteLogItem(1554924056618,B,WriteOperation(i,+,1))[2019-04-10T19:20:56.976][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:21:08.186][ReplicaC] Accept WriteLog
+WriteLogItem(1554924064263,D,WriteOperation(i,+,1))[2019-04-10T19:21:08.186][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:21:19.525][ReplicaC] Accept WriteLog
+WriteLogItem(1554924076530,D,WriteOperation(i,+,1))[2019-04-10T19:21:19.525][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:21:24.881][ReplicaC] Accept WriteLog
+WriteLogItem(1554924084293,A,WriteOperation(i,+,1))[2019-04-10T19:21:24.882][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:21:36.623][ReplicaC] Accept WriteLog
+WriteLogItem(1554923943828,E,WriteOperation(j,+,1))[2019-04-10T19:21:36.624][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924094027,E,WriteOperation(j,+,1))[2019-04-10T19:21:36.624][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:21:40.932][ReplicaC] Accept WriteLog
+WriteLogItem(1554924100340,A,WriteOperation(i,+,1))[2019-04-10T19:21:40.932][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:21:57.658][ReplicaC] Accept WriteLog
+WriteLogItem(1554924115028,E,WriteOperation(i,+,1))[2019-04-10T19:21:57.658][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:22:25.098][ReplicaC] Accept WriteLog
+WriteLogItem(1554923844900,D,WriteOperation(j,+,1))[2019-04-10T19:22:25.098][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924140723,D,WriteOperation(j,+,1))[2019-04-10T19:22:25.098][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:22:34.726][ReplicaC] Accept WriteLog
+WriteLogItem(1554923807068,A,WriteOperation(j,+,1))[2019-04-10T19:22:34.726][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924154137,A,WriteOperation(j,+,1))[2019-04-10T19:22:34.726][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:22:42.615][ReplicaC] Accept WriteLog
+WriteLogItem(1554924088123,B,WriteOperation(j,+,1))[2019-04-10T19:22:42.616][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924161798,B,WriteOperation(j,+,1))[2019-04-10T19:22:42.616][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:22:52.550][ReplicaC] Accept WriteLog
+WriteLogItem(1554924169334,F,WriteOperation(i,+,1))[2019-04-10T19:22:52.550][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:22:58.314][ReplicaC] Accept WriteLog
+WriteLogItem(1554924177497,A,WriteOperation(i,+,1))[2019-04-10T19:22:58.315][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:23:06.510][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:23:07.201][ReplicaC] Anti entropy session check
+[2019-04-10T19:23:07.201][ReplicaC] => Updating errors
+[2019-04-10T19:23:07.661][ReplicaC] => Check errors out of bound
+[2019-04-10T19:23:07.661][ReplicaC] 	 => Numerical Error 26
+[2019-04-10T19:23:07.661][ReplicaC] 	 => Order Error 5
+[2019-04-10T19:23:07.661][ReplicaC] 	 => Staleness Error 2204250 	 1554924187661
+
+[2019-04-10T19:23:24.545][ReplicaC] Accept WriteLog
+WriteLogItem(1554924203961,B,WriteOperation(i,+,1))[2019-04-10T19:23:24.545][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:23:36.084][ReplicaC] Accept WriteLog
+WriteLogItem(1554924194734,D,WriteOperation(j,+,1))[2019-04-10T19:23:36.084][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924212396,D,WriteOperation(j,+,1))[2019-04-10T19:23:36.084][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:23:45.405][ReplicaC] Accept WriteLog
+WriteLogItem(1554923227487,E,WriteOperation(k,+,1))[2019-04-10T19:23:45.405][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923293970,E,WriteOperation(k,+,1))[2019-04-10T19:23:45.405][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923324852,E,WriteOperation(k,+,1))[2019-04-10T19:23:45.405][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923441479,E,WriteOperation(k,+,1))[2019-04-10T19:23:45.405][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923647997,E,WriteOperation(k,+,1))[2019-04-10T19:23:45.405][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923720287,E,WriteOperation(k,+,1))[2019-04-10T19:23:45.405][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923851561,E,WriteOperation(k,+,1))[2019-04-10T19:23:45.405][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923929495,E,WriteOperation(k,+,1))[2019-04-10T19:23:45.405][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554924132758,E,WriteOperation(k,+,1))[2019-04-10T19:23:45.405][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554924223066,E,WriteOperation(k,+,1))[2019-04-10T19:23:45.405][ReplicaC] -- Update with key k, value = 1
+
+[2019-04-10T19:23:59.802][ReplicaC] Read key = i
+[2019-04-10T19:24:02.010][ReplicaC] Read key = j
+[2019-04-10T19:24:04.238][ReplicaC] Read key = k
+[2019-04-10T19:24:33.173][ReplicaC] Accept WriteLog
+WriteLogItem(1554924267418,D,WriteOperation(i,+,1))[2019-04-10T19:24:33.173][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:24:55.605][ReplicaC] Accept WriteLog
+WriteLogItem(1554924124378,F,WriteOperation(j,+,1))[2019-04-10T19:24:55.605][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924293257,F,WriteOperation(j,+,1))[2019-04-10T19:24:55.605][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:25:03.582][ReplicaC] Accept WriteLog
+WriteLogItem(1554924301904,F,WriteOperation(i,+,1))[2019-04-10T19:25:03.582][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:25:08.312][ReplicaC] Accept WriteLog
+WriteLogItem(1554924307717,B,WriteOperation(i,+,1))[2019-04-10T19:25:08.313][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:25:16.843][ReplicaC] Accept WriteLog
+WriteLogItem(1554924315056,F,WriteOperation(i,+,1))[2019-04-10T19:25:16.843][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:25:27.314][ReplicaC] Accept WriteLog
+WriteLogItem(1554924109453,E,WriteOperation(j,+,1))[2019-04-10T19:25:27.315][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924324979,E,WriteOperation(j,+,1))[2019-04-10T19:25:27.315][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:25:35.697][ReplicaC] Write key = j, value = 1
+[2019-04-10T19:25:36.387][ReplicaC] Anti entropy session check
+[2019-04-10T19:25:36.387][ReplicaC] => Updating errors
+[2019-04-10T19:25:36.850][ReplicaC] => Check errors out of bound
+[2019-04-10T19:25:36.850][ReplicaC] 	 => Numerical Error 1
+[2019-04-10T19:25:36.850][ReplicaC] 	 => Order Error 2
+[2019-04-10T19:25:36.850][ReplicaC] 	 => Staleness Error 2344381 	 1554924336850
+[2019-04-10T19:25:36.850][ReplicaC] Anti-entropy session for key = j
+[2019-04-10T19:25:37.539][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:25:39.148][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:25:39.148][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:25:39.148][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:25:39.148][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:25:40.986][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:25:40.986][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:25:40.986][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:25:40.986][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:25:41.450][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:25:41.450][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:25:41.450][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:25:41.450][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:25:42.186][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:25:42.186][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:25:42.186][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:25:42.186][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:25:42.930][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:25:42.930][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:25:42.930][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:25:49.222][ReplicaC] Write key = j, value = 1
+[2019-04-10T19:25:49.681][ReplicaC] Anti entropy session check
+[2019-04-10T19:25:49.681][ReplicaC] => Updating errors
+[2019-04-10T19:25:50.143][ReplicaC] => Check errors out of bound
+[2019-04-10T19:25:50.143][ReplicaC] 	 => Numerical Error 1
+[2019-04-10T19:25:50.143][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:25:50.143][ReplicaC] 	 => Staleness Error 2357676 	 1554924350143
+
+[2019-04-10T19:25:57.415][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:25:57.875][ReplicaC] Anti entropy session check
+[2019-04-10T19:25:57.875][ReplicaC] => Updating errors
+[2019-04-10T19:25:58.336][ReplicaC] => Check errors out of bound
+[2019-04-10T19:25:58.336][ReplicaC] 	 => Numerical Error 21
+[2019-04-10T19:25:58.336][ReplicaC] 	 => Order Error 6
+[2019-04-10T19:25:58.336][ReplicaC] 	 => Staleness Error 2374924 	 1554924358336
+
+[2019-04-10T19:26:05.039][ReplicaC] Accept WriteLog
+WriteLogItem(1554924362819,F,WriteOperation(i,+,1))[2019-04-10T19:26:05.039][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:26:12.794][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:26:13.253][ReplicaC] Anti entropy session check
+[2019-04-10T19:26:13.253][ReplicaC] => Updating errors
+[2019-04-10T19:26:13.713][ReplicaC] => Check errors out of bound
+[2019-04-10T19:26:13.713][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:26:13.713][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:26:13.713][ReplicaC] 	 => Staleness Error 2405033 	 1554924373713
+[2019-04-10T19:26:13.713][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:26:14.412][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:26:15.332][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:15.333][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:26:15.333][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:26:16.485][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:16.485][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:26:16.486][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:26:16.955][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:16.955][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:26:16.955][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:26:17.566][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:17.566][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:26:17.566][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:26:18.178][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:18.179][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:26:23.912][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:26:24.378][ReplicaC] Anti entropy session check
+[2019-04-10T19:26:24.378][ReplicaC] => Updating errors
+[2019-04-10T19:26:24.838][ReplicaC] => Check errors out of bound
+[2019-04-10T19:26:24.838][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:26:24.838][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:26:24.838][ReplicaC] 	 => Staleness Error 2416158 	 1554924384838
+[2019-04-10T19:26:24.838][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:26:25.302][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:26:25.993][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:25.993][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:26:25.993][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:26:26.687][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:26.687][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:26:26.687][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:26:26.920][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:26.920][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:26:26.920][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:26:27.406][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:27.406][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:26:27.406][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:26:27.896][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:27.896][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:26:34.494][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:26:34.954][ReplicaC] Anti entropy session check
+[2019-04-10T19:26:34.954][ReplicaC] => Updating errors
+[2019-04-10T19:26:35.415][ReplicaC] => Check errors out of bound
+[2019-04-10T19:26:35.415][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:26:35.415][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:26:35.415][ReplicaC] 	 => Staleness Error 2426734 	 1554924395415
+[2019-04-10T19:26:35.415][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:26:35.878][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:26:36.569][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:36.570][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:26:36.570][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:26:37.263][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:37.263][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:26:37.263][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:26:37.497][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:37.497][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:26:37.497][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:26:37.981][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:37.981][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:26:37.981][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:26:38.466][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:38.466][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:26:40.830][ReplicaC] Accept WriteLog
+WriteLogItem(1554924400239,A,WriteOperation(i,+,1))[2019-04-10T19:26:40.830][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:26:49.069][ReplicaC] Accept WriteLog
+WriteLogItem(1554924406855,E,WriteOperation(i,+,1))[2019-04-10T19:26:49.069][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:26:55.701][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:26:56.396][ReplicaC] Anti entropy session check
+[2019-04-10T19:26:56.396][ReplicaC] => Updating errors
+[2019-04-10T19:26:56.861][ReplicaC] => Check errors out of bound
+[2019-04-10T19:26:56.861][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:26:56.861][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:26:56.861][ReplicaC] 	 => Staleness Error 2448176 	 1554924416861
+[2019-04-10T19:26:56.861][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:26:57.325][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:26:58.016][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:58.016][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:26:58.016][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:26:58.708][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:58.708][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:26:58.708][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:26:58.943][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:58.943][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:26:58.943][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:26:59.430][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:59.430][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:26:59.430][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:26:59.915][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:26:59.915][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:27:02.390][ReplicaC] Accept WriteLog
+WriteLogItem(1554924421804,A,WriteOperation(i,+,1))[2019-04-10T19:27:02.390][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:27:10.025][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:27:10.490][ReplicaC] Anti entropy session check
+[2019-04-10T19:27:10.490][ReplicaC] => Updating errors
+[2019-04-10T19:27:10.954][ReplicaC] => Check errors out of bound
+[2019-04-10T19:27:10.954][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:27:10.954][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:27:10.954][ReplicaC] 	 => Staleness Error 2462270 	 1554924430954
+[2019-04-10T19:27:10.954][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:27:11.417][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:27:12.108][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:27:12.108][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:27:12.108][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:27:12.800][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:27:12.802][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:27:12.802][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:27:13.035][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:27:13.035][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:27:13.035][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:27:13.522][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:27:13.522][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:27:13.522][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:27:14.007][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:27:14.007][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:27:26.230][ReplicaC] Accept WriteLog
+WriteLogItem(1554924445643,A,WriteOperation(i,+,1))[2019-04-10T19:27:26.231][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:27:34.994][ReplicaC] Accept WriteLog
+WriteLogItem(1554924454636,A,WriteOperation(i,+,1))[2019-04-10T19:27:34.994][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:27:49.304][ReplicaC] Accept WriteLog
+WriteLogItem(1554924466075,F,WriteOperation(i,+,1))[2019-04-10T19:27:49.304][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:28:00.707][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:28:01.396][ReplicaC] Anti entropy session check
+[2019-04-10T19:28:01.396][ReplicaC] => Updating errors
+[2019-04-10T19:28:01.856][ReplicaC] => Check errors out of bound
+[2019-04-10T19:28:01.856][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:28:01.856][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:28:01.856][ReplicaC] 	 => Staleness Error 2513176 	 1554924481856
+[2019-04-10T19:28:01.856][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:28:02.543][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:28:04.150][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:28:04.150][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:28:04.150][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:28:05.989][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:28:05.989][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:28:05.989][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:28:06.452][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:28:06.452][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:28:06.452][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:28:07.189][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:28:07.189][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:28:07.189][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:28:07.925][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:28:07.926][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:28:17.064][ReplicaC] Accept WriteLog
+WriteLogItem(1554924494714,E,WriteOperation(i,+,1))[2019-04-10T19:28:17.064][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:28:28.026][ReplicaC] Accept WriteLog
+WriteLogItem(1554924503641,D,WriteOperation(i,+,1))[2019-04-10T19:28:28.026][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:28:36.766][ReplicaC] Accept WriteLog
+WriteLogItem(1554923202932,F,WriteOperation(k,+,1))[2019-04-10T19:28:36.767][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923208676,F,WriteOperation(k,+,1))[2019-04-10T19:28:36.767][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923221457,F,WriteOperation(k,+,1))[2019-04-10T19:28:36.767][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923466116,F,WriteOperation(k,+,1))[2019-04-10T19:28:36.767][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923512883,F,WriteOperation(k,+,1))[2019-04-10T19:28:36.767][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923909639,F,WriteOperation(k,+,1))[2019-04-10T19:28:36.767][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554924151545,F,WriteOperation(k,+,1))[2019-04-10T19:28:36.767][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554924201184,F,WriteOperation(k,+,1))[2019-04-10T19:28:36.767][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554924461113,F,WriteOperation(k,+,1))[2019-04-10T19:28:36.767][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554924514432,F,WriteOperation(k,+,1))[2019-04-10T19:28:36.767][ReplicaC] -- Update with key k, value = 1
+
+[2019-04-10T19:28:40.671][ReplicaC] Accept WriteLog
+WriteLogItem(1554924218885,A,WriteOperation(j,+,1))[2019-04-10T19:28:40.671][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924519852,A,WriteOperation(j,+,1))[2019-04-10T19:28:40.671][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:29:09.662][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:29:10.353][ReplicaC] Anti entropy session check
+[2019-04-10T19:29:10.354][ReplicaC] => Updating errors
+[2019-04-10T19:29:10.814][ReplicaC] => Check errors out of bound
+[2019-04-10T19:29:10.815][ReplicaC] 	 => Numerical Error 19
+[2019-04-10T19:29:10.815][ReplicaC] 	 => Order Error 7
+[2019-04-10T19:29:10.815][ReplicaC] 	 => Staleness Error 2567403 	 1554924550815
+
+[2019-04-10T19:29:13.292][ReplicaC] Accept WriteLog
+WriteLogItem(1554924490315,B,WriteOperation(j,+,1))[2019-04-10T19:29:13.292][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924552710,B,WriteOperation(j,+,1))[2019-04-10T19:29:13.292][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:29:21.861][ReplicaC] Write key = j, value = 1
+[2019-04-10T19:29:22.322][ReplicaC] Anti entropy session check
+[2019-04-10T19:29:22.323][ReplicaC] => Updating errors
+[2019-04-10T19:29:22.784][ReplicaC] => Check errors out of bound
+[2019-04-10T19:29:22.784][ReplicaC] 	 => Numerical Error 3
+[2019-04-10T19:29:22.784][ReplicaC] 	 => Order Error 2
+[2019-04-10T19:29:22.784][ReplicaC] 	 => Staleness Error 2570317 	 1554924562784
+[2019-04-10T19:29:22.784][ReplicaC] Anti-entropy session for key = j
+[2019-04-10T19:29:23.473][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:29:24.392][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:29:24.393][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:29:24.393][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:29:24.393][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:29:25.541][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:29:25.541][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:29:25.541][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:29:25.541][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:29:26.003][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:29:26.003][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:29:26.003][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:29:26.003][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:29:26.613][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:29:26.613][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:29:26.613][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:29:26.613][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:29:27.222][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:29:27.223][ReplicaC] 	 Push key = j value = 1
+[2019-04-10T19:29:27.223][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:29:43.398][ReplicaC] Accept WriteLog
+WriteLogItem(1554924581175,F,WriteOperation(i,+,1))[2019-04-10T19:29:43.398][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:29:47.498][ReplicaC] Accept WriteLog
+WriteLogItem(1554924586906,A,WriteOperation(i,+,1))[2019-04-10T19:29:47.498][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:29:59.994][ReplicaC] Accept WriteLog
+WriteLogItem(1554924595600,D,WriteOperation(i,+,1))[2019-04-10T19:29:59.994][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:30:08.287][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:30:08.979][ReplicaC] Anti entropy session check
+[2019-04-10T19:30:08.979][ReplicaC] => Updating errors
+[2019-04-10T19:30:09.439][ReplicaC] => Check errors out of bound
+[2019-04-10T19:30:09.439][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:30:09.439][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:30:09.439][ReplicaC] 	 => Staleness Error 2640759 	 1554924609439
+[2019-04-10T19:30:09.439][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:30:10.135][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:30:11.063][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:30:11.064][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:30:11.064][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:30:12.213][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:30:12.213][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:30:12.213][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:30:12.675][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:30:12.675][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:30:12.675][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:30:13.285][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:30:13.285][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:30:13.285][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:30:13.897][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:30:13.897][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:30:21.501][ReplicaC] Accept WriteLog
+WriteLogItem(1554924543722,A,WriteOperation(j,+,1))[2019-04-10T19:30:21.501][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924620906,A,WriteOperation(j,+,1))[2019-04-10T19:30:21.501][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:30:30.235][ReplicaC] Accept WriteLog
+WriteLogItem(1554924628011,F,WriteOperation(i,+,1))[2019-04-10T19:30:30.236][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:30:39.780][ReplicaC] Accept WriteLog
+WriteLogItem(1554924451831,E,WriteOperation(j,+,1))[2019-04-10T19:30:39.780][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924636449,E,WriteOperation(j,+,1))[2019-04-10T19:30:39.780][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:30:44.851][ReplicaC] Accept WriteLog
+WriteLogItem(1554924644030,B,WriteOperation(i,+,1))[2019-04-10T19:30:44.853][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:30:53.391][ReplicaC] Accept WriteLog
+WriteLogItem(1554924651713,E,WriteOperation(i,+,1))[2019-04-10T19:30:53.391][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:30:56.360][ReplicaC] Accept WriteLog
+WriteLogItem(1554924655775,A,WriteOperation(i,+,1))[2019-04-10T19:30:56.360][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:31:01.653][ReplicaC] Accept WriteLog
+WriteLogItem(1554924661297,B,WriteOperation(i,+,1))[2019-04-10T19:31:01.653][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:31:13.644][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:31:14.333][ReplicaC] Anti entropy session check
+[2019-04-10T19:31:14.333][ReplicaC] => Updating errors
+[2019-04-10T19:31:14.793][ReplicaC] => Check errors out of bound
+[2019-04-10T19:31:14.793][ReplicaC] 	 => Numerical Error 22
+[2019-04-10T19:31:14.793][ReplicaC] 	 => Order Error 8
+[2019-04-10T19:31:14.793][ReplicaC] 	 => Staleness Error 2691382 	 1554924674793
+
+[2019-04-10T19:31:18.918][ReplicaC] Accept WriteLog
+WriteLogItem(1554924678330,A,WriteOperation(i,+,1))[2019-04-10T19:31:18.918][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:31:23.244][ReplicaC] Accept WriteLog
+WriteLogItem(1554924682893,A,WriteOperation(i,+,1))[2019-04-10T19:31:23.244][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:31:31.127][ReplicaC] Write key = i, value = 1
+[2019-04-10T19:31:31.587][ReplicaC] Anti entropy session check
+[2019-04-10T19:31:31.587][ReplicaC] => Updating errors
+[2019-04-10T19:31:32.048][ReplicaC] => Check errors out of bound
+[2019-04-10T19:31:32.048][ReplicaC] 	 => Numerical Error 0
+[2019-04-10T19:31:32.048][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:31:32.048][ReplicaC] 	 => Staleness Error 2723367 	 1554924692048
+[2019-04-10T19:31:32.049][ReplicaC] Anti-entropy session for key = i
+[2019-04-10T19:31:32.744][ReplicaC] => Start anti-entropy session with ReplicaA
+[2019-04-10T19:31:33.663][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:31:33.665][ReplicaC] => Finished anti-entropy session with ReplicaA
+[2019-04-10T19:31:33.665][ReplicaC] => Start anti-entropy session with ReplicaB
+[2019-04-10T19:31:34.815][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:31:34.815][ReplicaC] => Finished anti-entropy session with ReplicaB
+[2019-04-10T19:31:34.815][ReplicaC] => Start anti-entropy session with ReplicaD
+[2019-04-10T19:31:35.278][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:31:35.278][ReplicaC] => Finished anti-entropy session with ReplicaD
+[2019-04-10T19:31:35.278][ReplicaC] => Start anti-entropy session with ReplicaE
+[2019-04-10T19:31:35.889][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:31:35.889][ReplicaC] => Finished anti-entropy session with ReplicaE
+[2019-04-10T19:31:35.889][ReplicaC] => Start anti-entropy session with ReplicaF
+[2019-04-10T19:31:36.499][ReplicaC] 	 Push key = i value = 1
+[2019-04-10T19:31:36.499][ReplicaC] => Finished anti-entropy session with ReplicaF
+
+[2019-04-10T19:31:39.658][ReplicaC] Accept WriteLog
+WriteLogItem(1554924698840,A,WriteOperation(i,+,1))[2019-04-10T19:31:39.658][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:31:48.457][ReplicaC] Write key = j, value = 1
+[2019-04-10T19:31:48.918][ReplicaC] Anti entropy session check
+[2019-04-10T19:31:48.918][ReplicaC] => Updating errors
+[2019-04-10T19:31:49.378][ReplicaC] => Check errors out of bound
+[2019-04-10T19:31:49.378][ReplicaC] 	 => Numerical Error 3
+[2019-04-10T19:31:49.378][ReplicaC] 	 => Order Error 1
+[2019-04-10T19:31:49.378][ReplicaC] 	 => Staleness Error 2716913 	 1554924709378
+
+[2019-04-10T19:31:53.355][ReplicaC] Accept WriteLog
+WriteLogItem(1554924713002,A,WriteOperation(i,+,1))[2019-04-10T19:31:53.355][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:32:11.257][ReplicaC] Accept WriteLog
+WriteLogItem(1554924441597,D,WriteOperation(j,+,1))[2019-04-10T19:32:11.257][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924726884,D,WriteOperation(j,+,1))[2019-04-10T19:32:11.257][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:32:23.306][ReplicaC] Accept WriteLog
+WriteLogItem(1554923243372,D,WriteOperation(k,+,1))[2019-04-10T19:32:23.306][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923378251,D,WriteOperation(k,+,1))[2019-04-10T19:32:23.306][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923472699,D,WriteOperation(k,+,1))[2019-04-10T19:32:23.306][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923785113,D,WriteOperation(k,+,1))[2019-04-10T19:32:23.306][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923792603,D,WriteOperation(k,+,1))[2019-04-10T19:32:23.306][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923866337,D,WriteOperation(k,+,1))[2019-04-10T19:32:23.306][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554923887389,D,WriteOperation(k,+,1))[2019-04-10T19:32:23.306][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554924280301,D,WriteOperation(k,+,1))[2019-04-10T19:32:23.306][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554924286971,D,WriteOperation(k,+,1))[2019-04-10T19:32:23.306][ReplicaC] -- Update with key k, value = 1
+WriteLogItem(1554924738247,D,WriteOperation(k,+,1))[2019-04-10T19:32:23.306][ReplicaC] -- Update with key k, value = 1
+
+[2019-04-10T19:32:42.666][ReplicaC] Accept WriteLog
+WriteLogItem(1554924759216,D,WriteOperation(i,+,1))[2019-04-10T19:32:42.666][ReplicaC] -- Update with key i, value = 1
+
+[2019-04-10T19:32:46.301][ReplicaC] Accept WriteLog
+WriteLogItem(1554924752660,A,WriteOperation(j,+,1))[2019-04-10T19:32:46.301][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924765711,A,WriteOperation(j,+,1))[2019-04-10T19:32:46.301][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:32:54.412][ReplicaC] Write key = k, value = 1
+[2019-04-10T19:32:55.102][ReplicaC] Anti entropy session check
+[2019-04-10T19:32:55.102][ReplicaC] => Updating errors
+[2019-04-10T19:32:55.564][ReplicaC] => Check errors out of bound
+[2019-04-10T19:32:55.565][ReplicaC] 	 => Numerical Error 15
+[2019-04-10T19:32:55.565][ReplicaC] 	 => Order Error 9
+[2019-04-10T19:32:55.565][ReplicaC] 	 => Staleness Error 2792151 	 1554924775565
+
+[2019-04-10T19:32:58.304][ReplicaC] Accept WriteLog
+WriteLogItem(1554924570796,B,WriteOperation(j,+,1))[2019-04-10T19:32:58.304][ReplicaC] -- Update with key j, value = 1
+WriteLogItem(1554924777723,B,WriteOperation(j,+,1))[2019-04-10T19:32:58.304][ReplicaC] -- Update with key j, value = 1
+
+[2019-04-10T19:33:12.146][ReplicaC] Read key = i
+[2019-04-10T19:33:14.296][ReplicaC] Read key = j
+[2019-04-10T19:33:16.439][ReplicaC] Read key = k
+/home/sven/.sdkman/candidates/scala/current/bin/scala: line 21: 16431 Killed                  "$@"

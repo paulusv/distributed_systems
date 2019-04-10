@@ -195,7 +195,6 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
     for (item <- writeLog.writeLogItems) {
       breakable {
         val conit = getOrCreateConit(item.operation.key)
-        print(item)
 
         // Skip writes that were written to this replica.
         if (item.replicaId.equals(replicaId)) {
