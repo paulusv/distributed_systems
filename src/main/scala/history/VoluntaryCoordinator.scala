@@ -21,6 +21,7 @@ object VoluntaryCoordinator {
     val list = LocateRegistry.getRegistry(rmiServer).list()
     val r = new scala.util.Random()
     println("[" + LocalDateTime.now() + "][Coordinator] Coordinator started")
+    println("[" + LocalDateTime.now() + "][Coordinator] => " + list)
     println("--------------------------------------------------------------------------------------------")
     println()
 
