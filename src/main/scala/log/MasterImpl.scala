@@ -10,9 +10,7 @@ import java.time.LocalDateTime
   */
 class MasterImpl extends UnicastRemoteObject with Master {
 
-  var trueValX: Int = 0
-  var trueValY: Int = 0
-  var trueValZ: Int = 0
+  var trueValMap: Map[Char, Int] = Map[Char, Int]()
 
   /**
     * The writeLog contains all writes that are made
@@ -30,12 +28,10 @@ class MasterImpl extends UnicastRemoteObject with Master {
     val value = item.operation.value
     val key = item.operation.key
 
-    if (key == 'x') {
-      trueValX += value
-    } else if (key == 'y') {
-      trueValY += value
-    } else if (key == 'z') {
-      trueValZ += value
+    if (!trueValMap.contains(key)) {
+      trueValMap += (key -> value)
+    } else {
+      trueValMap += (key -> (trueValMap(key) + value))
     }
 
     writeLog.addItem(item)
@@ -61,7 +57,7 @@ class MasterImpl extends UnicastRemoteObject with Master {
     println("[" + LocalDateTime.now() + "][Master] Registered " + name)
   }
 
-  override def originalValues(): List[Int] = {
-    List(trueValX, trueValY, trueValZ)
+  override def originalValues(): Map[Char, Int] = {
+    trueValMap
   }
 }

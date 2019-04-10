@@ -121,7 +121,7 @@ do
             ssh sven@instance-01 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                echo -ne '($i/20) $REPLICA: ';
+                echo -ne '($i/75) $REPLICA: ';
                 scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1 &
             "
         fi
@@ -130,7 +130,7 @@ do
             ssh sven@instance-02 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                echo -ne '($i/20) $REPLICA: ';
+                echo -ne '($i/75) $REPLICA: ';
                 scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1 &
             "
         fi
@@ -139,7 +139,7 @@ do
             ssh sven@instance-03 "
                 source /home/sven/.sdkman/bin/sdkman-init.sh;
                 cd ${HOME_DIR};
-                echo -ne '($i/20) $REPLICA: ';
+                echo -ne '($i/75) $REPLICA: ';
                 scala main.scala.client.Client ${RMI_IP} ${REPLICA} ${READORWRITE} ${LETTER} 1 &
             "
         fi

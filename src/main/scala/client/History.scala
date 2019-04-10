@@ -18,9 +18,9 @@ object History {
       case other => throw new RuntimeException("Wrong objesct: " + other)
     }
 
-    val list = server.originalValues()
-    println("[" + LocalDateTime.now() + "][Master] x = " + list.head)
-    println("[" + LocalDateTime.now() + "][Master] y = " + list(1))
-    println("[" + LocalDateTime.now() + "][Master] z = " + list(2))
+    val map = server.originalValues()
+    for ((key, value) <- map) {
+      println("[" + LocalDateTime.now() + "][Master] Read key = " + key + " and value = " + value + " in 0ms")
+    }
   }
 }
