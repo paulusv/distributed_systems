@@ -1,0 +1,27 @@
+[2019-04-10T11:12:34.082][ReplicaF] Starting ReplicaF
+[2019-04-10T11:12:34.084][ReplicaF] => Looking for ECG history
+[2019-04-10T11:12:35.158][ReplicaF] => Binding TACT Replica to RMI
+[2019-04-10T11:12:35.619][ReplicaF] Replica started on rmi://10.156.0.2/ReplicaF
+--------------------------------------------------------------------------------------------
+
+[2019-04-10T11:12:42.401][ReplicaF] Accept WriteLog
+WriteLogItem(1554894759483,B,WriteOperation(c,+,1))[2019-04-10T11:12:42.407][ReplicaF] -- Update with key c, value = 1
+
+[2019-04-10T11:12:47.034][ReplicaF] Accept WriteLog
+WriteLogItem(1554894765671,B,WriteOperation(a,+,1))[2019-04-10T11:12:47.045][ReplicaF] -- Update with key a, value = 1
+
+[2019-04-10T11:12:59.994][ReplicaF] Accept WriteLog
+WriteLogItem(1554894773376,C,WriteOperation(c,+,1))[2019-04-10T11:12:59.995][ReplicaF] -- Update with key c, value = 1
+
+[2019-04-10T11:13:09.655][ReplicaF] Accept WriteLog
+WriteLogItem(1554894785703,C,WriteOperation(c,+,1))[2019-04-10T11:13:09.655][ReplicaF] -- Update with key c, value = 1
+
+[2019-04-10T11:13:15.170][ReplicaF] Accept WriteLog
+WriteLogItem(1554894793150,B,WriteOperation(c,+,1))[2019-04-10T11:13:15.170][ReplicaF] -- Update with key c, value = 1
+
+[2019-04-10T11:14:01.799][ReplicaF] Read key = a
+[2019-04-10T11:14:03.418][ReplicaF] Read key = b
+[2019-04-10T11:14:05.065][ReplicaF] Read key = c
+[2019-04-10T11:14:06.695][ReplicaF] Read key = d
+[2019-04-10T11:14:08.286][ReplicaF] Read key = e
+/home/sven/.sdkman/candidates/scala/current/bin/scala: line 21: 11895 Killed                  "$@"
