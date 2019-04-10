@@ -88,6 +88,9 @@ do
     "
 done
 
+# Wait for everything to start
+sleep 5
+
 echo "=> Start coordinator on ${INSTANCE_01_IP}"
 ssh ${USER}@${INSTANCE_01_IP} "
     source /home/${USER}/.sdkman/bin/sdkman-init.sh;
@@ -96,7 +99,7 @@ ssh ${USER}@${INSTANCE_01_IP} "
 "
 echo "Done! \n"
 
-# Wait for everything to start
+# Wait for coordinator to start
 sleep 5
 
 #########################################################################
