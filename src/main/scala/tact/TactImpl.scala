@@ -116,6 +116,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
   private def createConit(key: Char): Conit = {
     var conit: Conit = null
 
+    // Experiment 3.1
     if (key == 'a') {
       conit = new Conit(key, database.readValue(key), 0, 0, 0)
     }
@@ -131,6 +132,31 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
     if (key == 'e') {
       conit = new Conit(key, database.readValue(key), Integer.MAX_VALUE, Integer.MAX_VALUE, 0)
     }
+
+    // Experiment 3.2
+    if (key == 'f') {
+      conit = new Conit(key, database.readValue(key), 0, Integer.MAX_VALUE, Integer.MAX_VALUE)
+    }
+    if (key == 'g') {
+      conit = new Conit(key, database.readValue(key), 3, Integer.MAX_VALUE, Integer.MAX_VALUE)
+    }
+    if (key == 'h') {
+      conit = new Conit(key, database.readValue(key), 5, Integer.MAX_VALUE, Integer.MAX_VALUE)
+    }
+
+    // Experiment 3.3
+    if (key == 'i') {
+      conit = new Conit(key, database.readValue(key), Integer.MAX_VALUE, 0, Integer.MAX_VALUE)
+    }
+    if (key == 'j') {
+      conit = new Conit(key, database.readValue(key), Integer.MAX_VALUE, 2, Integer.MAX_VALUE)
+    }
+    if (key == 'k') {
+      conit = new Conit(key, database.readValue(key), Integer.MAX_VALUE, 10, Integer.MAX_VALUE)
+    }
+
+
+    // Experiment 1 & 2
     if (key == 'x') {
       conit = new Conit(key, database.readValue(key), 3, 3, 5000)
     }
