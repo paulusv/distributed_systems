@@ -21,12 +21,13 @@ object VoluntaryCoordinator {
     val list = LocateRegistry.getRegistry(rmiServer).list()
     val r = new scala.util.Random()
     println("[" + LocalDateTime.now() + "][Coordinator] Coordinator started")
-    println("[" + LocalDateTime.now() + "][Coordinator] => " + list)
+    println("[" + LocalDateTime.now() + "][Coordinator] => " + list.mkString(", "))
     println("--------------------------------------------------------------------------------------------")
     println()
 
     while (true) {
       val random = r.nextInt(list.length)
+      println("[" + LocalDateTime.now() + "][Coordinator] Draw number is " + random);
       val serverName = list(random)
 
       println("[" + LocalDateTime.now() + "][Coordinator] Check voluntary AntiEntropy session with " + serverName)
