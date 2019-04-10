@@ -4,13 +4,15 @@ import java.rmi.server.UnicastRemoteObject
 import java.rmi.{Naming, Remote}
 import java.time.LocalDateTime
 
+import scala.collection.immutable.TreeMap
+
 /**
   * EcgLogImpl class.
   * Implements all the functions used with RMI for Ecg History
   */
 class MasterImpl extends UnicastRemoteObject with Master {
 
-  var trueValMap: Map[Char, Int] = Map[Char, Int]()
+  var trueValMap: Map[Char, Int] = TreeMap[Char, Int]()
 
   /**
     * The writeLog contains all writes that are made
@@ -28,11 +30,7 @@ class MasterImpl extends UnicastRemoteObject with Master {
     val value = item.operation.value
     val key = item.operation.key
 
-    if (!trueValMap.contains(key)) {
-      trueValMap += (key -> value)
-    } else {
-      trueValMap += (key -> (trueValMap(key) + value))
-    }
+    if (!trueValMap.contains(key)) trueValMap += (key -> value) else trueValMap += (key -> (trueValMap(key) + value))
 
     writeLog.addItem(item)
   }
@@ -58,6 +56,8 @@ class MasterImpl extends UnicastRemoteObject with Master {
   }
 
   override def originalValues(): Map[Char, Int] = {
+    trueValMap.toSeq.sortBy(_._1)
+
     trueValMap
   }
 }
