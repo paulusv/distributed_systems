@@ -2,6 +2,7 @@ package main.scala.history
 
 import java.rmi.Naming
 import java.rmi.registry.LocateRegistry
+import java.time.LocalDateTime
 
 import main.scala.tact.Tact
 
@@ -19,10 +20,15 @@ object VoluntaryCoordinator {
     val rmiServer = args(0)
     val list = LocateRegistry.getRegistry(rmiServer).list()
     val r = new scala.util.Random()
+    println("[" + LocalDateTime.now() + "][Coordinator] Coordinator started")
+    println("--------------------------------------------------------------------------------------------")
+    println()
 
     while (true) {
       val random = r.nextInt(list.length)
       val serverName = list(random)
+
+      println("[" + LocalDateTime.now() + "][Coordinator] Check voluntary AntiEntropy session with " + serverName)
 
       if (serverName.contains("Replica")) {
         val server = Naming.lookup("//" + rmiServer + "/" + serverName) match {
@@ -31,7 +37,10 @@ object VoluntaryCoordinator {
         }
 
         if (!server.isBusy) {
+          println("[" + LocalDateTime.now() + "][Coordinator] => Start voluntary anti entropy session")
           server.startVoluntaryAntiEntropy()
+        } else {
+          println("[" + LocalDateTime.now() + "][Coordinator] => Server is busy")
         }
       }
 

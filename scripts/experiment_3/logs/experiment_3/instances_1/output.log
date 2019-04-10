@@ -18,66 +18,340 @@ Start master and replicas...
 Done! 
 
 Start simulation
-(1/100) ReplicaC: [2019-04-10T11:08:41.426][Client] Write key = e and value = 1 in 1860ms
-(2/100) ReplicaB: [2019-04-10T11:08:47.713][Client] Write key = a and value = 1 in 3055ms
-(3/100) ReplicaC: [2019-04-10T11:09:00.781][Client] Write key = c and value = 1 in 7925ms
-(4/100) ReplicaA: [2019-04-10T11:09:02.479][Client] Write key = b and value = 1 in 201ms
-(5/100) ReplicaA: [2019-04-10T11:09:07.699][Client] Write key = a and value = 1 in 2930ms
+(1/100) ReplicaB: [2019-04-10T11:16:23.734][Client] Write key = b and value = 1 in 263ms
+(2/100) ReplicaD: [2019-04-10T11:16:31.571][Client] Write key = b and value = 1 in 1811ms
+(3/100) ReplicaA: [2019-04-10T11:16:37.634][Client] Write key = d and value = 1 in 3041ms
+(4/100) ReplicaD: [2019-04-10T11:16:45.221][Client] Write key = b and value = 1 in 1763ms
+(5/100) ReplicaD: [2019-04-10T11:16:58.591][Client] Write key = d and value = 1 in 7934ms
+(6/100) ReplicaD: [2019-04-10T11:17:05.436][Client] Write key = e and value = 1 in 1775ms
+(7/100) ReplicaA: [2019-04-10T11:17:10.171][Client] Write key = a and value = 1 in 2214ms
+(8/100) ReplicaB: [2019-04-10T11:17:14.742][Client] Write key = c and value = 1 in 2952ms
+(9/100) ReplicaD: [2019-04-10T11:17:21.501][Client] Write key = b and value = 1 in 1767ms
+(10/100) ReplicaB: [2019-04-10T11:17:25.327][Client] Write key = c and value = 1 in 1546ms
+(11/100) ReplicaC: [2019-04-10T11:17:32.288][Client] Write key = e and value = 1 in 2026ms
+(12/100) ReplicaD: [2019-04-10T11:17:39.449][Client] Write key = e and value = 1 in 1774ms
+(13/100) ReplicaE: [2019-04-10T11:17:48.328][Client] Write key = c and value = 1 in 5178ms
+(14/100) ReplicaC: [2019-04-10T11:18:00.527][Client] Write key = c and value = 1 in 7955ms
+(15/100) ReplicaE: [2019-04-10T11:18:04.654][Client] Write key = e and value = 1 in 903ms
+(16/100) ReplicaF: [2019-04-10T11:18:13.717][Client] Write key = a and value = 1 in 5284ms
+(17/100) ReplicaE: [2019-04-10T11:18:21.142][Client] Write key = c and value = 1 in 3590ms
+(18/100) ReplicaA: [2019-04-10T11:18:26.104][Client] Write key = d and value = 1 in 2212ms
+(19/100) ReplicaB: [2019-04-10T11:18:29.642][Client] Write key = a and value = 1 in 2198ms
+(20/100) ReplicaE: [2019-04-10T11:18:37.400][Client] Write key = d and value = 1 in 3477ms
+(21/100) ReplicaB: [2019-04-10T11:18:40.793][Client] Write key = c and value = 1 in 1542ms
+(22/100) ReplicaB: [2019-04-10T11:18:44.029][Client] Write key = a and value = 1 in 1518ms
+(23/100) ReplicaE: [2019-04-10T11:18:51.198][Client] Write key = c and value = 1 in 3032ms
+(24/100) ReplicaD: [2019-04-10T11:19:02.661][Client] Write key = a and value = 1 in 6453ms
+(25/100) ReplicaA: [2019-04-10T11:19:07.286][Client] Write key = d and value = 1 in 2251ms
+(26/100) ReplicaE: [2019-04-10T11:19:10.913][Client] Write key = b and value = 1 in 900ms
+(27/100) ReplicaE: [2019-04-10T11:19:14.225][Client] Write key = e and value = 1 in 905ms
+(28/100) ReplicaD: [2019-04-10T11:19:26.416][Client] Write key = a and value = 1 in 6015ms
+(29/100) ReplicaB: [2019-04-10T11:19:29.709][Client] Write key = b and value = 1 in 150ms
+(30/100) ReplicaE: [2019-04-10T11:19:36.689][Client] Write key = d and value = 1 in 3591ms
+(31/100) ReplicaE: [2019-04-10T11:19:42.241][Client] Write key = d and value = 1 in 3021ms
+(32/100) ReplicaE: [2019-04-10T11:19:46.189][Client] Write key = e and value = 1 in 907ms
+(33/100) ReplicaD: [2019-04-10T11:19:53.149][Client] Write key = b and value = 1 in 1992ms
+(34/100) ReplicaD: [2019-04-10T11:19:59.636][Client] Write key = b and value = 1 in 1770ms
+(35/100) ReplicaA: [2019-04-10T11:20:01.768][Client] Write key = e and value = 1 in 154ms
+(36/100) ReplicaD: [2019-04-10T11:20:08.067][Client] Write key = b and value = 1 in 1777ms
+(37/100) ReplicaA: [2019-04-10T11:20:09.777][Client] Write key = e and value = 1 in 152ms
+(38/100) ReplicaA: [2019-04-10T11:20:14.866][Client] Write key = a and value = 1 in 2202ms
+(39/100) ReplicaB: [2019-04-10T11:20:16.329][Client] Write key = b and value = 1 in 172ms
+(40/100) ReplicaD: [2019-04-10T11:20:22.354][Client] Write key = b and value = 1 in 1755ms
+(41/100) ReplicaB: [2019-04-10T11:20:25.145][Client] Write key = b and value = 1 in 174ms
+(42/100) ReplicaF: [2019-04-10T11:20:31.953][Client] Write key = d and value = 1 in 3703ms
+(43/100) ReplicaE: [2019-04-10T11:20:40.859][Client] Write key = d and value = 1 in 5042ms
+(44/100) ReplicaA: [2019-04-10T11:20:42.486][Client] Write key = b and value = 1 in 160ms
+(45/100) ReplicaC: [2019-04-10T11:20:53.476][Client] Write key = c and value = 1 in 6457ms
+(46/100) ReplicaF: [2019-04-10T11:20:58.834][Client] Write key = b and value = 1 in 909ms
+(47/100) ReplicaE: [2019-04-10T11:21:02.442][Client] Write key = b and value = 1 in 897ms
+(48/100) ReplicaF: [2019-04-10T11:21:06.605][Client] Write key = b and value = 1 in 908ms
+(49/100) ReplicaD: [2019-04-10T11:21:14.708][Client] Write key = e and value = 1 in 1983ms
+(50/100) ReplicaA: [2019-04-10T11:21:17.467][Client] Write key = e and value = 1 in 161ms
+(51/100) ReplicaF: [2019-04-10T11:21:23.844][Client] Write key = a and value = 1 in 3590ms
+(52/100) ReplicaD: [2019-04-10T11:21:37.005][Client] Write key = c and value = 1 in 7887ms
+(53/100) ReplicaA: [2019-04-10T11:21:41.665][Client] Write key = d and value = 1 in 2911ms
+(54/100) ReplicaC: [2019-04-10T11:21:54.597][Client] Write key = d and value = 1 in 6474ms
+(55/100) ReplicaF: [2019-04-10T11:21:59.355][Client] Write key = b and value = 1 in 1142ms
+(56/100) ReplicaD: [2019-04-10T11:22:08.740][Client] Write key = b and value = 1 in 2005ms
+(57/100) ReplicaD: [2019-04-10T11:22:19.448][Client] Write key = c and value = 1 in 6240ms
+(58/100) ReplicaA: [2019-04-10T11:22:21.916][Client] Write key = e and value = 1 in 166ms
+(59/100) ReplicaE: [2019-04-10T11:22:28.598][Client] Write key = d and value = 1 in 3700ms
+(60/100) ReplicaB: [2019-04-10T11:22:33.959][Client] Write key = d and value = 1 in 2907ms
+(61/100) ReplicaB: [2019-04-10T11:22:35.988][Client] Write key = b and value = 1 in 174ms
+(62/100) ReplicaD: [2019-04-10T11:22:46.484][Client] Write key = d and value = 1 in 6222ms
+(63/100) ReplicaA: [2019-04-10T11:22:50.372][Client] Write key = a and value = 1 in 2221ms
+(64/100) ReplicaA: [2019-04-10T11:22:54.058][Client] Write key = c and value = 1 in 1518ms
+(65/100) ReplicaD: [2019-04-10T11:23:05.241][Client] Write key = a and value = 1 in 5983ms
+(66/100) ReplicaE: [2019-04-10T11:23:13.034][Client] Write key = a and value = 1 in 3685ms
+(67/100) ReplicaA: [2019-04-10T11:23:15.838][Client] Write key = b and value = 1 in 167ms
+(68/100) ReplicaA: [2019-04-10T11:23:19.342][Client] Write key = d and value = 1 in 1519ms
+(69/100) ReplicaA: [2019-04-10T11:23:23.296][Client] Write key = d and value = 1 in 1514ms
+(70/100) ReplicaB: [2019-04-10T11:23:26.802][Client] Write key = a and value = 1 in 2205ms
+(71/100) ReplicaE: [2019-04-10T11:23:32.872][Client] Write key = c and value = 1 in 3481ms
+(72/100) ReplicaF: [2019-04-10T11:23:41.665][Client] Write key = d and value = 1 in 5045ms
+(73/100) ReplicaF: [2019-04-10T11:23:48.534][Client] Write key = a and value = 1 in 3016ms
+(74/100) ReplicaC: [2019-04-10T11:23:55.379][Client] Write key = e and value = 1 in 2009ms
+(75/100) ReplicaA: [2019-04-10T11:23:58.093][Client] Write key = e and value = 1 in 166ms
+(76/100) ReplicaB: [2019-04-10T11:24:03.127][Client] Write key = a and value = 1 in 2211ms
+(77/100) ReplicaE: [2019-04-10T11:24:06.890][Client] Write key = e and value = 1 in 1008ms
+(78/100) ReplicaC: [2019-04-10T11:24:20.752][Client] Write key = a and value = 1 in 7857ms
+(79/100) ReplicaA: [2019-04-10T11:24:23.229][Client] Write key = e and value = 1 in 165ms
+(80/100) ReplicaF: [2019-04-10T11:24:29.986][Client] Write key = d and value = 1 in 3658ms
+(81/100) ReplicaF: [2019-04-10T11:24:33.739][Client] Write key = b and value = 1 in 899ms
+(82/100) ReplicaE: [2019-04-10T11:24:37.360][Client] Write key = e and value = 1 in 1001ms
+(83/100) ReplicaB: [2019-04-10T11:24:42.575][Client] Write key = a and value = 1 in 2195ms
+(84/100) ReplicaE: [2019-04-10T11:24:49.448][Client] Write key = c and value = 1 in 3584ms
+(85/100) ReplicaC: [2019-04-10T11:25:02.495][Client] Write key = c and value = 1 in 6455ms
+(86/100) ReplicaC: [2019-04-10T11:25:13.864][Client] Write key = d and value = 1 in 5283ms
+(87/100) ReplicaA: [2019-04-10T11:25:18.559][Client] Write key = a and value = 1 in 2199ms
+(88/100) ReplicaB: [2019-04-10T11:25:23.158][Client] Write key = c and value = 1 in 2197ms
+(89/100) ReplicaB: [2019-04-10T11:25:27.648][Client] Write key = c and value = 1 in 1518ms
+(90/100) ReplicaA: [2019-04-10T11:25:30.550][Client] Write key = c and value = 1 in 1531ms
+(91/100) ReplicaB: [2019-04-10T11:25:33.815][Client] Write key = d and value = 1 in 1528ms
+(92/100) ReplicaA: [2019-04-10T11:25:37.760][Client] Write key = a and value = 1 in 1742ms
+(93/100) ReplicaB: [2019-04-10T11:25:40.800][Client] Write key = c and value = 1 in 1512ms
+(94/100) ReplicaC: [2019-04-10T11:25:53.267][Client] Write key = c and value = 1 in 6472ms
+(95/100) ReplicaD: [2019-04-10T11:26:05.349][Client] Write key = d and value = 1 in 6444ms
+(96/100) ReplicaB: [2019-04-10T11:26:11][Client] Write key = c and value = 1 in 2878ms
+(97/100) ReplicaD: [2019-04-10T11:26:23.196][Client] Write key = a and value = 1 in 6004ms
+(98/100) ReplicaE: [2019-04-10T11:26:30.967][Client] Write key = c and value = 1 in 3570ms
+(99/100) ReplicaE: [2019-04-10T11:26:38.590][Client] Write key = c and value = 1 in 4326ms
+(100/100) ReplicaA: [2019-04-10T11:26:42.811][Client] Write key = c and value = 1 in 2804ms
 Done! 
 
 Fetch Master results:
-[2019-04-10T11:09:11.770][Master] Read key = e and value = 1 in 0ms
-[2019-04-10T11:09:11.771][Master] Read key = a and value = 2 in 0ms
-[2019-04-10T11:09:11.772][Master] Read key = c and value = 1 in 0ms
-[2019-04-10T11:09:11.773][Master] Read key = b and value = 1 in 0ms
+[2019-04-10T11:26:45.780][Master] Read key = a and value = 19 in 0ms
+[2019-04-10T11:26:45.781][Master] Read key = b and value = 21 in 0ms
+[2019-04-10T11:26:45.783][Master] Read key = c and value = 23 in 0ms
+[2019-04-10T11:26:45.783][Master] Read key = d and value = 21 in 0ms
+[2019-04-10T11:26:45.784][Master] Read key = e and value = 16 in 0ms
 Done! 
 
 Results:
 =>  ReplicaA
-[2019-04-10T11:09:13.218][Client] Read key = a and value = 2 in 163ms
-[2019-04-10T11:09:14.234][Client] Read key = b and value = 1 in 140ms
-[2019-04-10T11:09:15.249][Client] Read key = c and value = 1 in 144ms
-[2019-04-10T11:09:16.278][Client] Read key = d and value = 0 in 156ms
-[2019-04-10T11:09:17.313][Client] Read key = e and value = 0 in 147ms
+[2019-04-10T11:26:47.128][Client] Read key = a and value = 19 in 146ms
+[2019-04-10T11:26:48.145][Client] Read key = b and value = 2 in 140ms
+[2019-04-10T11:26:49.199][Client] Read key = c and value = 23 in 154ms
+[2019-04-10T11:26:50.295][Client] Read key = d and value = 21 in 158ms
+[2019-04-10T11:26:51.352][Client] Read key = e and value = 6 in 148ms
 =>  ReplicaB
-[2019-04-10T11:09:18.676][Client] Read key = a and value = 2 in 145ms
-[2019-04-10T11:09:19.698][Client] Read key = b and value = 0 in 144ms
-[2019-04-10T11:09:20.710][Client] Read key = c and value = 1 in 144ms
-[2019-04-10T11:09:21.727][Client] Read key = d and value = 0 in 147ms
-[2019-04-10T11:09:22.730][Client] Read key = e and value = 0 in 139ms
+[2019-04-10T11:26:52.668][Client] Read key = a and value = 19 in 144ms
+[2019-04-10T11:26:53.715][Client] Read key = b and value = 5 in 152ms
+[2019-04-10T11:26:54.742][Client] Read key = c and value = 23 in 143ms
+[2019-04-10T11:26:55.787][Client] Read key = d and value = 21 in 145ms
+[2019-04-10T11:26:56.832][Client] Read key = e and value = 0 in 148ms
 =>  ReplicaC
-[2019-04-10T11:09:25.862][Client] Read key = a and value = 2 in 1276ms
-[2019-04-10T11:09:28.039][Client] Read key = b and value = 0 in 1280ms
-[2019-04-10T11:09:30.194][Client] Read key = c and value = 1 in 1281ms
-[2019-04-10T11:09:32.129][Client] Read key = d and value = 0 in 1049ms
-[2019-04-10T11:09:34.044][Client] Read key = e and value = 1 in 1054ms
+[2019-04-10T11:26:59.357][Client] Read key = a and value = 19 in 1281ms
+[2019-04-10T11:27:01.530][Client] Read key = b and value = 0 in 1286ms
+[2019-04-10T11:27:03.723][Client] Read key = c and value = 23 in 1289ms
+[2019-04-10T11:27:05.912][Client] Read key = d and value = 21 in 1280ms
+[2019-04-10T11:27:08.111][Client] Read key = e and value = 2 in 1286ms
 =>  ReplicaD
-[2019-04-10T11:09:37.582][Client] Read key = a and value = 2 in 1288ms
-[2019-04-10T11:09:39.746][Client] Read key = b and value = 0 in 1275ms
-[2019-04-10T11:09:41.918][Client] Read key = c and value = 1 in 1281ms
-[2019-04-10T11:09:44.100][Client] Read key = d and value = 0 in 1277ms
-[2019-04-10T11:09:46.304][Client] Read key = e and value = 0 in 1290ms
+[2019-04-10T11:27:10.629][Client] Read key = a and value = 19 in 1287ms
+[2019-04-10T11:27:12.589][Client] Read key = b and value = 8 in 1050ms
+[2019-04-10T11:27:14.780][Client] Read key = c and value = 23 in 1281ms
+[2019-04-10T11:27:16.971][Client] Read key = d and value = 21 in 1291ms
+[2019-04-10T11:27:19.164][Client] Read key = e and value = 3 in 1283ms
 =>  ReplicaE
-[2019-04-10T11:09:48.153][Client] Read key = a and value = 2 in 664ms
-[2019-04-10T11:09:49.595][Client] Read key = b and value = 0 in 562ms
-[2019-04-10T11:09:51.168][Client] Read key = c and value = 1 in 664ms
-[2019-04-10T11:09:52.731][Client] Read key = d and value = 0 in 664ms
-[2019-04-10T11:09:54.292][Client] Read key = e and value = 0 in 664ms
+[2019-04-10T11:27:21.105][Client] Read key = a and value = 19 in 661ms
+[2019-04-10T11:27:22.678][Client] Read key = b and value = 2 in 665ms
+[2019-04-10T11:27:24.293][Client] Read key = c and value = 23 in 670ms
+[2019-04-10T11:27:25.895][Client] Read key = d and value = 21 in 663ms
+[2019-04-10T11:27:27.508][Client] Read key = e and value = 5 in 673ms
 =>  ReplicaF
-[2019-04-10T11:09:56.283][Client] Read key = a and value = 2 in 672ms
-[2019-04-10T11:09:57.897][Client] Read key = b and value = 0 in 672ms
-[2019-04-10T11:09:59.453][Client] Read key = c and value = 1 in 664ms
-[2019-04-10T11:10:01.032][Client] Read key = d and value = 0 in 656ms
-[2019-04-10T11:10:02.591][Client] Read key = e and value = 0 in 668ms
+[2019-04-10T11:27:29.368][Client] Read key = a and value = 19 in 670ms
+[2019-04-10T11:27:30.996][Client] Read key = b and value = 4 in 672ms
+[2019-04-10T11:27:32.719][Client] Read key = c and value = 23 in 689ms
+[2019-04-10T11:27:34.506][Client] Read key = d and value = 21 in 695ms
+[2019-04-10T11:27:36.254][Client] Read key = e and value = 0 in 683ms
 Done! 
 
+(1/100) ReplicaD: [2019-04-10T11:27:47.057][Client] Write key = c and value = 1 in 6463ms
+(2/100) ReplicaB: [2019-04-10T11:27:52.081][Client] Write key = a and value = 1 in 2190ms
+(3/100) ReplicaC: [2019-04-10T11:28:03.270][Client] Write key = d and value = 1 in 6458ms
+(4/100) ReplicaD: [2019-04-10T11:28:10.502][Client] Write key = b and value = 1 in 1764ms
+(5/100) ReplicaF: [2019-04-10T11:28:18.369][Client] Write key = a and value = 1 in 3689ms
+(6/100) ReplicaA: [2019-04-10T11:28:20.914][Client] Write key = e and value = 1 in 185ms
+(7/100) ReplicaF: [2019-04-10T11:28:25.084][Client] Write key = e and value = 1 in 906ms
+(8/100) ReplicaE: [2019-04-10T11:28:29.705][Client] Write key = b and value = 1 in 1010ms
+(9/100) ReplicaF: [2019-04-10T11:28:35.990][Client] Write key = c and value = 1 in 3479ms
+(10/100) ReplicaE: [2019-04-10T11:28:39.738][Client] Write key = e and value = 1 in 890ms
+(11/100) ReplicaB: [2019-04-10T11:28:44.097][Client] Write key = d and value = 1 in 2197ms
+(12/100) ReplicaF: [2019-04-10T11:28:47.472][Client] Write key = e and value = 1 in 881ms
+(13/100) ReplicaB: [2019-04-10T11:28:50.954][Client] Write key = c and value = 1 in 1523ms
+(14/100) ReplicaA: [2019-04-10T11:28:56.097][Client] Write key = c and value = 1 in 2192ms
+(15/100) ReplicaF: [2019-04-10T11:29:03.284][Client] Write key = a and value = 1 in 3113ms
+(16/100) ReplicaF: [2019-04-10T11:29:07.239][Client] Write key = e and value = 1 in 901ms
+(17/100) ReplicaD: [2019-04-10T11:29:20.230][Client] Write key = c and value = 1 in 7761ms
+(18/100) ReplicaE: [2019-04-10T11:29:27.981][Client] Write key = d and value = 1 in 3672ms
+(19/100) ReplicaF: [2019-04-10T11:29:34.965][Client] Write key = d and value = 1 in 4053ms
+(20/100) ReplicaA: [2019-04-10T11:29:37.230][Client] Write key = b and value = 1 in 159ms
+(21/100) ReplicaF: [2019-04-10T11:29:44.867][Client] Write key = c and value = 1 in 4322ms
+(22/100) ReplicaF: [2019-04-10T11:29:51.370][Client] Write key = d and value = 1 in 3004ms
+(23/100) ReplicaB: [2019-04-10T11:29:53.242][Client] Write key = b and value = 1 in 156ms
+(24/100) ReplicaE: [2019-04-10T11:29:57.863][Client] Write key = b and value = 1 in 999ms
+(25/100) ReplicaA: [2019-04-10T11:30:02.982][Client] Write key = d and value = 1 in 2206ms
+(26/100) ReplicaD: [2019-04-10T11:30:12.229][Client] Write key = e and value = 1 in 2001ms
+(27/100) ReplicaD: [2019-04-10T11:30:20.590][Client] Write key = e and value = 1 in 1778ms
+(28/100) ReplicaE: [2019-04-10T11:30:25.308][Client] Write key = e and value = 1 in 896ms
+(29/100) ReplicaB: [2019-04-10T11:30:28.250][Client] Write key = e and value = 1 in 163ms
+(30/100) ReplicaD: [2019-04-10T11:30:38.933][Client] Write key = d and value = 1 in 6218ms
+(31/100) ReplicaC: [2019-04-10T11:30:51.925][Client] Write key = d and value = 1 in 6447ms
+(32/100) ReplicaA: [2019-04-10T11:30:55.346][Client] Write key = e and value = 1 in 192ms
+(33/100) ReplicaC: [2019-04-10T11:31:06.178][Client] Write key = d and value = 1 in 5290ms
+(34/100) ReplicaC: [2019-04-10T11:31:18.236][Client] Write key = c and value = 1 in 7643ms
+(35/100) ReplicaD: [2019-04-10T11:31:28.749][Client] Write key = a and value = 1 in 6225ms
+(36/100) ReplicaD: [2019-04-10T11:31:36.716][Client] Write key = b and value = 1 in 1768ms
+(37/100) ReplicaE: [2019-04-10T11:31:40.849][Client] Write key = b and value = 1 in 1014ms
+(38/100) ReplicaA: [2019-04-10T11:31:44.882][Client] Write key = d and value = 1 in 1634ms
+(39/100) ReplicaB: [2019-04-10T11:31:48.521][Client] Write key = c and value = 1 in 2200ms
+(40/100) ReplicaD: [2019-04-10T11:32:00.371][Client] Write key = c and value = 1 in 6213ms
+(41/100) ReplicaC: [2019-04-10T11:32:07.433][Client] Write key = e and value = 1 in 2004ms
+(42/100) ReplicaA: [2019-04-10T11:32:11.894][Client] Write key = c and value = 1 in 1634ms
+(43/100) ReplicaD: [2019-04-10T11:32:22.855][Client] Write key = d and value = 1 in 6214ms
+(44/100) ReplicaE: [2019-04-10T11:32:29.863][Client] Write key = a and value = 1 in 3785ms
+(45/100) ReplicaC: [2019-04-10T11:32:36.116][Client] Write key = e and value = 1 in 1767ms
+(46/100) ReplicaC: [2019-04-10T11:32:43.259][Client] Write key = e and value = 1 in 1777ms
+(47/100) ReplicaB: [2019-04-10T11:32:46.328][Client] Write key = e and value = 1 in 170ms
+(48/100) ReplicaF: [2019-04-10T11:32:54.082][Client] Write key = d and value = 1 in 3688ms
+(49/100) ReplicaD: [2019-04-10T11:33:05.685][Client] Write key = a and value = 1 in 6450ms
+(50/100) ReplicaC: [2019-04-10T11:33:18.247][Client] Write key = d and value = 1 in 6481ms
+(51/100) ReplicaA: [2019-04-10T11:33:23.255][Client] Write key = c and value = 1 in 2314ms
+(52/100) ReplicaF: [2019-04-10T11:33:29.340][Client] Write key = a and value = 1 in 3662ms
+(53/100) ReplicaB: [2019-04-10T11:33:32.057][Client] Write key = b and value = 1 in 163ms
+(54/100) ReplicaD: [2019-04-10T11:33:39.114][Client] Write key = e and value = 1 in 1982ms
+(55/100) ReplicaB: [2019-04-10T11:33:40.997][Client] Write key = e and value = 1 in 166ms
+(56/100) ReplicaB: [2019-04-10T11:33:43.341][Client] Write key = e and value = 1 in 170ms
+(57/100) ReplicaA: [2019-04-10T11:33:47.273][Client] Write key = c and value = 1 in 2564ms
+(58/100) ReplicaD: [2019-04-10T11:33:57.985][Client] Write key = c and value = 1 in 6330ms
+(59/100) ReplicaF: [2019-04-10T11:34:04.876][Client] Write key = d and value = 1 in 3679ms
+(60/100) ReplicaF: [2019-04-10T11:34:12.171][Client] Write key = c and value = 1 in 3001ms
+(61/100) ReplicaB: [2019-04-10T11:34:16.474][Client] Write key = c and value = 1 in 2889ms
+(62/100) ReplicaE: [2019-04-10T11:34:24.425][Client] Write key = a and value = 1 in 3672ms
+(63/100) ReplicaA: [2019-04-10T11:34:28.540][Client] Write key = d and value = 1 in 2185ms
+(64/100) ReplicaC: [2019-04-10T11:34:35.846][Client] Write key = e and value = 1 in 2001ms
+(65/100) ReplicaA: [2019-04-10T11:34:40.638][Client] Write key = c and value = 1 in 1530ms
+(66/100) ReplicaA: [2019-04-10T11:34:42.689][Client] Write key = e and value = 1 in 163ms
+(67/100) ReplicaC: [2019-04-10T11:34:54.787][Client] Write key = d and value = 1 in 6217ms
+(68/100) ReplicaE: [2019-04-10T11:35:01.208][Client] Write key = a and value = 1 in 3699ms
+(69/100) ReplicaE: [2019-04-10T11:35:08.918][Client] Write key = c and value = 1 in 4813ms
+(70/100) ReplicaD: [2019-04-10T11:35:17.134][Client] Write key = b and value = 1 in 1990ms
+(71/100) ReplicaC: [2019-04-10T11:35:29.346][Client] Write key = a and value = 1 in 6467ms
+(72/100) ReplicaB: [2019-04-10T11:35:33.227][Client] Write key = a and value = 1 in 2190ms
+(73/100) ReplicaF: [2019-04-10T11:35:37.331][Client] Write key = e and value = 1 in 991ms
+(74/100) ReplicaE: [2019-04-10T11:35:44.480][Client] Write key = a and value = 1 in 3674ms
+(75/100) ReplicaC: [2019-04-10T11:35:54.921][Client] Write key = d and value = 1 in 5984ms
+(76/100) ReplicaC: [2019-04-10T11:36:05.678][Client] Write key = a and value = 1 in 5046ms
+(77/100) ReplicaE: [2019-04-10T11:36:12.954][Client] Write key = c and value = 1 in 3469ms
+(78/100) ReplicaF: [2019-04-10T11:36:19.295][Client] Write key = a and value = 1 in 3666ms
+(79/100) ReplicaE: [2019-04-10T11:36:23.785][Client] Write key = e and value = 1 in 899ms
+(80/100) ReplicaD: [2019-04-10T11:36:30.294][Client] Write key = b and value = 1 in 1760ms
+(81/100) ReplicaC: [2019-04-10T11:36:42.948][Client] Write key = a and value = 1 in 6346ms
+(82/100) ReplicaA: [2019-04-10T11:36:45.366][Client] Write key = e and value = 1 in 167ms
+(83/100) ReplicaC: [2019-04-10T11:36:52.892][Client] Write key = b and value = 1 in 1765ms
+(84/100) ReplicaC: [2019-04-10T11:37:05.592][Client] Write key = c and value = 1 in 7243ms
+(85/100) ReplicaB: [2019-04-10T11:37:10.955][Client] Write key = d and value = 1 in 2191ms
+(86/100) ReplicaF: [2019-04-10T11:37:18.775][Client] Write key = c and value = 1 in 4678ms
+(87/100) ReplicaE: [2019-04-10T11:37:26.908][Client] Write key = d and value = 1 in 3696ms
+(88/100) ReplicaA: [2019-04-10T11:37:30.348][Client] Write key = d and value = 1 in 2193ms
+(89/100) ReplicaF: [2019-04-10T11:37:34.380][Client] Write key = e and value = 1 in 899ms
+(90/100) ReplicaA: [2019-04-10T11:37:37.040][Client] Write key = b and value = 1 in 155ms
+(91/100) ReplicaC: [2019-04-10T11:37:48.486][Client] Write key = c and value = 1 in 6431ms
+(92/100) ReplicaA: [2019-04-10T11:37:51.661][Client] Write key = b and value = 1 in 194ms
+(93/100) ReplicaF: [2019-04-10T11:37:58.961][Client] Write key = d and value = 1 in 3560ms
+(94/100) ReplicaA: [2019-04-10T11:38:03.792][Client] Write key = d and value = 1 in 2207ms
+(95/100) ReplicaA: [2019-04-10T11:38:07.018][Client] Write key = d and value = 1 in 1523ms
+(96/100) ReplicaA: [2019-04-10T11:38:08.697][Client] Write key = e and value = 1 in 181ms
+(97/100) ReplicaB: [2019-04-10T11:38:12.506][Client] Write key = a and value = 1 in 2197ms
+(98/100) ReplicaD: [2019-04-10T11:38:25.830][Client] Write key = c and value = 1 in 7824ms
+(99/100) ReplicaD: [2019-04-10T11:38:36.774][Client] Write key = a and value = 1 in 5264ms
+(100/100) ReplicaE: [2019-04-10T11:38:44.678][Client] Write key = c and value = 1 in 3672ms
 Done! 
 
-Stop the master and all the replicas...
+Fetch Master results:
+[2019-04-10T11:38:47.911][Master] Read key = a and value = 36 in 0ms
+[2019-04-10T11:38:47.914][Master] Read key = b and value = 34 in 0ms
+[2019-04-10T11:38:47.915][Master] Read key = c and value = 46 in 0ms
+[2019-04-10T11:38:47.915][Master] Read key = d and value = 44 in 0ms
+[2019-04-10T11:38:47.915][Master] Read key = e and value = 40 in 0ms
 Done! 
 
-Fetching logs...
-=> Remove old logs
-=> Get the new logs
+Results:
+=>  ReplicaA
+[2019-04-10T11:38:49.465][Client] Read key = a and value = 36 in 177ms
+[2019-04-10T11:38:50.663][Client] Read key = b and value = 5 in 163ms
+[2019-04-10T11:38:51.824][Client] Read key = c and value = 46 in 164ms
+[2019-04-10T11:38:52.962][Client] Read key = d and value = 44 in 156ms
+[2019-04-10T11:38:54.004][Client] Read key = e and value = 11 in 147ms
+=>  ReplicaB
+[2019-04-10T11:38:55.361][Client] Read key = a and value = 36 in 155ms
+[2019-04-10T11:38:56.417][Client] Read key = b and value = 7 in 150ms
+[2019-04-10T11:38:57.433][Client] Read key = c and value = 46 in 140ms
+[2019-04-10T11:38:58.464][Client] Read key = d and value = 44 in 150ms
+[2019-04-10T11:38:59.497][Client] Read key = e and value = 4 in 143ms
+=>  ReplicaC
+[2019-04-10T11:39:01.914][Client] Read key = a and value = 36 in 1278ms
+[2019-04-10T11:39:04.135][Client] Read key = b and value = 1 in 1289ms
+[2019-04-10T11:39:06.383][Client] Read key = c and value = 46 in 1293ms
+[2019-04-10T11:39:08.553][Client] Read key = d and value = 44 in 1286ms
+[2019-04-10T11:39:10.788][Client] Read key = e and value = 6 in 1291ms
+=>  ReplicaD
+[2019-04-10T11:39:13.341][Client] Read key = a and value = 36 in 1282ms
+[2019-04-10T11:39:15.523][Client] Read key = b and value = 12 in 1278ms
+[2019-04-10T11:39:17.703][Client] Read key = c and value = 46 in 1284ms
+[2019-04-10T11:39:19.884][Client] Read key = d and value = 44 in 1293ms
+[2019-04-10T11:39:22.054][Client] Read key = e and value = 6 in 1288ms
+=>  ReplicaE
+[2019-04-10T11:39:23.863][Client] Read key = a and value = 36 in 658ms
+[2019-04-10T11:39:25.420][Client] Read key = b and value = 5 in 658ms
+[2019-04-10T11:39:26.964][Client] Read key = c and value = 46 in 662ms
+[2019-04-10T11:39:28.492][Client] Read key = d and value = 44 in 659ms
+[2019-04-10T11:39:29.960][Client] Read key = e and value = 8 in 550ms
+=>  ReplicaF
+[2019-04-10T11:39:31.808][Client] Read key = a and value = 36 in 678ms
+[2019-04-10T11:39:33.338][Client] Read key = b and value = 4 in 655ms
+[2019-04-10T11:39:34.868][Client] Read key = c and value = 46 in 655ms
+[2019-04-10T11:39:36.399][Client] Read key = d and value = 44 in 654ms
+[2019-04-10T11:39:37.966][Client] Read key = e and value = 5 in 663ms
 Done! 
 
+(1/100) ReplicaE: [2019-04-10T11:39:44.037][Client] Write key = c and value = 1 in 3676ms
+(2/100) ReplicaB: [2019-04-10T11:39:46.286][Client] Write key = e and value = 1 in 162ms
+(3/100) ReplicaD: [2019-04-10T11:39:58.562][Client] Write key = d and value = 1 in 6447ms
+(4/100) ReplicaE: [2019-04-10T11:40:06.180][Client] Write key = d and value = 1 in 3456ms
+(5/100) ReplicaE: [2019-04-10T11:40:13.019][Client] Write key = c and value = 1 in 2992ms
+(6/100) ReplicaE: [2019-04-10T11:40:16.930][Client] Write key = b and value = 1 in 876ms
+(7/100) ReplicaE: [2019-04-10T11:40:25.185][Client] Write key = a and value = 1 in 4792ms
+(8/100) ReplicaA: [2019-04-10T11:40:28.059][Client] Write key = b and value = 1 in 146ms
+(9/100) ReplicaD: [2019-04-10T11:40:34.542][Client] Write key = b and value = 1 in 2002ms
+(10/100) ReplicaE: [2019-04-10T11:40:42.046][Client] Write key = d and value = 1 in 2978ms
+(11/100) ReplicaD: [2019-04-10T11:40:50.052][Client] Write key = e and value = 1 in 1764ms
+(12/100) ReplicaF: [2019-04-10T11:40:56.759][Client] Write key = d and value = 1 in 3678ms
+(13/100) ReplicaF: [2019-04-10T11:41:00.881][Client] Write key = b and value = 1 in 898ms
+(14/100) ReplicaF: [2019-04-10T11:41:07.297][Client] Write key = c and value = 1 in 2998ms
+(15/100) ReplicaB: [2019-04-10T11:41:12.287][Client] Write key = d and value = 1 in 2178ms
+(16/100) ReplicaF: [2019-04-10T11:41:19.100][Client] Write key = d and value = 1 in 2998ms
+(17/100) ReplicaA: [2019-04-10T11:41:25.129][Client] Write key = d and value = 1 in 2871ms
+(18/100) ReplicaF: [2019-04-10T11:41:30.924][Client] Write key = d and value = 1 in 2983ms
+(19/100) ReplicaE: [2019-04-10T11:41:35.287][Client] Write key = b and value = 1 in 1010ms
+(20/100) ReplicaE: [2019-04-10T11:41:42.336][Client] Write key = c and value = 1 in 3576ms
+(21/100) ReplicaC: [2019-04-10T11:41:49.104][Client] Write key = e and value = 1 in 1989ms
+(22/100) ReplicaE: [2019-04-10T11:41:56.640][Client] Write key = d and value = 1 in 2999ms
+(23/100) ReplicaC: [2019-04-10T11:42:07.271][Client] Write key = d and value = 1 in 5752ms
+(24/100) ReplicaC: [2019-04-10T11:42:18.562][Client] Write key = a and value = 1 in 5267ms
+(25/100) ReplicaA: [2019-04-10T11:42:22.229][Client] Write key = c and value = 1 in 2200ms
+(26/100) ReplicaD: [2019-04-10T11:42:33.810][Client] Write key = a and value = 1 in 6449ms
+(27/100) ReplicaD: [2019-04-10T11:42:41.817][Client] Write key = b and value = 1 in 1751ms
+(28/100) ReplicaC: [2019-04-10T11:42:53.305][Client] Write key = a and value = 1 in 6450ms
+(29/100) ReplicaB: [2019-04-10T11:42:56.938][Client] Write key = e and value = 1 in 160ms
+(30/100) ReplicaE: [2019-04-10T11:43:04.552][Client] Write key = a and value = 1 in 3659ms
+(31/100) ReplicaE: [2019-04-10T11:43:11.988][Client] Write key = a and value = 1 in 2989ms
+(32/100) ReplicaB: [2019-04-10T11:43:18.286][Client] Write key = a and value = 1 in 2891ms
+(33/100) ReplicaE: [2019-04-10T11:43:23.837][Client] Write key = a and value = 1 in 2982ms
+(34/100) ReplicaC: [2019-04-10T11:43:36.433][Client] Write key = a and value = 1 in 6447ms
+(35/100) ReplicaC: [2019-04-10T11:43:43.197][Client] Write key = e and value = 1 in 1749ms
+(36/100) ReplicaD: [2019-04-10T11:43:56.135][Client] Write key = d and value = 1 in 7615ms
+(37/100) ReplicaF: [2019-04-10T11:44:02.047][Client] Write key = e and value = 1 in 1000ms
+(38/100) ReplicaF: [2019-04-10T11:44:10.928][Client] Write key = c and value = 1 in 4935ms
+(39/100) ReplicaC: (40/100) ReplicaF: [2019-04-10T11:44:22.253][Client] Write key = e and value = 1 in 893ms

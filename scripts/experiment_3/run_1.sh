@@ -57,7 +57,7 @@ ssh ${USER}@${INSTANCE_01_IP} "
 ssh ${USER}@${INSTANCE_01_IP} "
     source /home/${USER}/.sdkman/bin/sdkman-init.sh;
     cd ${HOME_DIR};
-    nohup scala main.scala.history.VoluntaryCoordinator ${RMI_IP} > ${LOG_DIR}/master.log 2>&1 &
+    nohup scala main.scala.history.VoluntaryCoordinator ${RMI_IP} > ${LOG_DIR}/coordinator.log 2>&1 &
 "
 
 echo "=> Start replicas on ${INSTANCE_01_IP}"
@@ -104,7 +104,7 @@ sleep 5
 #########################################################################
 
 echo "Start simulation"
-for r in {1..1}
+for r in {1..10}
 do
     #########################################################################
     #                                                                       # 
@@ -112,7 +112,7 @@ do
     #                                                                       #
     #########################################################################
 
-    for i in {1..5}
+    for i in {1..100}
     do
         RND_REPLICA=$((RANDOM % ${#REPLICAS[@]}))
         REPLICA=${REPLICAS[$RND_REPLICA]}
