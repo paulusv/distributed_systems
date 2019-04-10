@@ -53,11 +53,6 @@ ssh sven@instance-01 "
     cd ${HOME_DIR};
     nohup scala -Djava.rmi.server.hostname=${HOST_IP} main.scala.history.MasterReplica > ${LOG_DIR}/master.log 2>&1 &
 "
-ssh sven@instance-01 "
-    source /home/sven/.sdkman/bin/sdkman-init.sh;
-    cd ${HOME_DIR};
-    nohup scala main.scala.history.VoluntaryCoordinator ${RMI_IP} > ${LOG_DIR}/coordinator.log 2>&1 &
-"
 
 echo "=> Start Replica A on instance-01"
 ssh sven@instance-01 "
