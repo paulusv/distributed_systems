@@ -7,7 +7,7 @@ import main.scala.database.Database
 import main.scala.log.{Master, WriteLog, WriteLogItem, WriteOperation}
 import main.scala.tact.conit.Conit
 import main.scala.tact.manager.ConsistencyManager
-import main.scala.tact.protocol.OneRound
+import main.scala.tact.protocol.TwoRound
 
 import scala.util.control.Breaks._
 
@@ -43,7 +43,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
   /**
     * AntiEntropy protocol that will be used.
     */
-  var antiEntropy = new OneRound(this)
+  var antiEntropy = new TwoRound(this)
 
   /**
     * If replica is busy with something.
@@ -207,7 +207,7 @@ class TactImpl(val replicaId: Char, val ecgHistory: Master, val rmiServer: Strin
           break
         }
 
-        println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] -- Update with key " + key + ", value = " + item.operation.value)
+        println("[" + LocalDateTime.now() + "][Replica" + replicaId + "] -- Update with key = " + key + ", value = " + item.operation.value)
         manager.setTimeVector(item.replicaId, key, item.timeVector)
 
         conit.update(item.operation.value)
